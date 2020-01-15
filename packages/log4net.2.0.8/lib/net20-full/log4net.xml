@@ -28630,7 +28630,7 @@
             <param name="value">the value to store for the key</param>
             <remarks>
             <para>
-            Store a value for the specified <see cref="T:System.String"/> <paramref name="key"/>.
+            SocialEvents a value for the specified <see cref="T:System.String"/> <paramref name="key"/>.
             </para>
             </remarks>
             <exception cref="T:System.ArgumentException">Thrown if the <paramref name="key"/> is not a string</exception>

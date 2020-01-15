@@ -103,7 +103,7 @@ publish/
 csx
 *.build.csdef
 
-# Windows Store app package directory
+# Windows SocialEvents app package directory
 AppPackages/
 
 # Others
