@@ -41,9 +41,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Announcement.cs" />
     <Compile Include="Models\AuditableEntity.cs" />
     <Compile Include="Models\Category.cs" />
-    <Compile Include="Models\Gadget.cs" />
+    <Compile Include="Models\Department.cs" />
+    <Compile Include="Models\Event.cs" />
+    <Compile Include="Models\Location.cs" />
+    <Compile Include="Models\Notification.cs" />
+    <Compile Include="Models\TargetGroup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

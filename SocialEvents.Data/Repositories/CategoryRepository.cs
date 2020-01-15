@@ -19,7 +19,6 @@ namespace SocialEvents.Data.Repositories
 
         public override void Update(Category entity)
         {
-            entity.DateUpdated = DateTime.Now;
             base.Update(entity);
         }
     }

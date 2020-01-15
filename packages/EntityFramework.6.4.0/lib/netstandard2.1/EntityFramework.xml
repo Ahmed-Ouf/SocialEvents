@@ -9980,7 +9980,7 @@
             Constructs the EntityConnection from Metadata loaded in memory
             </summary>
             <param name="workspace"> Workspace containing metadata information. </param>
-            <param name="connection"> SocialEvents connection. </param>
+            <param name="connection"> Store connection. </param>
             <param name="entityConnectionOwnsStoreConnection"> If set to true the store connection is disposed when the entity connection is disposed, otherwise the caller must dispose the store connection. </param>
         </member>
         <member name="P:System.Data.Entity.Core.EntityClient.EntityConnection.ConnectionString">
@@ -13868,7 +13868,7 @@
         </member>
         <member name="P:System.Data.Entity.Core.Metadata.Edm.EdmMember.IsStoreGeneratedIdentity">
             <summary>
-            Tells whether this member's SocialEvents generated pattern is marked as Identity in the EDM definition
+            Tells whether this member's Store generated pattern is marked as Identity in the EDM definition
             </summary>
         </member>
         <member name="T:System.Data.Entity.Core.Metadata.Edm.EdmModel">
@@ -16658,7 +16658,7 @@
         </member>
         <member name="T:System.Data.Entity.Core.Metadata.Edm.StoreItemCollection">
             <summary>
-            Class for representing a collection of items in SocialEvents space.
+            Class for representing a collection of items in Store space.
             </summary>
         </member>
         <member name="M:System.Data.Entity.Core.Metadata.Edm.StoreItemCollection.#ctor(System.Collections.Generic.IEnumerable{System.Xml.XmlReader})">

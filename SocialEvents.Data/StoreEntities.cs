@@ -17,12 +17,10 @@ namespace SocialEvents.Data
             this.Database.Log = s => System.Diagnostics.Debug.WriteLine(s);
         }
 
-        public DbSet<Gadget> Gadgets { get; set; }
         public DbSet<Category> Categories { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Configurations.Add(new GadgetConfiguration());
             modelBuilder.Configurations.Add(new CategoryConfiguration());
         }
 

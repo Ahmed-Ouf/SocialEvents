@@ -9,7 +9,6 @@ namespace SocialEvents.Web.Mappings
         public DomainToViewModelMappingProfile()
         {
             CreateMap<Category, CategoryViewModel>(MemberList.None).ReverseMap().ForAllMembers(opt => opt.Ignore());
-            CreateMap<Gadget, GadgetViewModel>(MemberList.None).ReverseMap().ForAllMembers(opt => opt.Ignore());
         }
     }
 }
