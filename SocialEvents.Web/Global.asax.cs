@@ -18,7 +18,7 @@ namespace SocialEvents.Web
         protected void Application_Start()
         {
             // Init database
-            System.Data.Entity.Database.SetInitializer(new StoreSeedData());
+           // System.Data.Entity.Database.SetInitializer(new StoreSeedData());
 
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);

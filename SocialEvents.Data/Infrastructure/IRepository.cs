@@ -1,11 +1,12 @@
-﻿using System;
+﻿using SocialEvents.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 
 namespace SocialEvents.Data.Infrastructure
 {
-    public interface IRepository<T> where T : class
+    public interface IRepository<T> where T : AuditableEntity
     {
         // Marks an entity as new
         void Add(T entity, bool autoId = true);

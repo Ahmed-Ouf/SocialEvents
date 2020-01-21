@@ -8,6 +8,6 @@ namespace SocialEvents.Web.ViewModels
         public Guid Id { get; set; }
         public string Name { get; set; }
 
-        public List<GadgetViewModel> Gadgets { get; set; }
+        public List<AnnouncementViewModel> Gadgets { get; set; }
     }
 }

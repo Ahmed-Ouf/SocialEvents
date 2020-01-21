@@ -112,4 +112,91 @@
   <data name="UpdatedBy" xml:space="preserve">
     <value>عدل بواسطة</value>
   </data>
+  <data name="RequiredField" xml:space="preserve">
+    <value>هذا الحقل "{0}"  مطلوب</value>
+  </data>
+  <data name="StringLengthMessage" xml:space="preserve">
+    <value>لا يمكن أن يكون حقل {0} أكبر من {1}</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>الاسم</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>الوصف</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>العنوان</value>
+  </data>
+  <data name="DateFrom" xml:space="preserve">
+    <value>من تاريخ</value>
+  </data>
+  <data name="DateTo" xml:space="preserve">
+    <value>الي تاريخ</value>
+  </data>
+  <data name="TimeFrom" xml:space="preserve">
+    <value>من الساعة</value>
+  </data>
+  <data name="TimeTo" xml:space="preserve">
+    <value>الي الساعة</value>
+  </data>
+  <data name="Fees" xml:space="preserve">
+    <value>الرسوم</value>
+  </data>
+  <data name="TargetAge" xml:space="preserve">
+    <value>الفئة العمرية</value>
+  </data>
+  <data name="EventUrl" xml:space="preserve">
+    <value>رابط الفاعلية</value>
+  </data>
+  <data name="FacebookUrl" xml:space="preserve">
+    <value>الفيسبوك</value>
+  </data>
+  <data name="twitterUrl" xml:space="preserve">
+    <value>تويتر</value>
+  </data>
+  <data name="InstagramUrl" xml:space="preserve">
+    <value>الانستجرام</value>
+  </data>
+  <data name="State" xml:space="preserve">
+    <value>الحالة</value>
+  </data>
+  <data name="Notifiable" xml:space="preserve">
+    <value>التنبيه</value>
+  </data>
+  <data name="Published" xml:space="preserve">
+    <value>النشر</value>
+  </data>
+  <data name="EventImage" xml:space="preserve">
+    <value>الصورة</value>
+  </data>
+  <data name="Color" xml:space="preserve">
+    <value>اللون</value>
+  </data>
+  <data name="Longitude" xml:space="preserve">
+    <value>خطوط الطول</value>
+  </data>
+  <data name="Latitude" xml:space="preserve">
+    <value>دوائر العرض</value>
+  </data>
+  <data name="TargetGroup" xml:space="preserve">
+    <value>الفئة المستهدفة</value>
+  </data>
+  <data name="Notification" xml:space="preserve">
+    <value>الاشعار</value>
+  </data>
+  <data name="Location" xml:space="preserve">
+    <value>الموقع</value>
+  </data>
+  <data name="Event" xml:space="preserve">
+    <value>الفاعلية</value>
+  </data>
+  <data name="Department" xml:space="preserve">
+    <value>الإدارة</value>
+  </data>
+  <data name="Category" xml:space="preserve">
+    <value>تصنيف الفاعلية</value>
+  </data>
+  <data name="Announcement" xml:space="preserve">
+    <value>التعميم</value>
+  </data>
 </root>

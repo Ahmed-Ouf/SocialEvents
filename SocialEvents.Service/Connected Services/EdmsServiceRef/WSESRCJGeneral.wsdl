@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:intf="urn:rcjgen" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:impl="urn:rcjgen" targetNamespace="urn:rcjgen" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types />
+  <wsdl:message name="searchRecordsRequest">
+    <wsdl:part name="username" type="xsd:string" />
+    <wsdl:part name="password" type="xsd:string" />
+    <wsdl:part name="doctypeName" type="xsd:string" />
+    <wsdl:part name="parentDoctypeName" type="xsd:string" />
+    <wsdl:part name="query" type="xsd:string" />
+    <wsdl:part name="currentPage" type="xsd:string" />
+    <wsdl:part name="pageCount" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="deleteRecordResponse" />
+  <wsdl:message name="createRecordResponse">
+    <wsdl:part name="createRecordReturn" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="addAttachmentRequest">
+    <wsdl:part name="username" type="xsd:string" />
+    <wsdl:part name="password" type="xsd:string" />
+    <wsdl:part name="doctypeName" type="xsd:string" />
+    <wsdl:part name="parentDoctypeName" type="xsd:string" />
+    <wsdl:part name="recordKey" type="xsd:string" />
+    <wsdl:part name="attachment" type="xsd:base64Binary" />
+    <wsdl:part name="fileName" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="deleteAttachmentResponse" />
+  <wsdl:message name="updateRecordResponse" />
+  <wsdl:message name="updateAttachmentResponse">
+    <wsdl:part name="updateAttachmentReturn" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="deleteRecordRequest">
+    <wsdl:part name="username" type="xsd:string" />
+    <wsdl:part name="password" type="xsd:string" />
+    <wsdl:part name="doctypeName" type="xsd:string" />
+    <wsdl:part name="parentDoctypeName" type="xsd:string" />
+    <wsdl:part name="recordKey" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="addAttachmentResponse">
+    <wsdl:part name="addAttachmentReturn" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="downloadFirstAttachmentRequest">
+    <wsdl:part name="username" type="xsd:string" />
+    <wsdl:part name="password" type="xsd:string" />
+    <wsdl:part name="doctypeName" type="xsd:string" />
+    <wsdl:part name="parentDoctypeName" type="xsd:string" />
+    <wsdl:part name="recordKey" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="updateAttachmentRequest">
+    <wsdl:part name="username" type="xsd:string" />
+    <wsdl:part name="password" type="xsd:string" />
+    <wsdl:part name="doctypeName" type="xsd:string" />
+    <wsdl:part name="parentDoctypeName" type="xsd:string" />
+    <wsdl:part name="recordKey" type="xsd:string" />
+    <wsdl:part name="attachmentKey" type="xsd:string" />
+    <wsdl:part name="attachment" type="xsd:base64Binary" />
+    <wsdl:part name="fileName" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="downloadAttachmentRequest">
+    <wsdl:part name="username" type="xsd:string" />
+    <wsdl:part name="password" type="xsd:string" />
+    <wsdl:part name="doctypeName" type="xsd:string" />
+    <wsdl:part name="parentDoctypeName" type="xsd:string" />
+    <wsdl:part name="recordKey" type="xsd:string" />
+    <wsdl:part name="attachmentKey" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="searchGISRecordsResponse">
+    <wsdl:part name="searchGISRecordsReturn" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="authenticateRequest">
+    <wsdl:part name="sUserCode" type="xsd:string" />
+    <wsdl:part name="sPassWord" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="searchRecordsResponse">
+    <wsdl:part name="searchRecordsReturn" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="createRecordRequest">
+    <wsdl:part name="username" type="xsd:string" />
+    <wsdl:part name="password" type="xsd:string" />
+    <wsdl:part name="doctypeName" type="xsd:string" />
+    <wsdl:part name="parentDoctypeName" type="xsd:string" />
+    <wsdl:part name="sXmlAttributes" type="xsd:string" />
+    <wsdl:part name="attachment" type="xsd:base64Binary" />
+    <wsdl:part name="fileName" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="authenticateResponse">
+    <wsdl:part name="authenticateReturn" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="downloadFirstAttachmentResponse">
+    <wsdl:part name="downloadFirstAttachmentReturn" type="xsd:base64Binary" />
+  </wsdl:message>
+  <wsdl:message name="updateRecordRequest">
+    <wsdl:part name="username" type="xsd:string" />
+    <wsdl:part name="password" type="xsd:string" />
+    <wsdl:part name="doctypeName" type="xsd:string" />
+    <wsdl:part name="parentDoctypeName" type="xsd:string" />
+    <wsdl:part name="recordKey" type="xsd:string" />
+    <wsdl:part name="sXmlAttributes" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="deleteAttachmentRequest">
+    <wsdl:part name="username" type="xsd:string" />
+    <wsdl:part name="password" type="xsd:string" />
+    <wsdl:part name="doctypeName" type="xsd:string" />
+    <wsdl:part name="parentDoctypeName" type="xsd:string" />
+    <wsdl:part name="recordKey" type="xsd:string" />
+    <wsdl:part name="attachmentKey" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="downloadAttachmentResponse">
+    <wsdl:part name="downloadAttachmentReturn" type="xsd:base64Binary" />
+  </wsdl:message>
+  <wsdl:message name="searchGISRecordsRequest">
+    <wsdl:part name="username" type="xsd:string" />
+    <wsdl:part name="password" type="xsd:string" />
+    <wsdl:part name="doctypeName" type="xsd:string" />
+    <wsdl:part name="parentDoctypeName" type="xsd:string" />
+    <wsdl:part name="processcode" type="xsd:string" />
+    <wsdl:part name="processkeyno" type="xsd:string" />
+    <wsdl:part name="currentPage" type="xsd:string" />
+    <wsdl:part name="pageCount" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:portType name="WSESRCJGeneral">
+    <wsdl:operation name="createRecord" parameterOrder="username password doctypeName parentDoctypeName sXmlAttributes attachment fileName">
+      <wsdl:input name="createRecordRequest" message="impl:createRecordRequest" />
+      <wsdl:output name="createRecordResponse" message="impl:createRecordResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="updateRecord" parameterOrder="username password doctypeName parentDoctypeName recordKey sXmlAttributes">
+      <wsdl:input name="updateRecordRequest" message="impl:updateRecordRequest" />
+      <wsdl:output name="updateRecordResponse" message="impl:updateRecordResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteRecord" parameterOrder="username password doctypeName parentDoctypeName recordKey">
+      <wsdl:input name="deleteRecordRequest" message="impl:deleteRecordRequest" />
+      <wsdl:output name="deleteRecordResponse" message="impl:deleteRecordResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="searchRecords" parameterOrder="username password doctypeName parentDoctypeName query currentPage pageCount">
+      <wsdl:input name="searchRecordsRequest" message="impl:searchRecordsRequest" />
+      <wsdl:output name="searchRecordsResponse" message="impl:searchRecordsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="searchGISRecords" parameterOrder="username password doctypeName parentDoctypeName processcode processkeyno currentPage pageCount">
+      <wsdl:input name="searchGISRecordsRequest" message="impl:searchGISRecordsRequest" />
+      <wsdl:output name="searchGISRecordsResponse" message="impl:searchGISRecordsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="addAttachment" parameterOrder="username password doctypeName parentDoctypeName recordKey attachment fileName">
+      <wsdl:input name="addAttachmentRequest" message="impl:addAttachmentRequest" />
+      <wsdl:output name="addAttachmentResponse" message="impl:addAttachmentResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="updateAttachment" parameterOrder="username password doctypeName parentDoctypeName recordKey attachmentKey attachment fileName">
+      <wsdl:input name="updateAttachmentRequest" message="impl:updateAttachmentRequest" />
+      <wsdl:output name="updateAttachmentResponse" message="impl:updateAttachmentResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="downloadAttachment" parameterOrder="username password doctypeName parentDoctypeName recordKey attachmentKey">
+      <wsdl:input name="downloadAttachmentRequest" message="impl:downloadAttachmentRequest" />
+      <wsdl:output name="downloadAttachmentResponse" message="impl:downloadAttachmentResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="downloadFirstAttachment" parameterOrder="username password doctypeName parentDoctypeName recordKey">
+      <wsdl:input name="downloadFirstAttachmentRequest" message="impl:downloadFirstAttachmentRequest" />
+      <wsdl:output name="downloadFirstAttachmentResponse" message="impl:downloadFirstAttachmentResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteAttachment" parameterOrder="username password doctypeName parentDoctypeName recordKey attachmentKey">
+      <wsdl:input name="deleteAttachmentRequest" message="impl:deleteAttachmentRequest" />
+      <wsdl:output name="deleteAttachmentResponse" message="impl:deleteAttachmentResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="authenticate" parameterOrder="sUserCode sPassWord">
+      <wsdl:input name="authenticateRequest" message="impl:authenticateRequest" />
+      <wsdl:output name="authenticateResponse" message="impl:authenticateResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WSESRCJGeneralSoapBinding" type="impl:WSESRCJGeneral">
+    <wsdlsoap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <wsdl:operation name="createRecord">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="createRecordRequest">
+        <wsdlsoap:body use="literal" namespace="urn:rcjgen" />
+      </wsdl:input>
+      <wsdl:output name="createRecordResponse">
+        <wsdlsoap:body use="literal" namespace="urn:rcjgen" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateRecord">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="updateRecordRequest">
+        <wsdlsoap:body use="literal" namespace="urn:rcjgen" />
+      </wsdl:input>
+      <wsdl:output name="updateRecordResponse">
+        <wsdlsoap:body use="literal" namespace="urn:rcjgen" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteRecord">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="deleteRecordRequest">
+        <wsdlsoap:body use="literal" namespace="urn:rcjgen" />
+      </wsdl:input>
+      <wsdl:output name="deleteRecordResponse">
+        <wsdlsoap:body use="literal" namespace="urn:rcjgen" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="searchRecords">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="searchRecordsRequest">
+        <wsdlsoap:body use="literal" namespace="urn:rcjgen" />
+      </wsdl:input>
+      <wsdl:output name="searchRecordsResponse">
+        <wsdlsoap:body use="literal" namespace="urn:rcjgen" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="searchGISRecords">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="searchGISRecordsRequest">
+        <wsdlsoap:body use="literal" namespace="urn:rcjgen" />
+      </wsdl:input>
+      <wsdl:output name="searchGISRecordsResponse">
+        <wsdlsoap:body use="literal" namespace="urn:rcjgen" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addAttachment">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="addAttachmentRequest">
+        <wsdlsoap:body use="literal" namespace="urn:rcjgen" />
+      </wsdl:input>
+      <wsdl:output name="addAttachmentResponse">
+        <wsdlsoap:body use="literal" namespace="urn:rcjgen" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateAttachment">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="updateAttachmentRequest">
+        <wsdlsoap:body use="literal" namespace="urn:rcjgen" />
+      </wsdl:input>
+      <wsdl:output name="updateAttachmentResponse">
+        <wsdlsoap:body use="literal" namespace="urn:rcjgen" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="downloadAttachment">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="downloadAttachmentRequest">
+        <wsdlsoap:body use="literal" namespace="urn:rcjgen" />
+      </wsdl:input>
+      <wsdl:output name="downloadAttachmentResponse">
+        <wsdlsoap:body use="literal" namespace="urn:rcjgen" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="downloadFirstAttachment">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="downloadFirstAttachmentRequest">
+        <wsdlsoap:body use="literal" namespace="urn:rcjgen" />
+      </wsdl:input>
+      <wsdl:output name="downloadFirstAttachmentResponse">
+        <wsdlsoap:body use="literal" namespace="urn:rcjgen" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteAttachment">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="deleteAttachmentRequest">
+        <wsdlsoap:body use="literal" namespace="urn:rcjgen" />
+      </wsdl:input>
+      <wsdl:output name="deleteAttachmentResponse">
+        <wsdlsoap:body use="literal" namespace="urn:rcjgen" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="authenticate">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="authenticateRequest">
+        <wsdlsoap:body use="literal" namespace="http://ws.es" />
+      </wsdl:input>
+      <wsdl:output name="authenticateResponse">
+        <wsdlsoap:body use="literal" namespace="urn:rcjgen" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WSESRCJService">
+    <wsdl:port name="WSESRCJGeneral" binding="impl:WSESRCJGeneralSoapBinding">
+      <wsdlsoap:address location="http://10.10.60.200:8080/edms/services/WSESRCJGeneral" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

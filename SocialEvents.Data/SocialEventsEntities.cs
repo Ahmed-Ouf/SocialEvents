@@ -12,12 +12,22 @@ namespace SocialEvents.Data
 {
     public class SocialEventsEntities : DbContext
     {
-        public SocialEventsEntities() : base("StoreEntities")
+        public SocialEventsEntities() : base("SocialEvents")
         {
             this.Database.Log = s => System.Diagnostics.Debug.WriteLine(s);
         }
 
+        public DbSet<Announcement> Announcements { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<Department> Departments { get; set; }
+        public DbSet<Event> Events { get; set; }
+        public DbSet<Location> Locations { get; set; }
+        public DbSet<Notification> Notifications { get; set; }
+        public DbSet<TargetGroup> TargetGroups { get; set; }
+
+
+
+
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

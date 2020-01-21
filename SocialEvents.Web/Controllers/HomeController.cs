@@ -10,22 +10,33 @@ namespace SocialEvents.Web.Controllers
     public class HomeController : BaseController
     {
         private readonly ICategoryService categoryService;
+        private readonly IAnnouncementService announcementService;
 
-        public HomeController(ICategoryService categoryService)
+        public HomeController(ICategoryService categoryService,IAnnouncementService announcement)
         {
             this.categoryService = categoryService;
+            this.announcementService = announcement;
+        }
+
+        public ActionResult Index2()
+        {
+            var list = this.announcementService.GetAll();
+            return View(list);
+
         }
 
         // GET: Home
         public ActionResult Index(string category = null)
         {
-            IEnumerable<CategoryViewModel> viewModelGadgets;
-            IEnumerable<Category> categories;
+            //IEnumerable<CategoryViewModel> viewModelGadgets;
+            //IEnumerable<Category> categories;
 
-            categories = categoryService.GetCategories(category).ToList();
+            //categories = categoryService.GetCategories(category).ToList();
 
-            viewModelGadgets = Mapper.Map<IEnumerable<Category>, IEnumerable<CategoryViewModel>>(categories);
-            return View(viewModelGadgets);
+            //viewModelGadgets = Mapper.Map<IEnumerable<Category>, IEnumerable<CategoryViewModel>>(categories);
+
+            var list = this.announcementService.GetAll();
+            return View(list);
         }
 
       
@@ -42,8 +53,8 @@ namespace SocialEvents.Web.Controllers
 
             }
 
-            var category = categoryService.GetCategory(newGadget.GadgetCategory);
-            return RedirectToAction("Index", new { category = category.Name });
+            //var category = categoryService.GetCategory(newGadget.GadgetCategory);
+            return null;// RedirectToAction("Index", new { category = category.Name });
         }
     }
 }
