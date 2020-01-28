@@ -131,5 +131,13 @@ namespace SocialEvents.Web.Controllers
                 return View();
             }
         }
+
+
+        public ActionResult Publish(Guid id)
+        {
+            announcementService.Publish(id);
+            announcementService.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }

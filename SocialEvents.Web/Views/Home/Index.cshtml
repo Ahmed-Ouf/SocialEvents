@@ -1,14 +1,245 @@
-﻿@model IEnumerable<object>
+﻿@using SocialEvents.Web.ViewModels
+@model Statistics
 
 @{
     ViewBag.Title = "SocialEvents";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<p style="margin:50px">ali</p>
 
-<div class="container">
-    <div class="jumbotron">
-        <br />
-        <br />
-       Welcome ! :>
-    </div>
+<div class="col-md-6" >
+    <canvas id="YearMonthChart" width="400" height="400"></canvas>
+
 </div>
+
+<div class="col-md-3">
+    <canvas id="CateogryChart" width="400" height="400"></canvas>
+</div>
+
+<div class="col-md-3">
+    <canvas id="GroupTargetChart" width="400" height="400"></canvas>
+</div>
+
+<div class="col-md-6" >
+    <canvas id="LocationChart" width="400" height="400"></canvas>
+</div>
+
+
+
+
+@section Scripts{
+    <script>
+// #region
+        var targetGrupsNames = [];
+        var targetGrupsCount = [];
+        @foreach (var item in Model.TargetGroups)
+        {
+            @:targetGrupsNames.push("@item.Name");
+            @:targetGrupsCount.push("@item.Count");
+
+        }
+
+        var categoriesNames = [];
+        var categoriesCount = [];
+        @foreach (var item in Model.Cateogries)
+        {
+            @:categoriesNames.push("@item.Name");
+            @:categoriesCount.push("@item.Count");
+
+        }
+
+        var yearMonthsNames = [];
+        var yearMonthsCount = [];
+        @foreach (var item in Model.MonthEvents)
+        {
+            @:yearMonthsNames.push("@item.Name");
+            @:yearMonthsCount.push("@item.Count");
+
+        }
+
+
+        var locationNames = [];
+        var locationCount = [];
+        @foreach (var item in Model.Locations)
+        {
+            @:locationNames.push("@item.Name");
+            @:locationCount.push("@item.Count");
+
+        }
+
+// #endregion
+
+
+
+
+
+       //  --------------------------------------------------------------------
+        $(function () {
+            var ctxYearMonthChart = document.getElementById('YearMonthChart').getContext('2d');
+            var yearMonthChart = new Chart(ctxYearMonthChart, {
+                type: 'bar',
+                //type: 'pie',
+                data: {
+                    labels: yearMonthsNames,
+                    datasets: [{
+                        label: '# of Votes',
+                        data: yearMonthsCount,
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(255, 159, 64, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            });
+
+        //--------------------------------------2--------------------------------------------
+
+            var ctxCateogryChart = document.getElementById('CateogryChart').getContext('2d');
+            var cateogryChart = new Chart(ctxCateogryChart, {
+                //type: 'bar',
+                type: 'line',
+                data: {
+                    labels: categoriesNames,
+                    datasets: [{
+                        label: '# of Votes',
+                        data: categoriesCount,
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(255, 159, 64, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            });
+
+        //--------------------------------------3--------------------------------------------
+
+
+            var ctxGroupTargetChart = document.getElementById('GroupTargetChart').getContext('2d');
+            var groupTargetChart = new Chart(ctxGroupTargetChart, {
+                //type: 'bar',
+                type: 'pie',
+                data: {
+                    labels: targetGrupsNames,
+                    datasets: [{
+                        label: '# of Votes',
+                        data: targetGrupsCount,
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(255, 159, 64, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            });
+
+        //--------------------------------------4--------------------------------------------
+
+            var ctxLocationChart = document.getElementById('LocationChart').getContext('2d');
+            var locationChart = new Chart(ctxLocationChart, {
+                //type: 'bar',
+                type: 'radar',
+                data: {
+                    labels: locationNames,
+                    datasets: [{
+                        label: '# of Votes',
+                        data: locationCount,
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(255, 159, 64, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            });
+        });
+    </script>
+
+}

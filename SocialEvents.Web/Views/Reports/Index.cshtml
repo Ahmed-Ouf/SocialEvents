@@ -1,0 +1,75 @@
+﻿@model IEnumerable<Event>
+@{
+    var LastCategory = Guid.Empty;
+}
+
+<div>
+
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
+        <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
+        <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
+        <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="home">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th> @Resources.Category </th>
+                        <th> @Resources.EventNumber </th>
+                        <th> @Resources.Event </th>
+                        <th> @Resources.DateFrom </th>
+                        <th> @Resources.TargetGroup </th>
+                        <th> @Resources.Location </th>
+                        <th> @Resources.Fees </th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+                    @foreach (var item in Model.OrderBy(e => e.CategoryId))
+                    {
+                        if (item.CategoryId != LastCategory)
+                        {
+                            LastCategory = item.CategoryId;
+
+                            <tr class="group" style="background:#ccc;">
+                                <td>@item.Category.Name </td>
+                                <td> </td>
+                                <td> </td>
+                                <td> </td>
+                                <td> </td>
+                                <td> </td>
+                                <td> </td>
+                            </tr>
+                        }
+
+                        <tr>
+                            <td></td>
+                            <td>@item.EventNumber </td>
+                            <td>@item.Name </td>
+                            <td>@item.DateFrom</td>
+                            <td>@item.TargetGroup.Name </td>
+                            <td>@item.Location.Name </td>
+                            <td>@item.Fees </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+
+
+
+
+
+        </div>
+        <div role="tabpanel" class="tab-pane" id="profile">profile...</div>
+        <div role="tabpanel" class="tab-pane" id="messages">messages...</div>
+        <div role="tabpanel" class="tab-pane" id="settings">settings...</div>
+    </div>
+
+</div>

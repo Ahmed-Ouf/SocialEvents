@@ -123,6 +123,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="404.html" />
+    <Content Include="Content\Chart.css" />
+    <Content Include="Content\Chart.min.css" />
+    <Content Include="Content\css\select2.css" />
+    <Content Include="Content\css\select2.min.css" />
+    <Content Include="Content\dataTable\buttons.dataTables.min.css" />
+    <Content Include="Content\dataTable\dataTables.bootstrap.min.css" />
+    <Content Include="Content\dataTable\responsive.bootstrap.min.css" />
+    <Content Include="Content\dataTable\select.dataTables.min.css" />
+    <Content Include="Content\spectrum.css" />
     <Content Include="css\bootstrap.css" />
     <Content Include="css\site.css" />
     <Content Include="favicon.ico" />
@@ -145,7 +154,30 @@
     <Content Include="images\ulefone.jpg" />
     <Content Include="js\bootstrap.js" />
     <Content Include="js\site.js" />
+    <Content Include="language\arabic.json" />
+    <Content Include="language\english.json" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\Application\location.js" />
+    <Content Include="Scripts\Chart.js" />
+    <Content Include="Scripts\Chart.min.js" />
+    <Content Include="Scripts\dataTable\buttons.colVis.min.js" />
+    <Content Include="Scripts\dataTable\buttons.flash.min.js" />
+    <Content Include="Scripts\dataTable\buttons.html5.min.js" />
+    <Content Include="Scripts\dataTable\buttons.print.min.js" />
+    <Content Include="Scripts\dataTable\dataTables.bootstrap.min.js" />
+    <Content Include="Scripts\dataTable\dataTables.buttons.min.js" />
+    <Content Include="Scripts\dataTable\dataTables.responsive.min.js" />
+    <Content Include="Scripts\dataTable\dataTables.select.min.js" />
+    <Content Include="Scripts\dataTable\datetime-moment.js" />
+    <Content Include="Scripts\dataTable\jquery.dataTables.min.js" />
+    <Content Include="Scripts\dataTable\jszip.min.js" />
+    <Content Include="Scripts\dataTable\moment-with-locales.js" />
+    <Content Include="Scripts\dataTable\moment.min.js" />
+    <Content Include="Scripts\dataTable\pdfmake.min.js" />
+    <Content Include="Scripts\dataTable\responsive.bootstrap.min.js" />
+    <Content Include="Scripts\dataTable\vfs_fonts.js" />
+    <Content Include="Scripts\i18n\ar.js" />
+    <Content Include="Scripts\i18n\en.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
@@ -156,6 +188,13 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\moment-with-locales.js" />
+    <Content Include="Scripts\moment-with-locales.min.js" />
+    <Content Include="Scripts\moment.js" />
+    <Content Include="Scripts\moment.min.js" />
+    <Content Include="Scripts\select2.js" />
+    <Content Include="Scripts\select2.min.js" />
+    <Content Include="Scripts\spectrum.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -164,18 +203,33 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AnnouncementController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\EventController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\NotificationController.cs" />
+    <Compile Include="Controllers\LocationController.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\ReportsController.cs" />
+    <Compile Include="Controllers\TargetGroupController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\CultureHelper.cs" />
+    <Compile Include="Helpers\EnumExtensions.cs" />
+    <Compile Include="Helpers\EnumHelper.cs" />
     <Compile Include="Helpers\Log.cs" />
+    <Compile Include="Helpers\ObjectCopier.cs" />
+    <Compile Include="Helpers\UserConfigurationExtensions.cs" />
+    <Compile Include="Helpers\WordReportHelper.cs" />
     <Compile Include="Mappings\AutoMapperConfiguration.cs" />
     <Compile Include="Mappings\DomainToViewModelMappingProfile.cs" />
     <Compile Include="Mappings\ViewModelToDomainMappingProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\ApprovalViewModel.cs" />
     <Compile Include="ViewModels\CategoryViewModel.cs" />
+    <Compile Include="ViewModels\ChartItem.cs" />
     <Compile Include="ViewModels\GadgetFormViewModel.cs" />
     <Compile Include="ViewModels\AnnouncementViewModel.cs" />
+    <Compile Include="ViewModels\Statistics.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -190,7 +244,6 @@
     <Content Include="Views\Home\Filter.cshtml" />
     <Content Include="libman.json" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Home\Index2.cshtml" />
     <Content Include="Views\Announcement\Index.cshtml" />
     <Content Include="Views\Announcement\Create.cshtml" />
     <Content Include="Views\Announcement\Details.cshtml" />
@@ -198,6 +251,34 @@
     <Content Include="Views\Announcement\Delete.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\HttpPostedFileBase.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\EventImage.cshtml" />
+    <Content Include="Views\TargetGroup\Index.cshtml" />
+    <Content Include="Views\TargetGroup\Details.cshtml" />
+    <Content Include="Views\TargetGroup\Create.cshtml" />
+    <Content Include="Views\TargetGroup\Edit.cshtml" />
+    <Content Include="Views\TargetGroup\Delete.cshtml" />
+    <Content Include="Views\Notification\Create.cshtml" />
+    <Content Include="Views\Notification\Delete.cshtml" />
+    <Content Include="Views\Notification\Details.cshtml" />
+    <Content Include="Views\Notification\Edit.cshtml" />
+    <Content Include="Views\Notification\Index.cshtml" />
+    <Content Include="Views\Location\Index.cshtml" />
+    <Content Include="Views\Location\Details.cshtml" />
+    <Content Include="Views\Location\Create.cshtml" />
+    <Content Include="Views\Location\Edit.cshtml" />
+    <Content Include="Views\Location\Delete.cshtml" />
+    <Content Include="Views\Category\Index.cshtml" />
+    <Content Include="Views\Category\Details.cshtml" />
+    <Content Include="Views\Category\Create.cshtml" />
+    <Content Include="Views\Category\Edit.cshtml" />
+    <Content Include="Views\Category\Delete.cshtml" />
+    <Content Include="Views\Event\Create.cshtml" />
+    <Content Include="Views\Event\Delete.cshtml" />
+    <Content Include="Views\Event\Details.cshtml" />
+    <Content Include="Views\Event\Edit.cshtml" />
+    <Content Include="Views\Event\Index.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\Color.cshtml" />
+    <Content Include="Views\Event\Approval.cshtml" />
+    <Content Include="Views\Reports\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -226,7 +307,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-    <Folder Include="Scripts\Application\" />
     <Folder Include="Uploads\" />
   </ItemGroup>
   <PropertyGroup>

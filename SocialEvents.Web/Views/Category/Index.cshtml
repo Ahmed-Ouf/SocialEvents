@@ -1,10 +1,10 @@
-﻿@model IEnumerable<SocialEvents.Model.Announcement>
+﻿@model IEnumerable<SocialEvents.Model.Category>
 
 @{
-    ViewBag.Title = "Index2";
+    ViewBag.Title = "Index";
 }
 
-<h2>Index2</h2>
+<h2>Index</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -15,7 +15,7 @@
             @Html.DisplayNameFor(model => model.Name)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Published)
+            @Html.DisplayNameFor(model => model.Color)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.EventImage)
@@ -29,7 +29,7 @@
             @Html.DisplayFor(modelItem => item.Name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Published)
+            @Html.DisplayFor(modelItem => item.Color)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.EventImage)

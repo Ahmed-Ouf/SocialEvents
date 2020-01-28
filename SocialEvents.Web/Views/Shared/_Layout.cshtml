@@ -1,5 +1,21 @@
-﻿<!DOCTYPE html>
-<html>
+﻿@using SocialEvents.Web.Helpers;
+@{
+    ViewBag.Title = Resources.SocialEvents;
+    var culture = System.Threading.Thread.CurrentThread.CurrentUICulture.Name.ToLowerInvariant();
+    var arLang = CultureHelper.IsRighToLeft();
+    var controllerName = ViewContext.Controller.GetType().Name;
+    var actionName = ViewContext.RouteData.GetRequiredString("action");
+    actionName = actionName == "Index" ? "" : "/" + actionName;
+    controllerName = controllerName.Replace("Controller", "");
+}
+@helper selected(string c, string culture)
+{
+    if (culture.Contains(c))
+    {
+        @:hidden
+    }
+}
+<html lang="@CultureHelper.GetCurrentNeutralCulture()" dir="@(CultureHelper.IsRighToLeft() ? "rtl" : "ltr")">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -32,19 +48,129 @@
                 <li class="active">
                     @Html.ActionLink("Announcement", "Index", "Announcement")
                 </li>
-                @*<li class="active">
-                    @Html.ActionLink("Laptops", "Index", "Home", new { category = "Laptops" }, null)
+                <li class="active">
+                    @Html.ActionLink("Category", "Index", "Category")
                 </li>
                 <li class="active">
-                    @Html.ActionLink("Mobiles", "Index", "Home", new { category = "Mobiles" }, null)
-                </li>*@
+                    @Html.ActionLink("Event", "Index", "Event")
+                </li>
+                <li class="active">
+                    @Html.ActionLink("Location", "Index", "Location")
+                </li>
+                <li class="active">
+                    @Html.ActionLink("Notification", "Index", "Notification")
+                </li>
+                <li class="active">
+                    @Html.ActionLink("TargetGroup", "Index", "TargetGroup")
+                </li>
             </ul>
+            <!--Start Language-->
+            <a href="@Url.Action("SetCulture", new { culture = "en", url = Request.Url.AbsoluteUri })" class="change_lang bring_left @selected("en", culture)" title="English">EN</a>
+            <a href="@Url.Action("SetCulture", new { culture = "ar-EG", url = Request.Url.AbsoluteUri })" class="change_lang bring_left @selected("ar", culture)" style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif" title="عربي">ع</a>
+            <!--/End Language-->
         </div>
     </nav>
-    @RenderBody()
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+    <div class="container-fluid">
+        <div class="row" style="margin-top:50px;">
+            <div class="col-md-12">
+
+
+                @RenderBody()
+
+            </div>
+        </div>
+    </div>
+
+
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bootstrap/js")
     @RenderSection("scripts", false)
+
+
+    <script>
+        $(function () {
+            $('.select2').select2({
+                dir: "rtl"
+            });
+         MyDataTable = $("table").not('.noDataTable').DataTable({
+                    "responsive": false,
+                    //"ordering": false,
+             "language": {
+                        "url": "@(SocialEvents.Web.Helpers.CultureHelper.IsRighToLeft() ? Url.Content("~/language/arabic.json")    : Url.Content("~/language/english.json"))"
+                    },
+                    "columnDefs": [
+                        {
+                        "targets": -1,
+                        "orderable": false
+                    },
+                    ],
+
+                    dom: 'lBfrtip',
+                    buttons: [
+                            {
+                                extend: 'print',
+                                text: '@SocialEvents.Resources.Resources.Print',
+                                key: {
+                                    key: 'p',
+                                    altkey: true
+                                }
+                            },
+                            {
+                                extend: 'excel',
+                                text: '@SocialEvents.Resources.Resources.Excel',
+                                key: {
+                                    key: 'e',
+                                    altkey: true
+                                }
+                        }
+
+             ],
+             initComplete: function () {
+                 this.api().columns(".Searchable").every(function () {
+                     var column = this;
+                     var select = $('<select class="select2 form-control"><option value="">الكل</option></select>')
+                         .appendTo($(column.footer()).empty())
+                         .on('change', function () {
+                             var val = $.fn.dataTable.util.escapeRegex(
+                                 $(this).val()
+                             );
+
+                             column
+                                 .search(val ? '^' + val + '$' : '', true, false)
+                                 .draw();
+                         });
+
+                     column.data().unique().sort().each(function (d, j) {
+                         select.append('<option value="' + d + '">' + d + '</option>')
+                     });
+                     $('.select2').select2();
+                 });
+             },
+                });
+
+
+                MyDataTable.on('init', function () {
+                    $(".dt-buttons :button").removeClass("dt-button ").addClass("btn btn-default");
+                    $("#DataTables_Table_0_filter .input-sm").removeClass("input-sm ").css("margin", "0 10px");
+                    var pageNumber = sessionStorage.getItem(window.location.protocol + "/dt.page");
+                    if (pageNumber) {
+                        MyDataTable.page(parseInt(pageNumber)).draw('page');
+                    }
+                });
+                // save the table page nubmer before redirect
+                window.addEventListener('beforeunload', function (e) {
+                    if ($('table:not(.noDataTable)').length != 0) {
+                        var table = $('table').DataTable();
+                        var info = table.page.info();
+                        console.log("Set page Number in seetion " + info.page);
+                        sessionStorage.setItem(window.location.protocol + "/dt.page", info.page);
+                    }
+
+
+                });
+        });
+    </script>
+
 </body>
 </html>

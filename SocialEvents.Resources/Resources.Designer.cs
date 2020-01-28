@@ -88,6 +88,15 @@ namespace SocialEvents.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Approved.
+        /// </summary>
+        public static string Approved {
+            get {
+                return ResourceManager.GetString("Approved", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Category.
         /// </summary>
         public static string Category {
@@ -142,6 +151,15 @@ namespace SocialEvents.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Days.
+        /// </summary>
+        public static string DaysOfWeek {
+            get {
+                return ResourceManager.GetString("DaysOfWeek", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Department.
         /// </summary>
         public static string Department {
@@ -156,6 +174,15 @@ namespace SocialEvents.Resources {
         public static string Description {
             get {
                 return ResourceManager.GetString("Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} should be bigger than {1}.
+        /// </summary>
+        public static string ErrorMsgBigger {
+            get {
+                return ResourceManager.GetString("ErrorMsgBigger", resourceCulture);
             }
         }
         
@@ -178,11 +205,29 @@ namespace SocialEvents.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Event Number.
+        /// </summary>
+        public static string EventNumber {
+            get {
+                return ResourceManager.GetString("EventNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Event Url.
         /// </summary>
         public static string EventUrl {
             get {
                 return ResourceManager.GetString("EventUrl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Excel.
+        /// </summary>
+        public static string Excel {
+            get {
+                return ResourceManager.GetString("Excel", resourceCulture);
             }
         }
         
@@ -205,7 +250,16 @@ namespace SocialEvents.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Instagram Url.
+        ///   Looks up a localized string similar to Friday.
+        /// </summary>
+        public static string Friday {
+            get {
+                return ResourceManager.GetString("Friday", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Instagram.
         /// </summary>
         public static string InstagramUrl {
             get {
@@ -241,6 +295,15 @@ namespace SocialEvents.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Monday.
+        /// </summary>
+        public static string Monday {
+            get {
+                return ResourceManager.GetString("Monday", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Name.
         /// </summary>
         public static string Name {
@@ -268,6 +331,24 @@ namespace SocialEvents.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Pending.
+        /// </summary>
+        public static string Pending {
+            get {
+                return ResourceManager.GetString("Pending", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Print.
+        /// </summary>
+        public static string Print {
+            get {
+                return ResourceManager.GetString("Print", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Published.
         /// </summary>
         public static string Published {
@@ -277,11 +358,47 @@ namespace SocialEvents.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Reaseon.
+        /// </summary>
+        public static string Reaseon {
+            get {
+                return ResourceManager.GetString("Reaseon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rejected.
+        /// </summary>
+        public static string Rejected {
+            get {
+                return ResourceManager.GetString("Rejected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The {0} filed is required.
         /// </summary>
         public static string RequiredField {
             get {
                 return ResourceManager.GetString("RequiredField", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Saturday.
+        /// </summary>
+        public static string Saturday {
+            get {
+                return ResourceManager.GetString("Saturday", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Social Events.
+        /// </summary>
+        public static string SocialEvents {
+            get {
+                return ResourceManager.GetString("SocialEvents", resourceCulture);
             }
         }
         
@@ -304,6 +421,15 @@ namespace SocialEvents.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Sunday.
+        /// </summary>
+        public static string Sunday {
+            get {
+                return ResourceManager.GetString("Sunday", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Target Age.
         /// </summary>
         public static string TargetAge {
@@ -322,6 +448,15 @@ namespace SocialEvents.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Thursday.
+        /// </summary>
+        public static string Thursday {
+            get {
+                return ResourceManager.GetString("Thursday", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Time From.
         /// </summary>
         public static string TimeFrom {
@@ -336,6 +471,15 @@ namespace SocialEvents.Resources {
         public static string TimeTo {
             get {
                 return ResourceManager.GetString("TimeTo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tuesday.
+        /// </summary>
+        public static string Tuesday {
+            get {
+                return ResourceManager.GetString("Tuesday", resourceCulture);
             }
         }
         
@@ -363,6 +507,24 @@ namespace SocialEvents.Resources {
         public static string UpdatedOn {
             get {
                 return ResourceManager.GetString("UpdatedOn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wednesday.
+        /// </summary>
+        public static string Wednesday {
+            get {
+                return ResourceManager.GetString("Wednesday", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Week Days.
+        /// </summary>
+        public static string WeekDays {
+            get {
+                return ResourceManager.GetString("WeekDays", resourceCulture);
             }
         }
     }

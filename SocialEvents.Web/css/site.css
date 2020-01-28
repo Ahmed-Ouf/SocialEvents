@@ -23,3 +23,12 @@
     margin-left: 2px;
 }
 
+.c-sp-preview {
+    width: 25px;
+    height: 20px;
+    border: solid 1px #222;
+    margin-right: 5px;
+    float: left;
+    z-index: 0;
+}
+

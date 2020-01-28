@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +14,11 @@ namespace SocialEvents.Model
         public Guid LocationId { get; set; }
         public Guid TargetGroupId { get; set; }
         public Guid DepartmentId { get; set; }
+
+        [Required(ErrorMessageResourceName = "RequiredField", ErrorMessageResourceType = typeof(Resources.Resources))]
+        [StringLength(500, ErrorMessageResourceName = "StringLengthMessage", ErrorMessageResourceType = typeof(Resources.Resources))]
+        [Display(Name = "EventNumber", ResourceType = typeof(Resources.Resources))]
+        public string EventNumber { get; set; }
 
         [Required(ErrorMessageResourceName = "RequiredField", ErrorMessageResourceType = typeof(Resources.Resources))]
         [StringLength(500, ErrorMessageResourceName = "StringLengthMessage", ErrorMessageResourceType = typeof(Resources.Resources))]
@@ -45,29 +51,42 @@ namespace SocialEvents.Model
         [Display(Name = "TimeTo", ResourceType = typeof(Resources.Resources))]
         public TimeSpan TimeTo { get; set; }
 
+        [StringLength(500, ErrorMessageResourceName = "StringLengthMessage", ErrorMessageResourceType = typeof(Resources.Resources))]
+        [Display(Name = "WeekDays", ResourceType = typeof(Resources.Resources))]
+        public string WeekDays { get; set; }
+
         [Required(ErrorMessageResourceName = "RequiredField", ErrorMessageResourceType = typeof(Resources.Resources))]
         [Display(Name = "Fees", ResourceType = typeof(Resources.Resources))]
         public double Fees { get; set; }
 
+        [StringLength(500, ErrorMessageResourceName = "StringLengthMessage", ErrorMessageResourceType = typeof(Resources.Resources))]
         [Required(ErrorMessageResourceName = "RequiredField", ErrorMessageResourceType = typeof(Resources.Resources))]
         [Display(Name = "TargetAge", ResourceType = typeof(Resources.Resources))]
         public string TargetAge { get; set; }
 
+        [StringLength(500, ErrorMessageResourceName = "StringLengthMessage", ErrorMessageResourceType = typeof(Resources.Resources))]
         [Required(ErrorMessageResourceName = "RequiredField", ErrorMessageResourceType = typeof(Resources.Resources))]
         [Display(Name = "EventUrl", ResourceType = typeof(Resources.Resources))]
         public string EventUrl { get; set; }
 
+        [StringLength(500, ErrorMessageResourceName = "StringLengthMessage", ErrorMessageResourceType = typeof(Resources.Resources))]
         [Display(Name = "FacebookUrl", ResourceType = typeof(Resources.Resources))]
         public string FacebookUrl { get; set; }
 
+        [StringLength(500, ErrorMessageResourceName = "StringLengthMessage", ErrorMessageResourceType = typeof(Resources.Resources))]
         [Display(Name = "twitterUrl", ResourceType = typeof(Resources.Resources))]
         public string twitterUrl { get; set; }
 
-        [Display(Name = "InstagrammUrl", ResourceType = typeof(Resources.Resources))]
-        public string InstagrammUrl { get; set; }
+        [StringLength(500, ErrorMessageResourceName = "StringLengthMessage", ErrorMessageResourceType = typeof(Resources.Resources))]
+        [Display(Name = "InstagramUrl", ResourceType = typeof(Resources.Resources))]
+        public string InstagramUrl { get; set; }
 
         [Display(Name = "State", ResourceType = typeof(Resources.Resources))]
         public StateEnum State { get; set; }
+
+        [StringLength(500, ErrorMessageResourceName = "StringLengthMessage", ErrorMessageResourceType = typeof(Resources.Resources))]
+        [Display(Name = "Reaseon", ResourceType = typeof(Resources.Resources))]
+        public string Reaseon { get; set; }
 
         [Display(Name = "Notifiable", ResourceType = typeof(Resources.Resources))]
         public bool Notifiable { get; set; }
@@ -80,6 +99,11 @@ namespace SocialEvents.Model
         public virtual Location Location { get; set; }
         public virtual TargetGroup TargetGroup { get; set; }
         public virtual Category Category { get; set; }
+
+        //not mapped
+        [NotMapped]
+        [Display(Name = "WeekDays", ResourceType = typeof(Resources.Resources))]
+        public int[] DaysOfWeek { get; set; }
 
 
     }

@@ -86,5 +86,6 @@ namespace SocialEvents.Data
                 throw newException;
             }
         }
+
     }
 }

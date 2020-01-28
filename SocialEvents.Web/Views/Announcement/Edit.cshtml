@@ -3,13 +3,14 @@
 @{
     ViewBag.Title = "Edit";
 }
-<link href="~/css/site.css" rel="stylesheet" />
 <h2>Edit</h2>
 
 @using (Html.BeginForm("Edit", "Announcement", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
     @Html.HiddenFor(m => m.Announcement.Id)
+    @Html.HiddenFor(m => m.Active)
+
     <div class="form-horizontal">
         <h4>Announcement</h4>
         <hr />
@@ -76,5 +77,4 @@
 </div>
 
 @section Scripts {
-    <script src="~/js/site.js"></script>
 }

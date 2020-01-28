@@ -199,4 +199,58 @@
   <data name="Announcement" xml:space="preserve">
     <value>التعميم</value>
   </data>
+  <data name="Pending" xml:space="preserve">
+    <value>قيد الانتظار</value>
+  </data>
+  <data name="Approved" xml:space="preserve">
+    <value>الاعتماد</value>
+  </data>
+  <data name="Rejected" xml:space="preserve">
+    <value>الرفض</value>
+  </data>
+  <data name="Reaseon" xml:space="preserve">
+    <value>السبب</value>
+  </data>
+  <data name="EventNumber" xml:space="preserve">
+    <value>رقم البرنامج</value>
+  </data>
+  <data name="WeekDays" xml:space="preserve">
+    <value>أيام الأسبوع</value>
+  </data>
+  <data name="Sunday" xml:space="preserve">
+    <value>الاحد</value>
+  </data>
+  <data name="Monday" xml:space="preserve">
+    <value>الاثنين</value>
+  </data>
+  <data name="Tuesday" xml:space="preserve">
+    <value>الثلاثاء</value>
+  </data>
+  <data name="Wednesday" xml:space="preserve">
+    <value>الاربعاء</value>
+  </data>
+  <data name="Thursday" xml:space="preserve">
+    <value>الخميس</value>
+  </data>
+  <data name="Friday" xml:space="preserve">
+    <value>الجمعة</value>
+  </data>
+  <data name="Saturday" xml:space="preserve">
+    <value>السبت</value>
+  </data>
+  <data name="ErrorMsgBigger" xml:space="preserve">
+    <value>{0} يجب أن يكون أكبر من {1}</value>
+  </data>
+  <data name="DaysOfWeek" xml:space="preserve">
+    <value>الأيام</value>
+  </data>
+  <data name="Print" xml:space="preserve">
+    <value>طباعة</value>
+  </data>
+  <data name="Excel" xml:space="preserve">
+    <value>تصدير الي الاكسيل</value>
+  </data>
+  <data name="SocialEvents" xml:space="preserve">
+    <value>الفاعليات</value>
+  </data>
 </root>

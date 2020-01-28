@@ -69,6 +69,18 @@
     <Compile Include="Migrations\202001200644125_UpdateImage.designer.cs">
       <DependentUpon>202001200644125_UpdateImage.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202001211249403_UpdateInstagram.cs" />
+    <Compile Include="Migrations\202001211249403_UpdateInstagram.designer.cs">
+      <DependentUpon>202001211249403_UpdateInstagram.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202001230629387_UdpateEventNumber.cs" />
+    <Compile Include="Migrations\202001230629387_UdpateEventNumber.designer.cs">
+      <DependentUpon>202001230629387_UdpateEventNumber.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202001230819031_UdpateWeekDays.cs" />
+    <Compile Include="Migrations\202001230819031_UdpateWeekDays.designer.cs">
+      <DependentUpon>202001230819031_UdpateWeekDays.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\TargetGroupRepository.cs" />
@@ -97,6 +109,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202001200644125_UpdateImage.resx">
       <DependentUpon>202001200644125_UpdateImage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001211249403_UpdateInstagram.resx">
+      <DependentUpon>202001211249403_UpdateInstagram.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001230629387_UdpateEventNumber.resx">
+      <DependentUpon>202001230629387_UdpateEventNumber.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001230819031_UdpateWeekDays.resx">
+      <DependentUpon>202001230819031_UdpateWeekDays.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

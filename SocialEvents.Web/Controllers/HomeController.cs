@@ -9,37 +9,39 @@ namespace SocialEvents.Web.Controllers
 {
     public class HomeController : BaseController
     {
-        private readonly ICategoryService categoryService;
-        private readonly IAnnouncementService announcementService;
-
-        public HomeController(ICategoryService categoryService,IAnnouncementService announcement)
+        private readonly IEventService EventService;
+        private readonly ICategoryService CategoryService;
+        private readonly IDepartmentService DepartmentService;
+        private readonly ILocationService LocationService;
+        private readonly ITargetGroupService TargetGroupService;
+        public HomeController(IEventService Event, ICategoryService category, IDepartmentService department, ILocationService location, ITargetGroupService targetGroup)
         {
-            this.categoryService = categoryService;
-            this.announcementService = announcement;
+            EventService = Event;
+            CategoryService = category;
+            DepartmentService = department;
+            LocationService = location;
+            TargetGroupService = targetGroup;
         }
 
-        public ActionResult Index2()
-        {
-            var list = this.announcementService.GetAll();
-            return View(list);
 
-        }
 
         // GET: Home
-        public ActionResult Index(string category = null)
+        public ActionResult Index()
         {
-            //IEnumerable<CategoryViewModel> viewModelGadgets;
-            //IEnumerable<Category> categories;
+            var list = EventService.GetAllAtive();
+            var model = new Statistics();
+            model.TargetGroups = list.GroupBy(e => e.TargetGroupId).Select(g => new ChartItem { Id = g.Key, Name = g.FirstOrDefault().TargetGroup.Name, Count = g.Count() }).ToList();
+            model.Cateogries = list.GroupBy(e => e.CategoryId).Select(g => new ChartItem { Id = g.Key, Name = g.FirstOrDefault().Category.Name, Count = g.Count() }).ToList();
+            model.Locations = list.GroupBy(e => e.LocationId).Select(g => new ChartItem { Id = g.Key, Name = g.FirstOrDefault().Location.Name, Count = g.Count() }).ToList();
+            model.MonthEvents = list.Select(e => new { MonthYear = e.DateFrom.ToString("yyyy-MM") })
+                .GroupBy(e => e.MonthYear).Select(g => new ChartItem { Name = g.Key, Count = g.Count() }).ToList();
 
-            //categories = categoryService.GetCategories(category).ToList();
 
-            //viewModelGadgets = Mapper.Map<IEnumerable<Category>, IEnumerable<CategoryViewModel>>(categories);
 
-            var list = this.announcementService.GetAll();
-            return View(list);
+            return View(model);
         }
 
-      
+
 
         [HttpPost]
         public ActionResult Create(GadgetFormViewModel newGadget)

@@ -1,8 +1,7 @@
 ﻿@model SocialEvents.Model.EventImage
 @if (Model != null)
 {
-    <div class="">
-        <div class="row col-sm-3 col-md-2">
+        <div class="col-sm-3 col-md-2">
             <div class="thumbnail">
                 <img src="data:image/png;base64,@Model.FileBase64" class="img-responsive form-control"   alt="@Model.Name" />
                 <div class="caption">
@@ -10,7 +9,6 @@
                 </div>
             </div>
         </div>
-    </div>
   
 }
 

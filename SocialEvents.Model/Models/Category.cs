@@ -14,6 +14,7 @@ namespace SocialEvents.Model
 
         [Required(ErrorMessageResourceName = "RequiredField", ErrorMessageResourceType = typeof(Resources.Resources))]
         [StringLength(20, ErrorMessageResourceName = "StringLengthMessage", ErrorMessageResourceType = typeof(Resources.Resources))]
+        [UIHint("Color")]
         [Display(Name = "Color", ResourceType = typeof(Resources.Resources))]
         public string Color { get; set; }
 
