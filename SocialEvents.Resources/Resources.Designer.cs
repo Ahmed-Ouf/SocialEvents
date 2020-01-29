@@ -79,6 +79,15 @@ namespace SocialEvents.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to All.
+        /// </summary>
+        public static string All {
+            get {
+                return ResourceManager.GetString("All", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Announcement.
         /// </summary>
         public static string Announcement {
@@ -304,6 +313,24 @@ namespace SocialEvents.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Month.
+        /// </summary>
+        public static string Month {
+            get {
+                return ResourceManager.GetString("Month", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Months.
+        /// </summary>
+        public static string Months {
+            get {
+                return ResourceManager.GetString("Months", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Name.
         /// </summary>
         public static string Name {
@@ -525,6 +552,15 @@ namespace SocialEvents.Resources {
         public static string WeekDays {
             get {
                 return ResourceManager.GetString("WeekDays", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Year.
+        /// </summary>
+        public static string Year {
+            get {
+                return ResourceManager.GetString("Year", resourceCulture);
             }
         }
     }

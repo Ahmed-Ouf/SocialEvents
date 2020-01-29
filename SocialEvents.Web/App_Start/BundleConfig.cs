@@ -15,6 +15,7 @@ namespace SocialEvents.Web.App_Start
                 "~/Scripts/dataTable/jquery.dataTables.min.js",
                 "~/Scripts/dataTable/dataTables.bootstrap.min.js",
                 "~/Scripts/dataTable/datetime-moment.js",
+                "~/Scripts/dataTable/dataTables.rowGroup.min.js",
                 "~/Scripts/dataTable/dataTables.buttons.min.js",
                 "~/Scripts/dataTable/dataTables.select.min.js",
                 "~/Scripts/dataTable/buttons.flash.min.js",
@@ -42,6 +43,7 @@ namespace SocialEvents.Web.App_Start
                 "~/Content/dataTable/responsive.bootstrap.min.css",
                 "~/Content/dataTable/buttons.dataTables.min.css",
                 "~/Content/dataTable/select.dataTables.min.css",
+                "~/Content/dataTable/rowGroup.dataTables.min.css",
                 "~/Content/css/select2.css",
                 "~/Content/Chart.css",
                 "~/css/site.css"));

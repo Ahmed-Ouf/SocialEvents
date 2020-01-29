@@ -68,6 +68,9 @@
       <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -130,6 +133,7 @@
     <Content Include="Content\dataTable\buttons.dataTables.min.css" />
     <Content Include="Content\dataTable\dataTables.bootstrap.min.css" />
     <Content Include="Content\dataTable\responsive.bootstrap.min.css" />
+    <Content Include="Content\dataTable\rowGroup.dataTables.min.css" />
     <Content Include="Content\dataTable\select.dataTables.min.css" />
     <Content Include="Content\spectrum.css" />
     <Content Include="css\bootstrap.css" />
@@ -157,6 +161,7 @@
     <Content Include="language\arabic.json" />
     <Content Include="language\english.json" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Reports\MyReport.aspx" />
     <Content Include="Scripts\Application\location.js" />
     <Content Include="Scripts\Chart.js" />
     <Content Include="Scripts\Chart.min.js" />
@@ -167,6 +172,7 @@
     <Content Include="Scripts\dataTable\dataTables.bootstrap.min.js" />
     <Content Include="Scripts\dataTable\dataTables.buttons.min.js" />
     <Content Include="Scripts\dataTable\dataTables.responsive.min.js" />
+    <Content Include="Scripts\dataTable\dataTables.rowGroup.min.js" />
     <Content Include="Scripts\dataTable\dataTables.select.min.js" />
     <Content Include="Scripts\dataTable\datetime-moment.js" />
     <Content Include="Scripts\dataTable\jquery.dataTables.min.js" />
@@ -195,6 +201,19 @@
     <Content Include="Scripts\select2.js" />
     <Content Include="Scripts\select2.min.js" />
     <Content Include="Scripts\spectrum.js" />
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -214,6 +233,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\CultureHelper.cs" />
+    <Compile Include="Helpers\DateTimeExtensions.cs" />
     <Compile Include="Helpers\EnumExtensions.cs" />
     <Compile Include="Helpers\EnumHelper.cs" />
     <Compile Include="Helpers\Log.cs" />
@@ -224,6 +244,19 @@
     <Compile Include="Mappings\DomainToViewModelMappingProfile.cs" />
     <Compile Include="Mappings\ViewModelToDomainMappingProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reports\DataSources\SocialEvents_DBDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SocialEvents_DBDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\MyReport.aspx.cs">
+      <DependentUpon>MyReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\MyReport.aspx.designer.cs">
+      <DependentUpon>MyReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="ViewModels\ApprovalViewModel.cs" />
     <Compile Include="ViewModels\CategoryViewModel.cs" />
     <Compile Include="ViewModels\ChartItem.cs" />
@@ -279,6 +312,18 @@
     <Content Include="Views\Shared\DisplayTemplates\Color.cshtml" />
     <Content Include="Views\Event\Approval.cshtml" />
     <Content Include="Views\Reports\Index.cshtml" />
+    <Content Include="Reports\DataSources\SocialEvents_DBDataSet.xsc">
+      <DependentUpon>SocialEvents_DBDataSet.xsd</DependentUpon>
+    </Content>
+    <None Include="Reports\DataSources\SocialEvents_DBDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SocialEvents_DBDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Reports\DataSources\SocialEvents_DBDataSet.xss">
+      <DependentUpon>SocialEvents_DBDataSet.xsd</DependentUpon>
+    </Content>
+    <Content Include="Views\Reports\RDLC.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -308,6 +353,9 @@
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
     <Folder Include="Uploads\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Reports\Report1.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

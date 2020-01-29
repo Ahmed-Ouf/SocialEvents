@@ -253,4 +253,16 @@
   <data name="SocialEvents" xml:space="preserve">
     <value>الفاعليات</value>
   </data>
+  <data name="Year" xml:space="preserve">
+    <value>العام</value>
+  </data>
+  <data name="Months" xml:space="preserve">
+    <value>الأشهر</value>
+  </data>
+  <data name="Month" xml:space="preserve">
+    <value>الشهر</value>
+  </data>
+  <data name="All" xml:space="preserve">
+    <value>الكل</value>
+  </data>
 </root>

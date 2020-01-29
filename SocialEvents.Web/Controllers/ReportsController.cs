@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace SocialEvents.Web.Controllers
 {
-    public class ReportsController : Controller
+    public class ReportsController : BaseController
     {
 
         private readonly IEventService EventService;
@@ -28,6 +28,12 @@ namespace SocialEvents.Web.Controllers
         {
             var model = EventService.GetAllAtive();
             return View(model);
+        }
+
+        public ActionResult RDLC()
+        {
+          
+            return View();
         }
     }
 }
