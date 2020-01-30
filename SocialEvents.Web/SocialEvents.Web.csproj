@@ -161,7 +161,6 @@
     <Content Include="language\arabic.json" />
     <Content Include="language\english.json" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
-    <Content Include="Reports\MyReport.aspx" />
     <Content Include="Scripts\Application\location.js" />
     <Content Include="Scripts\Chart.js" />
     <Content Include="Scripts\Chart.min.js" />
@@ -248,13 +247,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SocialEvents_DBDataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="Reports\MyReport.aspx.cs">
-      <DependentUpon>MyReport.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Reports\MyReport.aspx.designer.cs">
-      <DependentUpon>MyReport.aspx</DependentUpon>
     </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="ViewModels\ApprovalViewModel.cs" />
