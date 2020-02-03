@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/SocialEvents.ViewModel" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/SocialEvents.ViewModel" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:1698/EventServices/EventWCFService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:import schemaLocation="http://localhost:1698/EventServices/EventWCFService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:complexType name="ArrayOfEvent">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Event" nillable="true" type="tns:Event" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfEvent" nillable="true" type="tns:ArrayOfEvent" />
+  <xs:complexType name="Event">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:AuditableEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Address" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Category" nillable="true" type="tns:Category" />
+          <xs:element minOccurs="0" name="CategoryId" type="ser:guid" />
+          <xs:element minOccurs="0" name="DateFrom" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="DateTo" type="xs:dateTime" />
+          <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="DaysOfWeek" nillable="true" type="q1:ArrayOfint" />
+          <xs:element minOccurs="0" name="Department" nillable="true" type="tns:Department" />
+          <xs:element minOccurs="0" name="DepartmentId" type="ser:guid" />
+          <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="EventNumber" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="EventUrl" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FacebookUrl" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Fees" type="xs:double" />
+          <xs:element minOccurs="0" name="InstagramUrl" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Location" nillable="true" type="tns:Location" />
+          <xs:element minOccurs="0" name="LocationId" type="ser:guid" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Notifiable" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Published" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Reaseon" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="State" type="tns:StateEnum" />
+          <xs:element minOccurs="0" name="TargetAge" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="TargetGroup" nillable="true" type="tns:TargetGroup" />
+          <xs:element minOccurs="0" name="TargetGroupId" type="ser:guid" />
+          <xs:element minOccurs="0" name="TimeFrom" type="ser:duration" />
+          <xs:element minOccurs="0" name="TimeTo" type="ser:duration" />
+          <xs:element minOccurs="0" name="WeekDays" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="twitterUrl" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Event" nillable="true" type="tns:Event" />
+  <xs:complexType name="AuditableEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AuditableEntity" nillable="true" type="tns:AuditableEntity" />
+  <xs:complexType name="Category">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:AuditableEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Color" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="EventImage" nillable="true" type="tns:EventImage" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Category" nillable="true" type="tns:Category" />
+  <xs:complexType name="EventImage">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FileBase64" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EventImage" nillable="true" type="tns:EventImage" />
+  <xs:complexType name="Department">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:AuditableEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Department" nillable="true" type="tns:Department" />
+  <xs:complexType name="Location">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:AuditableEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Latitude" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Longitude" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Location" nillable="true" type="tns:Location" />
+  <xs:simpleType name="StateEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Pending" />
+      <xs:enumeration value="Approved" />
+      <xs:enumeration value="Rejected" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="StateEnum" nillable="true" type="tns:StateEnum" />
+  <xs:complexType name="TargetGroup">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:AuditableEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="TargetGroup" nillable="true" type="tns:TargetGroup" />
+</xs:schema>

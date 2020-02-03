@@ -2,6 +2,8 @@
 using SocialEvents.Data.Repositories;
 using SocialEvents.Model;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace SocialEvents.Service
 {
@@ -9,6 +11,7 @@ namespace SocialEvents.Service
     public interface IAnnouncementService : IServiceBase<Announcement>
     {
         void Publish(Guid id);
+        IEnumerable<Announcement> GetAllPublished();
     }
 
     public class AnnouncementService : ServiceBase<Announcement>, IAnnouncementService
@@ -55,6 +58,12 @@ namespace SocialEvents.Service
             entity.Published = true;
             this.announcementRepository.Update(entity);
 
+        }
+
+        public IEnumerable<Announcement> GetAllPublished()
+        {
+            var result = GetAllAtive().Where(e=>e.Published);
+            return result;
         }
         #endregion IAnnouncementService Members
     }

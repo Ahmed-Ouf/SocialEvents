@@ -1,0 +1,2 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="SocialEvents.DmzService.EventDmzService" CodeBehind="EventDmzService.svc.cs" %>
+

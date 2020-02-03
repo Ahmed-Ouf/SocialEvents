@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="47d7a900-ce9e-41af-9d10-69dbc3218670" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:55219/AnnouncementServices/AnnouncementDmzService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="AnnouncementDmzService.xsd" MetadataType="Schema" ID="cfb7d14c-c197-4ac6-b307-364f3866fc63" SourceId="1" SourceUrl="http://localhost:55219/AnnouncementServices/AnnouncementDmzService.svc?xsd=xsd2" />
+    <MetadataFile FileName="AnnouncementDmzService1.xsd" MetadataType="Schema" ID="9d720188-d081-40b6-95b5-79762327d5d9" SourceId="1" SourceUrl="http://localhost:55219/AnnouncementServices/AnnouncementDmzService.svc?xsd=xsd1" />
+    <MetadataFile FileName="AnnouncementDmzService2.xsd" MetadataType="Schema" ID="2f492be0-aedd-4f04-a0a3-6d00ee0c8801" SourceId="1" SourceUrl="http://localhost:55219/AnnouncementServices/AnnouncementDmzService.svc?xsd=xsd0" />
+    <MetadataFile FileName="AnnouncementDmzService.disco" MetadataType="Disco" ID="08eb65c7-aa5e-4a26-a179-9617e7372f90" SourceId="1" SourceUrl="http://localhost:55219/AnnouncementServices/AnnouncementDmzService.svc?disco" />
+    <MetadataFile FileName="AnnouncementDmzService.wsdl" MetadataType="Wsdl" ID="71292312-6844-48ea-bac7-878c634faf31" SourceId="1" SourceUrl="http://localhost:55219/AnnouncementServices/AnnouncementDmzService.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

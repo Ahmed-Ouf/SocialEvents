@@ -12,6 +12,7 @@ namespace SocialEvents.Service
     {
         void Publish(Guid id);
         void Approval(Event eventModel);
+        IEnumerable<Event> GetAllPublished();
     }
 
     public class EventService : ServiceBase<Event>, IEventService
@@ -29,6 +30,12 @@ namespace SocialEvents.Service
             var entity = GetById(eventModel.Id);
             entity.State = eventModel.State;
             entity.Reaseon = eventModel.Reaseon;
+        }
+
+        public IEnumerable<Event> GetAllPublished()
+        {
+            var result = GetAllAtive().Where(e=>e.Published);
+            return result;
         }
 
         public void Publish(Guid id)

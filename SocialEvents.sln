@@ -15,6 +15,18 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialEvents.Resources", "S
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialEvents.WCFService", "SocialEvents.WCFService\SocialEvents.WCFService.csproj", "{15DE51E8-F0E3-4ABF-AFA6-A6E73CEEE3B3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialEvents.ViewModel", "SocialEvents.ViewModel\SocialEvents.ViewModel.csproj", "{45B24018-C758-45B4-9E59-D00B4E790BFB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialEvents.DmzService", "SocialEvents.DmzService\SocialEvents.DmzService.csproj", "{79429109-D908-402F-9BC6-05C78C986B4C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{15DE51E8-F0E3-4ABF-AFA6-A6E73CEEE3B3} = {15DE51E8-F0E3-4ABF-AFA6-A6E73CEEE3B3}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialEvents.MobileApi", "SocialEvents.MobileApi\SocialEvents.MobileApi.csproj", "{9DE31AF7-6051-4C9C-AB5F-950418CE26CC}"
+	ProjectSection(ProjectDependencies) = postProject
+		{79429109-D908-402F-9BC6-05C78C986B4C} = {79429109-D908-402F-9BC6-05C78C986B4C}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +57,18 @@ Global
 		{15DE51E8-F0E3-4ABF-AFA6-A6E73CEEE3B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{15DE51E8-F0E3-4ABF-AFA6-A6E73CEEE3B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{15DE51E8-F0E3-4ABF-AFA6-A6E73CEEE3B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45B24018-C758-45B4-9E59-D00B4E790BFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45B24018-C758-45B4-9E59-D00B4E790BFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45B24018-C758-45B4-9E59-D00B4E790BFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45B24018-C758-45B4-9E59-D00B4E790BFB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79429109-D908-402F-9BC6-05C78C986B4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79429109-D908-402F-9BC6-05C78C986B4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79429109-D908-402F-9BC6-05C78C986B4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79429109-D908-402F-9BC6-05C78C986B4C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9DE31AF7-6051-4C9C-AB5F-950418CE26CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DE31AF7-6051-4C9C-AB5F-950418CE26CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DE31AF7-6051-4C9C-AB5F-950418CE26CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DE31AF7-6051-4C9C-AB5F-950418CE26CC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,5 +1,8 @@
 ﻿using Autofac;
 using Autofac.Integration.Wcf;
+using SocialEvents.Data.Infrastructure;
+using SocialEvents.Data.Repositories;
+using SocialEvents.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,8 +20,24 @@ namespace SocialEvents.WCFService
             var builder = new ContainerBuilder();
 
             // Register your service implementations.
-            //builder.RegisterType<TestService.Service1>();
+            builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().InstancePerLifetimeScope();
+            builder.RegisterType<DbFactory>().As<IDbFactory>().InstancePerLifetimeScope();
 
+            // Repositories
+            builder.RegisterAssemblyTypes(typeof(CategoryRepository).Assembly)
+                .Where(t => t.Name.EndsWith("Repository"))
+                .AsImplementedInterfaces().InstancePerLifetimeScope();
+           
+            // Services
+            builder.RegisterAssemblyTypes(typeof(CategoryService).Assembly)
+               .Where(t => t.Name.EndsWith("Service"))
+               .AsImplementedInterfaces().InstancePerLifetimeScope();
+
+            // WCFServices
+            builder.RegisterType<AnnouncementWCFService>();
+            builder.RegisterType<CategoryWCFService>();
+            builder.RegisterType<EventWCFService>();
+            
             // Set the dependency resolver.
             var container = builder.Build();
             AutofacHostFactory.Container = container;

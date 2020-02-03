@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="3b317602-3dc7-4de2-a773-81b3f771ad37" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:55219/CategoryServices/CategoryDmzService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="CategoryDmzService.xsd" MetadataType="Schema" ID="ac44a541-fb41-4898-bd49-08320b115055" SourceId="1" SourceUrl="http://localhost:55219/CategoryServices/CategoryDmzService.svc?xsd=xsd2" />
+    <MetadataFile FileName="CategoryDmzService1.xsd" MetadataType="Schema" ID="6f89415f-03f1-43c7-86c2-c29c94e1725f" SourceId="1" SourceUrl="http://localhost:55219/CategoryServices/CategoryDmzService.svc?xsd=xsd1" />
+    <MetadataFile FileName="CategoryDmzService2.xsd" MetadataType="Schema" ID="2df01de7-82a5-42ac-9da8-36133847bd60" SourceId="1" SourceUrl="http://localhost:55219/CategoryServices/CategoryDmzService.svc?xsd=xsd0" />
+    <MetadataFile FileName="CategoryDmzService.wsdl" MetadataType="Wsdl" ID="83500ff1-0f81-4711-b651-a5e7300d2844" SourceId="1" SourceUrl="http://localhost:55219/CategoryServices/CategoryDmzService.svc?wsdl" />
+    <MetadataFile FileName="CategoryDmzService.disco" MetadataType="Disco" ID="d3daaacb-4a0a-4b3d-869c-076b384bdb9b" SourceId="1" SourceUrl="http://localhost:55219/CategoryServices/CategoryDmzService.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
