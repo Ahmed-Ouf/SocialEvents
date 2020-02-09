@@ -13,6 +13,9 @@ namespace SocialEvents.MobileApi
     {
         protected void Application_Start()
         {
+            //#if DEBUG
+            //            AreaRegistration.RegisterAllAreas();
+            //#endif
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

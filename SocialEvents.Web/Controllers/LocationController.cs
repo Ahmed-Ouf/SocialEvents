@@ -1,4 +1,5 @@
-﻿using SocialEvents.Model;
+﻿using Beneficiary.Web.Helpers;
+using SocialEvents.Model;
 using SocialEvents.Service;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.Web.Mvc;
 
 namespace SocialEvents.Web.Controllers
 {
+    [RoleAuthorize(Roles = "SocialEventsAdmin")]
     public class LocationController : BaseController
     {
         private readonly ILocationService LocationService;
@@ -46,7 +48,7 @@ namespace SocialEvents.Web.Controllers
                 {
 
             
-                    LocationService.Create(model);
+                    LocationService.Add(model);
                     LocationService.SaveChanges();
                 }
                 else

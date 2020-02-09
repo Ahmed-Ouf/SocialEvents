@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SocialEvents.Service</RootNamespace>
     <AssemblyName>SocialEvents.Service</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -42,11 +42,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Connected Services\SafeerServiceRef\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="LoginAuditService.cs" />
     <Compile Include="Connected Services\EdmsServiceRef\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Connected Services\SacabServiceRef\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="SessionService.cs" />
+    <Compile Include="SafeerService.cs" />
+    <Compile Include="SacabService.cs" />
     <Compile Include="TargetGroupService.cs" />
     <Compile Include="NotificationService.cs" />
     <Compile Include="LocationService.cs" />
@@ -66,6 +80,10 @@
       <Project>{9388dc18-b02e-4ce2-8211-a958b7dd2df2}</Project>
       <Name>SocialEvents.Model</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SocialEvents.ViewModel\SocialEvents.ViewModel.csproj">
+      <Project>{45b24018-c758-45b4-9e59-d00b4e790bfb}</Project>
+      <Name>SocialEvents.ViewModel</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
@@ -73,9 +91,89 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="Connected Services\EdmsServiceRef\WSESRCJGeneral.wsdl" />
+    <None Include="Connected Services\SacabServiceRef\SacabService.wsdl" />
+    <None Include="Connected Services\SacabServiceRef\SacabService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SacabServiceRef\SacabService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SacabServiceRef\SacabService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SacabServiceRef\SocialEvents.Service.SacabServiceRef.UserApplicationRoles.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SafeerServiceRef\safeer.wsdl" />
+    <None Include="Connected Services\SafeerServiceRef\safeer.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SafeerServiceRef\safeer1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SafeerServiceRef\SafeerService.wsdl" />
+    <None Include="Connected Services\SafeerServiceRef\SocialEvents.Service.SafeerServiceRef.AgreementEntry.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SafeerServiceRef\SocialEvents.Service.SafeerServiceRef.AgreementTypeEntry.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SafeerServiceRef\SocialEvents.Service.SafeerServiceRef.BillEntity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SafeerServiceRef\SocialEvents.Service.SafeerServiceRef.ContactPersonEntity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SafeerServiceRef\SocialEvents.Service.SafeerServiceRef.DeedEntity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SafeerServiceRef\SocialEvents.Service.SafeerServiceRef.DelegationEntity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SafeerServiceRef\SocialEvents.Service.SafeerServiceRef.DepartmentEntity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SafeerServiceRef\SocialEvents.Service.SafeerServiceRef.EmployeeEntity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SafeerServiceRef\SocialEvents.Service.SafeerServiceRef.InvestorEntity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SafeerServiceRef\SocialEvents.Service.SafeerServiceRef.InvoiceEntity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SafeerServiceRef\SocialEvents.Service.SafeerServiceRef.LandEntity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SafeerServiceRef\SocialEvents.Service.SafeerServiceRef.NoteEntity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SafeerServiceRef\SocialEvents.Service.SafeerServiceRef.ObligationEntity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SafeerServiceRef\SocialEvents.Service.SafeerServiceRef.OrganizationRCJCodeEntity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SafeerServiceRef\SocialEvents.Service.SafeerServiceRef.ResidentialUnitEntity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SafeerServiceRef\SocialEvents.Service.SafeerServiceRef.ResultEntity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SafeerServiceRef\SocialEvents.Service.SafeerServiceRef.SectorEntity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SafeerServiceRef\SocialEvents.Service.SafeerServiceRef.TaskEntity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SafeerServiceRef\SocialEvents.Service.SafeerServiceRef.ViolationEntity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\EdmsServiceRef\" />
+    <WCFMetadataStorage Include="Connected Services\SacabServiceRef\" />
+    <WCFMetadataStorage Include="Connected Services\SafeerServiceRef\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\EdmsServiceRef\configuration91.svcinfo" />
@@ -85,6 +183,36 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\EdmsServiceRef\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\SacabServiceRef\SacabService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\SacabServiceRef\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\SacabServiceRef\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\SacabServiceRef\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\SafeerServiceRef\safeer.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\SafeerServiceRef\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\SafeerServiceRef\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\SafeerServiceRef\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

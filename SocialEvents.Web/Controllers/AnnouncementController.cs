@@ -1,4 +1,5 @@
-﻿using SocialEvents.Model;
+﻿using Beneficiary.Web.Helpers;
+using SocialEvents.Model;
 using SocialEvents.Service;
 using SocialEvents.Web.ViewModels;
 using System;
@@ -10,6 +11,7 @@ using System.Web.Mvc;
 
 namespace SocialEvents.Web.Controllers
 {
+    [RoleAuthorize(Roles = "SocialEventsAdmin")]
     public class AnnouncementController : BaseController
     {
         private readonly IAnnouncementService announcementService;
@@ -48,7 +50,7 @@ namespace SocialEvents.Web.Controllers
                 {
 
                     ConvertFileToBase64(model);
-                    announcementService.Create(model.Announcement);
+                    announcementService.Add(model.Announcement);
                     announcementService.SaveChanges();
                 }
                 else

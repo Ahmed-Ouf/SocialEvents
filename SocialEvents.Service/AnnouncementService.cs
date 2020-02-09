@@ -25,7 +25,7 @@ namespace SocialEvents.Service
 
         #region IAnnouncementService Members
 
-        public override void Create(Announcement model)
+        public override void Add(Announcement model)
         {
             try
             {
@@ -37,7 +37,7 @@ namespace SocialEvents.Service
                 //}
 
               
-                base.Create(model);
+                base.Add(model);
             }
             catch (System.Exception ex)
             {

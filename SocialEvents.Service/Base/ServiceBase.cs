@@ -16,7 +16,7 @@ namespace SocialEvents.Service
 
         T GetById(Guid id);
 
-        void Create(T model);
+        void Add(T model);
 
         void Update(T model);
 
@@ -54,7 +54,7 @@ namespace SocialEvents.Service
             return repo.GetById(id);
         }
 
-        public virtual void Create(T model)
+        public virtual void Add(T model)
         {
             repo.Add(model);
         }

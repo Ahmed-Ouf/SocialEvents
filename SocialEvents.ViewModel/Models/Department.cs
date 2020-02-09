@@ -7,6 +7,16 @@ namespace SocialEvents.ViewModel
         [Required(ErrorMessageResourceName = "RequiredField", ErrorMessageResourceType = typeof(Resources.Resources))]
         [StringLength(500, ErrorMessageResourceName = "StringLengthMessage", ErrorMessageResourceType = typeof(Resources.Resources))]
         [Display(Name = "Department", ResourceType = typeof(Resources.Resources))]
-        public string Name { get; set; }
+        public string DepartmentNameAr { get; set; }
+
+        [Required(ErrorMessageResourceName = "RequiredField", ErrorMessageResourceType = typeof(Resources.Resources))]
+        [StringLength(500, ErrorMessageResourceName = "StringLengthMessage", ErrorMessageResourceType = typeof(Resources.Resources))]
+        [Display(Name = "Department", ResourceType = typeof(Resources.Resources))]
+        public string DepartmentNameEn { get; set; }
+
+        [Required(ErrorMessageResourceName = "RequiredField", ErrorMessageResourceType = typeof(Resources.Resources))]
+        [StringLength(500, ErrorMessageResourceName = "StringLengthMessage", ErrorMessageResourceType = typeof(Resources.Resources))]
+        [Display(Name = "Department", ResourceType = typeof(Resources.Resources))]
+        public string DepartmentID { get; set; }
     }
 }

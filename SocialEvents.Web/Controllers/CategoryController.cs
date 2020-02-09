@@ -1,4 +1,5 @@
-﻿using SocialEvents.Model;
+﻿using Beneficiary.Web.Helpers;
+using SocialEvents.Model;
 using SocialEvents.Service;
 using SocialEvents.Web.ViewModels;
 using System;
@@ -10,6 +11,7 @@ using System.Web.Mvc;
 
 namespace SocialEvents.Web.Controllers
 {
+    [RoleAuthorize(Roles = "SocialEventsAdmin")]
     public class CategoryController : BaseController
     {
         private readonly ICategoryService CategoryService;
@@ -48,7 +50,7 @@ namespace SocialEvents.Web.Controllers
                 if (ModelState.IsValid)
                 {
                     ConvertFileToBase64(model);
-                    CategoryService.Create(model.Category);
+                    CategoryService.Add(model.Category);
                     CategoryService.SaveChanges();
                 }
                 else

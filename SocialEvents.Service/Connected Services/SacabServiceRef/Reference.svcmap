@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="74aaab6d-caa5-491d-bcac-324cbd409241" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://10.10.60.208:8055/SacabWcfService/SacabService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="SacabService.disco" MetadataType="Disco" ID="0b0c528c-be88-42a4-adbd-f5de406a1524" SourceId="1" SourceUrl="http://10.10.60.208:8055/SacabWcfService/SacabService.svc?disco" />
+    <MetadataFile FileName="SacabService.xsd" MetadataType="Schema" ID="83c4f27a-8a14-4f55-bf54-c3397be1827b" SourceId="1" SourceUrl="http://10.10.60.208:8055/SacabWcfService/SacabService.svc?xsd=xsd2" />
+    <MetadataFile FileName="SacabService1.xsd" MetadataType="Schema" ID="0b712c97-0e15-4343-b4c9-89a3d852e6a0" SourceId="1" SourceUrl="http://10.10.60.208:8055/SacabWcfService/SacabService.svc?xsd=xsd1" />
+    <MetadataFile FileName="SacabService2.xsd" MetadataType="Schema" ID="0b4c7b3f-b513-4679-a140-202206042486" SourceId="1" SourceUrl="http://10.10.60.208:8055/SacabWcfService/SacabService.svc?xsd=xsd0" />
+    <MetadataFile FileName="SacabService.wsdl" MetadataType="Wsdl" ID="4cbcc5c5-ece9-44f1-b4b2-bb21721a04f2" SourceId="1" SourceUrl="http://10.10.60.208:8055/SacabWcfService/SacabService.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

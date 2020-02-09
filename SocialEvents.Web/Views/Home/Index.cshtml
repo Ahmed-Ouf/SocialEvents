@@ -5,8 +5,6 @@
     ViewBag.Title = "SocialEvents";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<p style="margin:50px">ali</p>
-
 <div class="col-md-6" >
     <canvas id="YearMonthChart" width="400" height="400"></canvas>
 
@@ -202,7 +200,7 @@
             var ctxLocationChart = document.getElementById('LocationChart').getContext('2d');
             var locationChart = new Chart(ctxLocationChart, {
                 //type: 'bar',
-                type: 'radar',
+                type: 'doughnut',
                 data: {
                     labels: locationNames,
                     datasets: [{

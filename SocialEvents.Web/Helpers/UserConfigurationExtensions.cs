@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Security.Principal;
 using System.Web;
-
+using vm=SocialEvents.ViewModel;
 namespace SocialEvents.Web.Helpers
 {
     public static class UserConfigurationExtensions
@@ -11,7 +11,8 @@ namespace SocialEvents.Web.Helpers
         {
             bool result = false;
             var selectedRoles = roles.Split(',');
-            var sessionRoles = (List<string>)HttpContext.Current.Session["user-roles"];
+            var currentUserInfo= (vm.CurrentUserViewModel)HttpContext.Current.Session["current-user"];
+            var sessionRoles = currentUserInfo.Roles;
             if (sessionRoles != null && sessionRoles.Any())
             {
                 result = selectedRoles.Any(r => sessionRoles.Contains(r));
@@ -24,7 +25,8 @@ namespace SocialEvents.Web.Helpers
         {
             bool result = false;
             var selectedRoles = roles.Split(',');
-            var sessionRoles = (List<string>)HttpContext.Current.Session["user-roles"];
+            var currentUserInfo = (vm.CurrentUserViewModel)HttpContext.Current.Session["current-user"];
+            var sessionRoles = currentUserInfo.Roles;
             if (sessionRoles != null && sessionRoles.Any())
             {
                 result = selectedRoles.All(r => sessionRoles.Contains(r));

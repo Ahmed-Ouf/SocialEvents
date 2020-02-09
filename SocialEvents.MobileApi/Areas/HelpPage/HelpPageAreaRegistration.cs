@@ -17,7 +17,7 @@ namespace SocialEvents.MobileApi.Areas.HelpPage
         {
             context.MapRoute(
                 "HelpPage_Default",
-                "Help/{action}/{apiId}",
+                "HelpPage/{controller}/{action}/{apiId}",
                 new { controller = "Help", action = "Index", apiId = UrlParameter.Optional });
 
             HelpPageConfig.Register(GlobalConfiguration.Configuration);

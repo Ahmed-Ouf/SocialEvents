@@ -1,4 +1,5 @@
-﻿using SocialEvents.Model;
+﻿using Beneficiary.Web.Helpers;
+using SocialEvents.Model;
 using SocialEvents.Service;
 using SocialEvents.Web.ViewModels;
 using System.Collections.Generic;
@@ -7,6 +8,8 @@ using System.Web.Mvc;
 
 namespace SocialEvents.Web.Controllers
 {
+
+    [RoleAuthorize(Roles = "SocialEventsUser")]
     public class HomeController : BaseController
     {
         private readonly IEventService EventService;

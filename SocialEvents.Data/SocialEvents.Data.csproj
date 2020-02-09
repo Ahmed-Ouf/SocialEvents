@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SocialEvents.Data</RootNamespace>
     <AssemblyName>SocialEvents.Data</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
@@ -81,8 +81,21 @@
     <Compile Include="Migrations\202001230819031_UdpateWeekDays.designer.cs">
       <DependentUpon>202001230819031_UdpateWeekDays.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202002050546251_AddAuditLogin.cs" />
+    <Compile Include="Migrations\202002050546251_AddAuditLogin.designer.cs">
+      <DependentUpon>202002050546251_AddAuditLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002051019151_updateDepartment.cs" />
+    <Compile Include="Migrations\202002051019151_updateDepartment.designer.cs">
+      <DependentUpon>202002051019151_updateDepartment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002060632458_UpdateDeptName.cs" />
+    <Compile Include="Migrations\202002060632458_UpdateDeptName.designer.cs">
+      <DependentUpon>202002060632458_UpdateDeptName.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\LoginAuditRepositor.cs" />
     <Compile Include="Repositories\TargetGroupRepository.cs" />
     <Compile Include="Repositories\NotificationRepository.cs" />
     <Compile Include="Repositories\LocationRepository.cs" />
@@ -118,6 +131,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202001230819031_UdpateWeekDays.resx">
       <DependentUpon>202001230819031_UdpateWeekDays.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002050546251_AddAuditLogin.resx">
+      <DependentUpon>202002050546251_AddAuditLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002051019151_updateDepartment.resx">
+      <DependentUpon>202002051019151_updateDepartment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002060632458_UpdateDeptName.resx">
+      <DependentUpon>202002060632458_UpdateDeptName.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

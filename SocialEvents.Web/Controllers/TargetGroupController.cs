@@ -1,4 +1,5 @@
-﻿using SocialEvents.Model;
+﻿using Beneficiary.Web.Helpers;
+using SocialEvents.Model;
 using SocialEvents.Service;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.Web.Mvc;
 
 namespace SocialEvents.Web.Controllers
 {
+    [RoleAuthorize(Roles = "SocialEventsAdmin")]
     public class TargetGroupController : BaseController
     {
         private readonly ITargetGroupService TargetGroupService;
@@ -46,7 +48,7 @@ namespace SocialEvents.Web.Controllers
                 {
 
             
-                    TargetGroupService.Create(model);
+                    TargetGroupService.Add(model);
                     TargetGroupService.SaveChanges();
                 }
                 else

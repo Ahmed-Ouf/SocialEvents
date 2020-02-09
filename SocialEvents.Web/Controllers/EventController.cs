@@ -6,10 +6,12 @@ using SocialEvents.Service;
 using SocialEvents.Resources;
 using SocialEvents.Web.ViewModels;
 using System.Linq;
+using Beneficiary.Web.Helpers;
 
 namespace SocialEvents.Web.Controllers
 {
-
+    [RoleAuthorize(Roles = "SocialEventsAdmin,SocialEventsSupervisor")]
+    
     public class EventController : BaseController
     {
 
@@ -114,7 +116,7 @@ namespace SocialEvents.Web.Controllers
         // GET: Event
         public ActionResult Index()
         {
-            var list = EventService.GetAllAtive();
+            var list = EventService.GetAllAtiveByDepartment("DepartmentNameOrId");
             return View(list);
         }
 
@@ -143,7 +145,7 @@ namespace SocialEvents.Web.Controllers
                 {
                    
                     model.WeekDays = string.Join(",", model.DaysOfWeek);
-                    EventService.Create(model);
+                    EventService.Add(model);
                     EventService.SaveChanges();
                 }
                 else

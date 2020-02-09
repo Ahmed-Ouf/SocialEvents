@@ -46,7 +46,9 @@
     <Compile Include="Models\Announcement.cs" />
     <Compile Include="Models\AuditableEntity.cs" />
     <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\CurrentUserViewModel.cs" />
     <Compile Include="Models\Department.cs" />
+    <Compile Include="Models\EmployeeViewModel.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\EventImage.cs" />
     <Compile Include="Models\Location.cs" />

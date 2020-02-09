@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://10.10.60.208:8055/SacabWcfService/SacabService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/SacabWcfService" />
+  <xs:element name="GetUserRolesByAppIdAndUserName_Development">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="appId" type="xs:int" />
+        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserRolesByAppIdAndUserName_DevelopmentResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/SacabWcfService" minOccurs="0" name="GetUserRolesByAppIdAndUserName_DevelopmentResult" nillable="true" type="q1:ArrayOfUserApplicationRoles" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserRolesByAppIdAndUserName_Production">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="appId" type="xs:int" />
+        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserRolesByAppIdAndUserName_ProductionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/SacabWcfService" minOccurs="0" name="GetUserRolesByAppIdAndUserName_ProductionResult" nillable="true" type="q2:ArrayOfUserApplicationRoles" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

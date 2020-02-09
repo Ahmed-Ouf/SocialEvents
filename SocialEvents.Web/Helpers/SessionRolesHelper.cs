@@ -1,20 +1,27 @@
-﻿using Beneficiary.BL.BusinessHandlers;
+﻿using SocialEvents.Service;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using vm=SocialEvents.ViewModel;
 
 namespace Beneficiary.Web.Helpers
 {
     public class SessionRolesHelper
     {
-        internal static void FillSessionWithSacabUserRoles(HttpContext current, SacabHandler sacabHandler)
+   
+
+        internal static void FillSessionWithSacabUserRoles(HttpContext current, ISessionService sessionService)
         {
-            string userName = current.Request.LogonUserIdentity.Name.Split('\\')[1];
-            var sessionRoles = (List<string>)current.Session["user-roles"];
-            if (sessionRoles == null || !sessionRoles.Any())
+
+            //EX, current.Request.LogonUserIdentity.Name = "RCJNT2\\ABDELAZIZAUFA"
+            string empLogin = current.Request.LogonUserIdentity.Name;
+
+            var sessionUserInfo = (vm.CurrentUserViewModel)current.Session["current-user"];
+
+            if (sessionUserInfo == null)
             {
-                List<string> userRoles = sacabHandler.GetUserRolesByUserName(userName).Select(e => e.SecurityRoleCode).ToList();
-                current.Session["user-roles"] = userRoles;
+                current.Session["current-user"] = sessionService.GetCurrentUserInfo(empLogin);
             }
         }
     }

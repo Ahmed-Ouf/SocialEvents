@@ -64,13 +64,14 @@
                     @Html.ActionLink("TargetGroup", "Index", "TargetGroup")
                 </li>
                 <li class="active">
-                    @Html.ActionLink("Reports", "Index", "TargetGroup")
+                    @Html.ActionLink("Reports","Index","Report")
                 </li>
             </ul>
             <!--Start Language-->
             <a href="@Url.Action("SetCulture", new { culture = "en", url = Request.Url.AbsoluteUri })" class="change_lang bring_left @selected("en", culture)" title="English">EN</a>
             <a href="@Url.Action("SetCulture", new { culture = "ar-EG", url = Request.Url.AbsoluteUri })" class="change_lang bring_left @selected("ar", culture)" style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif" title="عربي">ع</a>
             <!--/End Language-->
+            <a href="#">@User.Identity.Name</a>
         </div>
     </nav>
 

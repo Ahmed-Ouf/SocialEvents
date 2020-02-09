@@ -1,4 +1,5 @@
-﻿using SocialEvents.Model;
+﻿using Beneficiary.Web.Helpers;
+using SocialEvents.Model;
 using SocialEvents.Service;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.Web.Mvc;
 
 namespace SocialEvents.Web.Controllers
 {
+    [RoleAuthorize(Roles = "SocialEventsAdmin")]
     public class NotificationController : BaseController
     {
         private readonly INotificationService NotificationService;
@@ -46,7 +48,7 @@ namespace SocialEvents.Web.Controllers
                 {
 
             
-                    NotificationService.Create(model);
+                    NotificationService.Add(model);
                     NotificationService.SaveChanges();
                 }
                 else

@@ -35,7 +35,7 @@ namespace SocialEvents.WCFService
                 TimeTo = e.TimeTo,
                 Fees = e.Fees,
                 Name = e.Name,
-                Department = new vm.Department { Name = e.Department.Name },
+                Department = new vm.Department { DepartmentNameEn = e.Department.DepartmentNameEn },
                 Location = new vm.Location { Longitude = e.Location.Longitude, Latitude = e.Location.Latitude, Name = e.Location.Name },
                 Category = new vm.Category { Name = e.Name },
                 DaysOfWeek = e.DaysOfWeek,

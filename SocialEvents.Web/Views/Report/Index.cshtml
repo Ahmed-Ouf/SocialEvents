@@ -1,0 +1,289 @@
+﻿@using SocialEvents.Web.Helpers
+@model IEnumerable<Event>
+@{
+    var LastCategory = Guid.Empty;
+}
+
+<div>
+
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#Category" aria-controls="Category" role="tab" data-toggle="tab">@Resources.Category</a></li>
+        <li role="presentation"><a href="#Months" aria-controls="Months" role="tab" data-toggle="tab">@Resources.Months</a></li>
+        <li role="presentation"><a href="#Department" aria-controls="Department" role="tab" data-toggle="tab">@Resources.Department</a></li>
+    </ul>
+    <br />
+    <br />
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                    <div class="col-md-1">
+                        @Html.Label(Resources.Year, htmlAttributes: new { @class = "control-label" })
+
+                    </div>
+                    <div class="col-md-2">
+                        <select class="form-control" id="year-ddl">
+                            <option value="-1">@Resources.All</option>
+                            @foreach (var item in Model.OrderBy(e => e.DateFrom.Year).Select(e => new { Year = e.DateFrom.Year }).ToList().Distinct())
+                            {
+                                <option value="@item.Year">@item.Year</option>
+                            }
+                        </select>
+                    </div>
+
+            </div>
+        </div>
+
+    </div>
+    
+    <!-- Tab panes -->
+    <div class="tab-content">
+
+        <div role="tabpanel" class="tab-pane active" id="Category">
+            <div class="col-md-12">
+                <table id="CategoryTable" class="table table-bordered table-hover noDataTable">
+                    <thead>
+                        <tr>
+                            <th> @Resources.Category </th>
+                            <th> @Resources.EventNumber </th>
+                            <th> @Resources.Event </th>
+                            <th> @Resources.DateFrom </th>
+                            <th> @Resources.TargetGroup </th>
+                            <th> @Resources.Location </th>
+                            <th> @Resources.Fees </th>
+                            <th> @Resources.Category </th>
+                            <th> @Resources.Year </th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td></td>
+                                <td>@item.EventNumber </td>
+                                <td>@item.Name </td>
+                                <td>@item.DateFrom.ToShortDateString()</td>
+                                <td>@item.TargetGroup.Name </td>
+                                <td>@item.Location.Name </td>
+                                <td>@item.Fees.ToString("##.##") </td>
+                                <td>@item.Category.Name</td>
+                                <td>@item.DateFrom.Year</td>
+                            </tr>
+                        }
+
+                    </tbody>
+
+
+                </table>
+            </div>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="Months">
+            <div class="col-md-12">
+                <table id="MonthsTable" class="table table-bordered table-hover noDataTable" style="width:100%;">
+                    <thead>
+                        <tr>
+                            <th> @Resources.Month </th>
+                            <th> @Resources.EventNumber </th>
+                            <th> @Resources.Event </th>
+                            <th> @Resources.DateFrom </th>
+                            <th> @Resources.TargetGroup </th>
+                            <th> @Resources.Location </th>
+                            <th> @Resources.Fees </th>
+                            <th> @Resources.Month </th>
+                            <th> @Resources.Year </th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td></td>
+                                <td>@item.EventNumber </td>
+                                <td>@item.Name </td>
+                                <td>@item.DateFrom.ToShortDateString()</td>
+                                <td>@item.TargetGroup.Name </td>
+                                <td>@item.Location.Name </td>
+                                <td>@item.Fees.ToString("##.##") </td>
+                                <td>@item.DateFrom.ToMonthName()</td>
+                                <td>@item.DateFrom.Year</td>
+                            </tr>
+                        }
+
+                    </tbody>
+
+
+                </table>
+            </div>
+
+
+        </div>
+        <div role="tabpanel" class="tab-pane" id="Department">
+            <div class="col-md-12">
+
+                <table id="DepartmentTable" class="table table-bordered table-hover noDataTable" style="width:100%;">
+                    <thead>
+                        <tr>
+                            <th> @Resources.Department </th>
+                            <th> @Resources.EventNumber </th>
+                            <th> @Resources.Event </th>
+                            <th> @Resources.DateFrom </th>
+                            <th> @Resources.TargetGroup </th>
+                            <th> @Resources.Location </th>
+                            <th> @Resources.Fees </th>
+                            <th> @Resources.Month </th>
+                            <th> @Resources.Year </th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td></td>
+                                <td>@item.EventNumber </td>
+                                <td>@item.Name </td>
+                                <td>@item.DateFrom.ToShortDateString()</td>
+                                <td>@item.TargetGroup.Name </td>
+                                <td>@item.Location.Name </td>
+                                <td>@item.Fees.ToString("##.##") </td>
+                                <td>@item.Department.DepartmentNameAr</td>
+                                <td>@item.DateFrom.Year</td>
+                            </tr>
+                        }
+
+                    </tbody>
+
+
+                </table>
+            </div>
+        </div>
+
+
+
+    </div>
+</div>
+
+
+@{
+    #region js
+    //$(document).ready(function () {
+    //    var groupColumn = 0;
+    //    var table = $('.table').DataTable({
+    //        "columnDefs": [
+    //            { "visible": false, "targets": groupColumn }
+    //        ],
+    //        "order": [[groupColumn, 'asc']],
+    //        "displayLength": 25,
+    //        "drawCallback": function (settings) {
+    //            var api = this.api();
+    //            var rows = api.rows({ page: 'current' }).nodes();
+    //            var last = null;
+
+    //            api.column(groupColumn, { page: 'current' }).data().each(function (group, i) {
+    //                if (last !== group) {
+    //                    $(rows).eq(i).before(
+    //                        '<tr class="group alert-success"><td colspan="6">' + group + '</td></tr>'
+    //                    );
+
+    //                    last = group;
+    //                }
+    //            });
+    //        }
+    //    });
+
+    //    // Order by the grouping
+    //    $('#example tbody').on('click', 'tr.group', function () {
+    //        var currentOrder = table.order()[0];
+    //        if (currentOrder[0] === groupColumn && currentOrder[1] === 'asc') {
+    //            table.order([groupColumn, 'desc']).draw();
+    //        }
+    //        else {
+    //            table.order([groupColumn, 'asc']).draw();
+    //        }
+    //    });
+    //});
+    #endregion
+
+}
+
+@section Scripts{
+
+    <script>
+
+        $(document).ready(function ()
+        {
+            var currentTab ="#Category";
+            //-----------------------------------categoryTable-----------------------------------
+            var tables = $('.table').DataTable({
+                "ordering": false,
+                "columnDefs": [
+                    {
+                        "targets": [-1],
+                        "visible": false,
+                        "searchable": true
+                    },
+                    {
+                        "targets": [-2],
+                        "visible": false,
+                        "searchable": false
+                    }
+                ],
+                 buttons: [
+                            {
+                                extend: 'print',
+                                text: '@SocialEvents.Resources.Resources.Print',
+                                key: {
+                                    key: 'p',
+                                    altkey: true
+                                }
+                            },
+                            {
+                                extend: 'excel',
+                                text: '@SocialEvents.Resources.Resources.Excel',
+                                key: {
+                                    key: 'e',
+                                    altkey: true
+                                }
+                        }
+
+                ],
+                dom: 'Bfrtip',
+                order: [[7, 'asc']],
+                rowGroup: {
+                    dataSrc: 7
+                }
+            });
+
+            $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+                currentTab = $(e.target).attr("href") // newly activated tab
+                getAllTableRows();
+            })
+
+            function getAllTableRows() {
+                $("#year-ddl").val('-1');
+                $("#year-ddl").trigger("change");
+            }
+
+            $("#year-ddl").on("change", function () {
+                var currentYear = $(this).val();
+                if (currentYear == -1) {
+                    tables.table(currentTab + "Table").columns().search("").draw();
+                } else {
+                    tables.table(currentTab + "Table").column(-1)
+                        .search(currentYear)
+                        .draw();
+                }
+
+            });
+
+            //-----------------------------------2-----------------------------------
+
+        });
+    </script>
+
+}

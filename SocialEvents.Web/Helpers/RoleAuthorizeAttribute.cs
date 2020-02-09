@@ -1,4 +1,5 @@
-﻿using Beneficiary.BL.BusinessHandlers;
+﻿using SocialEvents.Service;
+using vm=SocialEvents.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -6,21 +7,25 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+
 namespace Beneficiary.Web.Helpers
 {
+    //// <summary>
+    ///SocialEventsAdmin,SocialEventsSupervisor,SocialEventsUser 
+    /// </summary>
     public class RoleAuthorizeAttribute : AuthorizeAttribute
     {
-        private LoginAuditHandler loginAuditHandler;
-        public RoleAuthorizeAttribute()
-        {
-            loginAuditHandler = new LoginAuditHandler();
 
-        }
+        private ILoginAuditService loginAuditService => DependencyResolver.Current.GetService<ILoginAuditService>();
+
+        private ISessionService sessionService => DependencyResolver.Current.GetService<ISessionService>();
+
+
+   
+
         public override void OnAuthorization(AuthorizationContext filterContext)
-         {
-            SacabHandler sacabHandler = new SacabHandler();
-            SessionRolesHelper.FillSessionWithSacabUserRoles(System.Web.HttpContext.Current, sacabHandler);
-
+        {
+            SessionRolesHelper.FillSessionWithSacabUserRoles(System.Web.HttpContext.Current, sessionService);
             base.OnAuthorization(filterContext);
         }
         protected override void HandleUnauthorizedRequest(AuthorizationContext filterContext)
@@ -42,7 +47,9 @@ namespace Beneficiary.Web.Helpers
         {
             bool result = false;
             var selectedRoles = Roles.Split(',');
-            var sessionRoles = (List<string>)httpContext.Session["user-roles"];
+            var currentUserInfo=(vm.CurrentUserViewModel)httpContext.Session["current-user"]; 
+            var sessionRoles = currentUserInfo.Roles;
+
             if (sessionRoles != null && sessionRoles.Any())
             {
                 result = selectedRoles.Any(r => sessionRoles.Contains(r) && true);
@@ -53,7 +60,7 @@ namespace Beneficiary.Web.Helpers
 
         private void LogLoginData(bool authorized, HttpContextBase httpContext)
         {
-            var audit = new Beneficiary.Models.LoginAudit();
+            var audit = new SocialEvents.Model.LoginAudit();
             var request = httpContext.Request;
             if (authorized)
             {
@@ -76,7 +83,7 @@ namespace Beneficiary.Web.Helpers
             audit.LoginDate = DateTime.Now;
             audit.UserName = httpContext.User.Identity.Name;
 
-            loginAuditHandler.Add(audit);
+            loginAuditService.Add(audit);
         }
     }
 }

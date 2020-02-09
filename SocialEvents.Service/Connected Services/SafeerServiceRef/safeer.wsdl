@@ -1,0 +1,731 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://www.rcj.gov.sa" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.rcj.gov.sa" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.rcj.gov.sa/Imports">
+      <xsd:import schemaLocation="http://rcjveswebdev.jubail.rc.gov:2222/safeer.svc?xsd=xsd0" namespace="http://www.rcj.gov.sa" />
+      <xsd:import schemaLocation="http://rcjveswebdev.jubail.rc.gov:2222/safeer.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="SafeerService_AddInvestor_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddInvestor" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_AddInvestor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddInvestorResponse" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_UpdateInvestor_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateInvestor" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_UpdateInvestor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateInvestorResponse" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_AddContactPerson_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddContactPerson" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_AddContactPerson_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddContactPersonResponse" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_UpdateContactPerson_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateContactPerson" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_UpdateContactPerson_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateContactPersonResponse" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_DeleteContactPerson_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteContactPerson" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_DeleteContactPerson_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteContactPersonResponse" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetInvestorContactPersons_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetInvestorContactPersons" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetInvestorContactPersons_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetInvestorContactPersonsResponse" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetContactPerson_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetContactPerson" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetContactPerson_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetContactPersonResponse" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetLand_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLand" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetLand_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLandResponse" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetLandByLocationCode_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLandByLocationCode" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetLandByLocationCode_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLandByLocationCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetInvestorLands_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetInvestorLands" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetInvestorLands_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetInvestorLandsResponse" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_AddInvestorAgreement_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddInvestorAgreement" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_AddInvestorAgreement_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddInvestorAgreementResponse" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetAgreementTypes_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAgreementTypes" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetAgreementTypes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAgreementTypesResponse" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetInvestorAgreementsByNationalID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetInvestorAgreementsByNationalID" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetInvestorAgreementsByNationalID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetInvestorAgreementsByNationalIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetOrganizationCodes_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetOrganizationCodes" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetOrganizationCodes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetOrganizationCodesResponse" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetInvestorAgreements_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetInvestorAgreements" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetInvestorAgreements_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetInvestorAgreementsResponse" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_UpdateAgreemnt_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateAgreemnt" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_UpdateAgreemnt_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateAgreemntResponse" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_SearchAgreemnts_InputMessage">
+    <wsdl:part name="parameters" element="tns:SearchAgreemnts" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_SearchAgreemnts_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SearchAgreemntsResponse" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetBills_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBills" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetBills_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBillsResponse" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetAgreemnt_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAgreemnt" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetAgreemnt_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAgreemntResponse" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetAgreemntLands_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAgreemntLands" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetAgreemntLands_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAgreemntLandsResponse" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_AddViolation_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddViolation" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_AddViolation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddViolationResponse" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_AddInvoice_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddInvoice" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_AddInvoice_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddInvoiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetPendingInvoices_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPendingInvoices" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetPendingInvoices_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPendingInvoicesResponse" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetPendingInvoice_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPendingInvoice" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetPendingInvoice_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPendingInvoiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetInvoices_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetInvoices" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetInvoices_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetInvoicesResponse" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetInvoiceDetails_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetInvoiceDetails" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetInvoiceDetails_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetInvoiceDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetResidentialUnitDetailsByEmployeeID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetResidentialUnitDetailsByEmployeeID" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetResidentialUnitDetailsByEmployeeID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetResidentialUnitDetailsByEmployeeIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetDelegationInformation_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDelegationInformation" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetDelegationInformation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDelegationInformationResponse" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetIssuedDelegationInformation_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetIssuedDelegationInformation" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetIssuedDelegationInformation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetIssuedDelegationInformationResponse" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetActiveDelegationsTo_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetActiveDelegationsTo" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetActiveDelegationsTo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetActiveDelegationsToResponse" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetIncomingDelegationInformation_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetIncomingDelegationInformation" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetIncomingDelegationInformation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetIncomingDelegationInformationResponse" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_AddDeed_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddDeed" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_AddDeed_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddDeedResponse" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetDeed_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDeed" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetDeed_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDeedResponse" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetInvestorDeeds_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetInvestorDeeds" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetInvestorDeeds_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetInvestorDeedsResponse" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetViolation_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetViolation" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetViolation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetViolationResponse" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetInvestorViolations_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetInvestorViolations" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetInvestorViolations_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetInvestorViolationsResponse" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetAgreementViolations_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAgreementViolations" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetAgreementViolations_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAgreementViolationsResponse" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetEmployees_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmployees" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetEmployees_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmployeesResponse" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetEmployeeManager_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmployeeManager" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetEmployeeManager_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmployeeManagerResponse" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetEmployeeCollegues_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmployeeCollegues" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetEmployeeCollegues_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmployeeColleguesResponse" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetInvestor_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetInvestor" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetInvestor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetInvestorResponse" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetInvestors_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetInvestors" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetInvestors_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetInvestorsResponse" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetInvestorIdByNo_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetInvestorIdByNo" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetInvestorIdByNo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetInvestorIdByNoResponse" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetInvestorsByName_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetInvestorsByName" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetInvestorsByName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetInvestorsByNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetInvestorsByNationalID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetInvestorsByNationalID" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetInvestorsByNationalID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetInvestorsByNationalIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetInvestorById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetInvestorById" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetInvestorById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetInvestorByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetAgreementObligations_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAgreementObligations" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetAgreementObligations_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAgreementObligationsResponse" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetAgreementNotes_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAgreementNotes" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetAgreementNotes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAgreementNotesResponse" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetPendingInvoicesByAgreementNo_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPendingInvoicesByAgreementNo" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetPendingInvoicesByAgreementNo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPendingInvoicesByAgreementNoResponse" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetEmployeeByEmployeeID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmployeeByEmployeeID" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetEmployeeByEmployeeID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmployeeByEmployeeIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetEmployeeByEmployeeNumber_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmployeeByEmployeeNumber" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetEmployeeByEmployeeNumber_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmployeeByEmployeeNumberResponse" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetEmployeesByMangerId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmployeesByMangerId" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetEmployeesByMangerId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmployeesByMangerIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetEmployeeTasksHome_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmployeeTasksHome" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetEmployeeTasksHome_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmployeeTasksHomeResponse" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetEmployeeTasksHomeCount_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmployeeTasksHomeCount" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetEmployeeTasksHomeCount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmployeeTasksHomeCountResponse" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetEmployeeTasks_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmployeeTasks" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetEmployeeTasks_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmployeeTasksResponse" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetPromotedEmployees_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPromotedEmployees" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetPromotedEmployees_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPromotedEmployeesResponse" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetSectorManagerByEmployeeID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSectorManagerByEmployeeID" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetSectorManagerByEmployeeID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSectorManagerByEmployeeIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetDepartmentDirectorByEmployeeID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDepartmentDirectorByEmployeeID" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetDepartmentDirectorByEmployeeID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDepartmentDirectorByEmployeeIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetAllSectors_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllSectors" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetAllSectors_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllSectorsResponse" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetAllDepartments_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllDepartments" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetAllDepartments_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllDepartmentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetSectorDepartmentsBySectorID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSectorDepartmentsBySectorID" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetSectorDepartmentsBySectorID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSectorDepartmentsBySectorIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetSectorEmployeesBySectorID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSectorEmployeesBySectorID" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetSectorEmployeesBySectorID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSectorEmployeesBySectorIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetDepartmentEmployeesByDepartmentID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDepartmentEmployeesByDepartmentID" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetDepartmentEmployeesByDepartmentID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDepartmentEmployeesByDepartmentIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetSectorManagerBySectorID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSectorManagerBySectorID" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetSectorManagerBySectorID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSectorManagerBySectorIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetEmployeeByPersonID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmployeeByPersonID" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetEmployeeByPersonID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmployeeByPersonIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetEmployeesByDirectManagerID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmployeesByDirectManagerID" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetEmployeesByDirectManagerID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmployeesByDirectManagerIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetNTLoginByEmpID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetNTLoginByEmpID" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetNTLoginByEmpID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetNTLoginByEmpIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetEmpIDByNTLogin_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmpIDByNTLogin" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_GetEmpIDByNTLogin_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmpIDByNTLoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_AddEncroachmentPermitRequestInGIS_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddEncroachmentPermitRequestInGIS" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_AddEncroachmentPermitRequestInGIS_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddEncroachmentPermitRequestInGISResponse" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_UpdateEncroachmentPermitRequestStatusinGIS_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateEncroachmentPermitRequestStatusinGIS" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_UpdateEncroachmentPermitRequestStatusinGIS_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateEncroachmentPermitRequestStatusinGISResponse" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_AddKurokiRequestToGIS_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddKurokiRequestToGIS" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_AddKurokiRequestToGIS_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddKurokiRequestToGISResponse" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_UpdateKurokiRequestStatusinGIS_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateKurokiRequestStatusinGIS" />
+  </wsdl:message>
+  <wsdl:message name="SafeerService_UpdateKurokiRequestStatusinGIS_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateKurokiRequestStatusinGISResponse" />
+  </wsdl:message>
+  <wsdl:portType name="SafeerService">
+    <wsdl:operation name="AddInvestor">
+      <wsdl:input wsaw:Action="http://www.rcj.gov.sa/AddInvestorAction" message="tns:SafeerService_AddInvestor_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.rcj.gov.sa/AddInvestorActionResponse" message="tns:SafeerService_AddInvestor_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateInvestor">
+      <wsdl:input wsaw:Action="http://www.rcj.gov.sa/UpdateInvestorAction" message="tns:SafeerService_UpdateInvestor_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.rcj.gov.sa/UpdateInvestorActionResponse" message="tns:SafeerService_UpdateInvestor_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddContactPerson">
+      <wsdl:input wsaw:Action="http://www.rcj.gov.sa/AddContactPersonAction" message="tns:SafeerService_AddContactPerson_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.rcj.gov.sa/AddContactPersonActionResponse" message="tns:SafeerService_AddContactPerson_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateContactPerson">
+      <wsdl:input wsaw:Action="http://www.rcj.gov.sa/UpdateContactPersonAction" message="tns:SafeerService_UpdateContactPerson_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.rcj.gov.sa/UpdateContactPersonActionResponse" message="tns:SafeerService_UpdateContactPerson_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteContactPerson">
+      <wsdl:input wsaw:Action="http://www.rcj.gov.sa/DeleteContactPersonPersonAction" message="tns:SafeerService_DeleteContactPerson_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.rcj.gov.sa/DeleteContactPersonActionResponse" message="tns:SafeerService_DeleteContactPerson_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInvestorContactPersons">
+      <wsdl:input wsaw:Action="http://www.rcj.gov.sa/GetInvestorContactPersonsAction" message="tns:SafeerService_GetInvestorContactPersons_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.rcj.gov.sa/GetInvestorContactPersonsActionResponse" message="tns:SafeerService_GetInvestorContactPersons_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetContactPerson">
+      <wsdl:input wsaw:Action="http://www.rcj.gov.sa/GetContactPersonAction" message="tns:SafeerService_GetContactPerson_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.rcj.gov.sa/GetContactPersonActionResponse" message="tns:SafeerService_GetContactPerson_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLand">
+      <wsdl:input wsaw:Action="http://www.rcj.gov.sa/GetLandAction" message="tns:SafeerService_GetLand_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.rcj.gov.sa/GetLandActionResponse" message="tns:SafeerService_GetLand_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLandByLocationCode">
+      <wsdl:input wsaw:Action="http://www.rcj.gov.sa/GetLandByLocationCodeAction" message="tns:SafeerService_GetLandByLocationCode_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.rcj.gov.sa/GetLandByLocationCodeActionResponse" message="tns:SafeerService_GetLandByLocationCode_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInvestorLands">
+      <wsdl:input wsaw:Action="http://www.rcj.gov.sa/GetInvestorLandsCodeAction" message="tns:SafeerService_GetInvestorLands_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.rcj.gov.sa/GetInvestorLandsActionResponse" message="tns:SafeerService_GetInvestorLands_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddInvestorAgreement">
+      <wsdl:input wsaw:Action="http://www.rcj.gov.sa/AddInvestorAgreementAction" message="tns:SafeerService_AddInvestorAgreement_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.rcj.gov.sa/AddInvestorAgreementActionResponse" message="tns:SafeerService_AddInvestorAgreement_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAgreementTypes">
+      <wsdl:input wsaw:Action="http://www.rcj.gov.sa/GetAgreementTypesAction" message="tns:SafeerService_GetAgreementTypes_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.rcj.gov.sa/GetAgreementTypesActionResponse" message="tns:SafeerService_GetAgreementTypes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInvestorAgreementsByNationalID">
+      <wsdl:input wsaw:Action="http://www.rcj.gov.sa/GetInvestorAgreementsByNationalIDAction" message="tns:SafeerService_GetInvestorAgreementsByNationalID_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.rcj.gov.sa/GetInvestorAgreementsByNationalIDActionResponse" message="tns:SafeerService_GetInvestorAgreementsByNationalID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOrganizationCodes">
+      <wsdl:input wsaw:Action="http://www.rcj.gov.sa/GetOrganizationCodesAction" message="tns:SafeerService_GetOrganizationCodes_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.rcj.gov.sa/GetOrganizationCodesActionResponse" message="tns:SafeerService_GetOrganizationCodes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInvestorAgreements">
+      <wsdl:input wsaw:Action="http://www.rcj.gov.sa/GetInvestorAgreementsAction" message="tns:SafeerService_GetInvestorAgreements_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.rcj.gov.sa/GetInvestorAgreementsActionResponse" message="tns:SafeerService_GetInvestorAgreements_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAgreemnt">
+      <wsdl:input wsaw:Action="http://www.rcj.gov.sa/UpdateAgreemntAction" message="tns:SafeerService_UpdateAgreemnt_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.rcj.gov.sa/UpdateAgreemntActionResponse" message="tns:SafeerService_UpdateAgreemnt_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchAgreemnts">
+      <wsdl:input wsaw:Action="http://www.rcj.gov.sa/SearchAgreemntsAction" message="tns:SafeerService_SearchAgreemnts_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.rcj.gov.sa/SearchAgreemntsActionResponse" message="tns:SafeerService_SearchAgreemnts_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBills">
+      <wsdl:input wsaw:Action="http://www.rcj.gov.sa/GetBillsAction" message="tns:SafeerService_GetBills_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.rcj.gov.sa/GetBillsActionResponse" message="tns:SafeerService_GetBills_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAgreemnt">
+      <wsdl:input wsaw:Action="http://www.rcj.gov.sa/GetAgreemntAction" message="tns:SafeerService_GetAgreemnt_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.rcj.gov.sa/GetAgreemntActionResponse" message="tns:SafeerService_GetAgreemnt_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAgreemntLands">
+      <wsdl:input wsaw:Action="http://www.rcj.gov.sa/GetAgreemntLandsAction" message="tns:SafeerService_GetAgreemntLands_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.rcj.gov.sa/GetAgreemntLandsActionResponse" message="tns:SafeerService_GetAgreemntLands_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddViolation">
+      <wsdl:input wsaw:Action="http://www.rcj.gov.sa/AddViolationLandsAction" message="tns:SafeerService_AddViolation_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.rcj.gov.sa/AddViolationActionResponse" message="tns:SafeerService_AddViolation_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddInvoice">
+      <wsdl:input wsaw:Action="http://www.rcj.gov.sa/AddInvoiceLandsAction" message="tns:SafeerService_AddInvoice_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.rcj.gov.sa/AddInvoiceActionResponse" message="tns:SafeerService_AddInvoice_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPendingInvoices">
+      <wsdl:input wsaw:Action="http://www.rcj.gov.sa/GetPendingInvoicesAction" message="tns:SafeerService_GetPendingInvoices_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.rcj.gov.sa/GetPendingInvoicesActionResponse" message="tns:SafeerService_GetPendingInvoices_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPendingInvoice">
+      <wsdl:input wsaw:Action="http://www.rcj.gov.sa/GetPendingInvoiceAction" message="tns:SafeerService_GetPendingInvoice_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.rcj.gov.sa/GetPendingInvoiceActionResponse" message="tns:SafeerService_GetPendingInvoice_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInvoices">
+      <wsdl:input wsaw:Action="http://www.rcj.gov.sa/GetInvoicesAction" message="tns:SafeerService_GetInvoices_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.rcj.gov.sa/GetInvoicesActionResponse" message="tns:SafeerService_GetInvoices_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInvoiceDetails">
+      <wsdl:input wsaw:Action="http://www.rcj.gov.sa/GetInvoiceDetailsAction" message="tns:SafeerService_GetInvoiceDetails_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.rcj.gov.sa/GetInvoiceDetailsActionResponse" message="tns:SafeerService_GetInvoiceDetails_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetResidentialUnitDetailsByEmployeeID">
+      <wsdl:input wsaw:Action="http://www.rcj.gov.sa/GetResidentialUnitDetailsByEmployeeIDAction" message="tns:SafeerService_GetResidentialUnitDetailsByEmployeeID_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.rcj.gov.sa/GetResidentialUnitDetailsByEmployeeIDActionResponse" message="tns:SafeerService_GetResidentialUnitDetailsByEmployeeID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDelegationInformation">
+      <wsdl:input wsaw:Action="http://www.rcj.gov.sa/GetDelegationInformationAction" message="tns:SafeerService_GetDelegationInformation_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.rcj.gov.sa/GetDelegationInformationActionResponse" message="tns:SafeerService_GetDelegationInformation_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetIssuedDelegationInformation">
+      <wsdl:input wsaw:Action="http://www.rcj.gov.sa/GetIssuedDelegationInformationAction" message="tns:SafeerService_GetIssuedDelegationInformation_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.rcj.gov.sa/GetIssuedDelegationInformationActionResponse" message="tns:SafeerService_GetIssuedDelegationInformation_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetActiveDelegationsTo">
+      <wsdl:input wsaw:Action="http://www.rcj.gov.sa/GetActiveDelegationsToAction" message="tns:SafeerService_GetActiveDelegationsTo_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.rcj.gov.sa/GetActiveDelegationsToActionResponse" message="tns:SafeerService_GetActiveDelegationsTo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetIncomingDelegationInformation">
+      <wsdl:input wsaw:Action="http://www.rcj.gov.sa/GetIncomingDelegationInformationAction" message="tns:SafeerService_GetIncomingDelegationInformation_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.rcj.gov.sa/GetIncomingDelegationInformationActionResponse" message="tns:SafeerService_GetIncomingDelegationInformation_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddDeed">
+      <wsdl:input wsaw:Action="http://www.rcj.gov.sa/AddDeedAction" message="tns:SafeerService_AddDeed_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.rcj.gov.sa/AddDeedActionResponse" message="tns:SafeerService_AddDeed_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDeed">
+      <wsdl:input wsaw:Action="http://www.rcj.gov.sa/GetDeedAction" message="tns:SafeerService_GetDeed_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.rcj.gov.sa/GetDeedActionResponse" message="tns:SafeerService_GetDeed_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInvestorDeeds">
+      <wsdl:input wsaw:Action="http://www.rcj.gov.sa/GetInvestorDeedsAction" message="tns:SafeerService_GetInvestorDeeds_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.rcj.gov.sa/GetInvestorDeedsActionResponse" message="tns:SafeerService_GetInvestorDeeds_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetViolation">
+      <wsdl:input wsaw:Action="http://www.rcj.gov.sa/GetViolationAction" message="tns:SafeerService_GetViolation_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.rcj.gov.sa/GetViolationActionResponse" message="tns:SafeerService_GetViolation_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInvestorViolations">
+      <wsdl:input wsaw:Action="http://www.rcj.gov.sa/GetInvestorViolationsAction" message="tns:SafeerService_GetInvestorViolations_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.rcj.gov.sa/GetInvestorViolationsActionResponse" message="tns:SafeerService_GetInvestorViolations_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAgreementViolations">
+      <wsdl:input wsaw:Action="http://www.rcj.gov.sa/GetAgreementViolationsViolationsAction" message="tns:SafeerService_GetAgreementViolations_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.rcj.gov.sa/GetAgreementViolationsActionResponse" message="tns:SafeerService_GetAgreementViolations_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEmployees">
+      <wsdl:input wsaw:Action="http://www.rcj.gov.sa/GetEmployeesAction" message="tns:SafeerService_GetEmployees_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.rcj.gov.sa/GetEmployeesActionResponse" message="tns:SafeerService_GetEmployees_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEmployeeManager">
+      <wsdl:input wsaw:Action="http://www.rcj.gov.sa/GetEmployeeManagerAction" message="tns:SafeerService_GetEmployeeManager_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.rcj.gov.sa/GetEmployeeManagerActionResponse" message="tns:SafeerService_GetEmployeeManager_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEmployeeCollegues">
+      <wsdl:input wsaw:Action="http://www.rcj.gov.sa/GetEmployeeColleguesAction" message="tns:SafeerService_GetEmployeeCollegues_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.rcj.gov.sa/GetEmployeeColleguesActionResponse" message="tns:SafeerService_GetEmployeeCollegues_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInvestor">
+      <wsdl:input wsaw:Action="http://www.rcj.gov.sa/GetInvestorAction" message="tns:SafeerService_GetInvestor_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.rcj.gov.sa/GetInvestorActionResponse" message="tns:SafeerService_GetInvestor_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInvestors">
+      <wsdl:input wsaw:Action="http://www.rcj.gov.sa/GetInvestorsAction" message="tns:SafeerService_GetInvestors_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.rcj.gov.sa/GetInvestorsActionResponse" message="tns:SafeerService_GetInvestors_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInvestorIdByNo">
+      <wsdl:input wsaw:Action="http://www.rcj.gov.sa/GetInvestorIdByNoAction" message="tns:SafeerService_GetInvestorIdByNo_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.rcj.gov.sa/GetInvestorIdByNoActionResponse" message="tns:SafeerService_GetInvestorIdByNo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInvestorsByName">
+      <wsdl:input wsaw:Action="http://www.rcj.gov.sa/GetInvestorsByNameAction" message="tns:SafeerService_GetInvestorsByName_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.rcj.gov.sa/GetInvestorsByNameActionResponse" message="tns:SafeerService_GetInvestorsByName_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInvestorsByNationalID">
+      <wsdl:input wsaw:Action="http://www.rcj.gov.sa/GetInvestorsByNationalIDAction" message="tns:SafeerService_GetInvestorsByNationalID_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.rcj.gov.sa/GetInvestorsByNationalIDActionResponse" message="tns:SafeerService_GetInvestorsByNationalID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInvestorById">
+      <wsdl:input wsaw:Action="http://www.rcj.gov.sa/GetInvestorByIdAction" message="tns:SafeerService_GetInvestorById_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.rcj.gov.sa/GetInvestorByIdActionResponse" message="tns:SafeerService_GetInvestorById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAgreementObligations">
+      <wsdl:input wsaw:Action="http://www.rcj.gov.sa/GetAgreementObligationsAction" message="tns:SafeerService_GetAgreementObligations_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.rcj.gov.sa/GetAgreementObligationsActionResponse" message="tns:SafeerService_GetAgreementObligations_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAgreementNotes">
+      <wsdl:input wsaw:Action="http://www.rcj.gov.sa/GetAgreementNotesAction" message="tns:SafeerService_GetAgreementNotes_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.rcj.gov.sa/GetAgreementNotesActionResponse" message="tns:SafeerService_GetAgreementNotes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPendingInvoicesByAgreementNo">
+      <wsdl:input wsaw:Action="http://www.rcj.gov.sa/GetPendingInvoicesByAgreementNoAction" message="tns:SafeerService_GetPendingInvoicesByAgreementNo_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.rcj.gov.sa/GetPendingInvoicesByAgreementNoActionResponse" message="tns:SafeerService_GetPendingInvoicesByAgreementNo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEmployeeByEmployeeID">
+      <wsdl:input wsaw:Action="http://www.rcj.gov.sa/GetEmployeeByEmployeeIDActionName" message="tns:SafeerService_GetEmployeeByEmployeeID_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.rcj.gov.sa/GetEmployeeByEmployeeIDReplyActionName" message="tns:SafeerService_GetEmployeeByEmployeeID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEmployeeByEmployeeNumber">
+      <wsdl:input wsaw:Action="http://www.rcj.gov.sa/GetEmployeeByEmployeeNumberActionName" message="tns:SafeerService_GetEmployeeByEmployeeNumber_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.rcj.gov.sa/GetEmployeeByEmployeeNumberReplyActionName" message="tns:SafeerService_GetEmployeeByEmployeeNumber_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEmployeesByMangerId">
+      <wsdl:input wsaw:Action="http://www.rcj.gov.sa/GetEmployeesByMangerIdActionName" message="tns:SafeerService_GetEmployeesByMangerId_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.rcj.gov.sa/GetEmployeesByMangerIdReplyActionName" message="tns:SafeerService_GetEmployeesByMangerId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEmployeeTasksHome">
+      <wsdl:input wsaw:Action="http://www.rcj.gov.sa/GetEmployeeTasksHomeActionName" message="tns:SafeerService_GetEmployeeTasksHome_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.rcj.gov.sa/GetEmployeeTasksHomeReplyActionName" message="tns:SafeerService_GetEmployeeTasksHome_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEmployeeTasksHomeCount">
+      <wsdl:input wsaw:Action="http://www.rcj.gov.sa/GetEmployeeTasksHomeCountActionName" message="tns:SafeerService_GetEmployeeTasksHomeCount_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.rcj.gov.sa/GetEmployeeTasksHomeCountReplyActionName" message="tns:SafeerService_GetEmployeeTasksHomeCount_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEmployeeTasks">
+      <wsdl:input wsaw:Action="http://www.rcj.gov.sa/GetEmployeeTasksActionName" message="tns:SafeerService_GetEmployeeTasks_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.rcj.gov.sa/GetEmployeeTasksReplyActionName" message="tns:SafeerService_GetEmployeeTasks_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPromotedEmployees">
+      <wsdl:input wsaw:Action="http://www.rcj.gov.sa/GetPromotedEmployeesActionName" message="tns:SafeerService_GetPromotedEmployees_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.rcj.gov.sa/GetPromotedEmployeesReplyActionName" message="tns:SafeerService_GetPromotedEmployees_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSectorManagerByEmployeeID">
+      <wsdl:input wsaw:Action="http://www.rcj.gov.sa/GetSectorManagerByEmployeeIDActionName" message="tns:SafeerService_GetSectorManagerByEmployeeID_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.rcj.gov.sa/GetSectorManagerByEmployeeIDReplyActionName" message="tns:SafeerService_GetSectorManagerByEmployeeID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDepartmentDirectorByEmployeeID">
+      <wsdl:input wsaw:Action="http://www.rcj.gov.sa/GetDepartmentDirectorByEmployeeIDActionName" message="tns:SafeerService_GetDepartmentDirectorByEmployeeID_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.rcj.gov.sa/GetDepartmentDirectorByEmployeeIDReplyActionName" message="tns:SafeerService_GetDepartmentDirectorByEmployeeID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllSectors">
+      <wsdl:input wsaw:Action="http://www.rcj.gov.sa/GetAllSectorsActionName" message="tns:SafeerService_GetAllSectors_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.rcj.gov.sa/GetAllSectorsReplyActionName" message="tns:SafeerService_GetAllSectors_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllDepartments">
+      <wsdl:input wsaw:Action="http://www.rcj.gov.sa/GetAllDepartmentsActionName" message="tns:SafeerService_GetAllDepartments_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.rcj.gov.sa/GetAllDepartmentsReplyActionName" message="tns:SafeerService_GetAllDepartments_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSectorDepartmentsBySectorID">
+      <wsdl:input wsaw:Action="http://www.rcj.gov.sa/GetSectorDepartmentsBySectorIDActionName" message="tns:SafeerService_GetSectorDepartmentsBySectorID_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.rcj.gov.sa/GetSectorDepartmentsBySectorIDReplyActionName" message="tns:SafeerService_GetSectorDepartmentsBySectorID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSectorEmployeesBySectorID">
+      <wsdl:input wsaw:Action="http://www.rcj.gov.sa/GetSectorEmployeesBySectorIDActionName" message="tns:SafeerService_GetSectorEmployeesBySectorID_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.rcj.gov.sa/GetSectorEmployeesBySectorIDReplyActionName" message="tns:SafeerService_GetSectorEmployeesBySectorID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDepartmentEmployeesByDepartmentID">
+      <wsdl:input wsaw:Action="http://www.rcj.gov.sa/GetDepartmentEmployeesByDepartmentIDActionName" message="tns:SafeerService_GetDepartmentEmployeesByDepartmentID_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.rcj.gov.sa/GetDepartmentEmployeesByDepartmentIDReplyActionName" message="tns:SafeerService_GetDepartmentEmployeesByDepartmentID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSectorManagerBySectorID">
+      <wsdl:input wsaw:Action="http://www.rcj.gov.sa/GetSectorManagerBySectorIDActionName" message="tns:SafeerService_GetSectorManagerBySectorID_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.rcj.gov.sa/GetSectorManagerBySectorIDReplyActionName" message="tns:SafeerService_GetSectorManagerBySectorID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEmployeeByPersonID">
+      <wsdl:input wsaw:Action="http://www.rcj.gov.sa/GetEmployeeByPersonIDActionName" message="tns:SafeerService_GetEmployeeByPersonID_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.rcj.gov.sa/GetEmployeeByPersonIDReplyActionName" message="tns:SafeerService_GetEmployeeByPersonID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEmployeesByDirectManagerID">
+      <wsdl:input wsaw:Action="http://www.rcj.gov.sa/GetEmployeesByDirectManagerIDActionName" message="tns:SafeerService_GetEmployeesByDirectManagerID_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.rcj.gov.sa/GetEmployeesByDirectManagerIDReplyActionName" message="tns:SafeerService_GetEmployeesByDirectManagerID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNTLoginByEmpID">
+      <wsdl:input wsaw:Action="http://www.rcj.gov.sa/GetNTLoginByEmpIDActionName" message="tns:SafeerService_GetNTLoginByEmpID_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.rcj.gov.sa/GetNTLoginByEmpIDReplyActionName" message="tns:SafeerService_GetNTLoginByEmpID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEmpIDByNTLogin">
+      <wsdl:input wsaw:Action="http://www.rcj.gov.sa/GetEmpIDByNTLoginActionName" message="tns:SafeerService_GetEmpIDByNTLogin_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.rcj.gov.sa/GetEmpIDByNTLoginReplyActionName" message="tns:SafeerService_GetEmpIDByNTLogin_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddEncroachmentPermitRequestInGIS">
+      <wsdl:input wsaw:Action="http://www.rcj.gov.sa/AddEncroachmentPermitRequestInGIS" message="tns:SafeerService_AddEncroachmentPermitRequestInGIS_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.rcj.gov.sa/AddEncroachmentPermitRequestInGIS" message="tns:SafeerService_AddEncroachmentPermitRequestInGIS_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateEncroachmentPermitRequestStatusinGIS">
+      <wsdl:input wsaw:Action="http://www.rcj.gov.sa/UpdateEncroachmentPermitRequestStatusinGISActionName" message="tns:SafeerService_UpdateEncroachmentPermitRequestStatusinGIS_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.rcj.gov.sa/UpdateEncroachmentPermitRequestStatusinGISReplyActionName" message="tns:SafeerService_UpdateEncroachmentPermitRequestStatusinGIS_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddKurokiRequestToGIS">
+      <wsdl:input wsaw:Action="http://www.rcj.gov.sa/AddKurokiRequestInGIS" message="tns:SafeerService_AddKurokiRequestToGIS_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.rcj.gov.sa/AddKurokiRequestInGIS" message="tns:SafeerService_AddKurokiRequestToGIS_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateKurokiRequestStatusinGIS">
+      <wsdl:input wsaw:Action="http://www.rcj.gov.sa/UpdateKurokiRequestStatusinGISActionName" message="tns:SafeerService_UpdateKurokiRequestStatusinGIS_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.rcj.gov.sa/UpdateKurokiRequestStatusinGISReplyActionName" message="tns:SafeerService_UpdateKurokiRequestStatusinGIS_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

@@ -9,7 +9,6 @@ namespace SocialEvents.Web.Mappings
             var config = new MapperConfiguration(cfg =>
             {
                 cfg.AddProfile<DomainToViewModelMappingProfile>();
-                cfg.AddProfile<ViewModelToDomainMappingProfile>();
             });
 
             config.AssertConfigurationIsValid();

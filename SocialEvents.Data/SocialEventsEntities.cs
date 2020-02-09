@@ -24,6 +24,7 @@ namespace SocialEvents.Data
         public DbSet<Location> Locations { get; set; }
         public DbSet<Notification> Notifications { get; set; }
         public DbSet<TargetGroup> TargetGroups { get; set; }
+        public DbSet<LoginAudit> LoginAudits { get; set; }
 
 
 
