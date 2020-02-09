@@ -52,7 +52,7 @@ namespace SocialEvents.Web.Controllers
                         var list = DepartmentService.GetAllAtive();
                         selectedId = selectedId ?? Guid.NewGuid().ToString();
                         var selectedItem = list.FirstOrDefault(s => s.Id == Guid.Parse(selectedId.ToString()));
-                        resultSelectList = new SelectList(list, "Id", "Name", selectedItem);
+                        resultSelectList = new SelectList(list, "Id", "DepartmentNameAr", selectedItem);
                     }
                     break;
 

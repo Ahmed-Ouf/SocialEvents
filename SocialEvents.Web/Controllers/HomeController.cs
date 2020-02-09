@@ -17,13 +17,15 @@ namespace SocialEvents.Web.Controllers
         private readonly IDepartmentService DepartmentService;
         private readonly ILocationService LocationService;
         private readonly ITargetGroupService TargetGroupService;
-        public HomeController(IEventService Event, ICategoryService category, IDepartmentService department, ILocationService location, ITargetGroupService targetGroup)
+        private readonly ISafeerService SafeerService;
+        public HomeController(IEventService Event, ICategoryService category, IDepartmentService department, ILocationService location, ITargetGroupService targetGroup,ISafeerService safeerService)
         {
             EventService = Event;
             CategoryService = category;
             DepartmentService = department;
             LocationService = location;
             TargetGroupService = targetGroup;
+            SafeerService = safeerService;
         }
 
 
@@ -31,6 +33,17 @@ namespace SocialEvents.Web.Controllers
         // GET: Home
         public ActionResult Index()
         {
+
+            //--------------------Add Departments------------------------
+            //var depts = SafeerService.GetDepartments();
+            //foreach (var item in depts)
+            //{
+            //    DepartmentService.Add(item);
+            //}
+            //DepartmentService.SaveChanges();
+            //-----------------------------------------------------------
+
+
             var list = EventService.GetAllAtive();
             var model = new Statistics();
             model.TargetGroups = list.GroupBy(e => e.TargetGroupId).Select(g => new ChartItem { Id = g.Key, Name = g.FirstOrDefault().TargetGroup.Name, Count = g.Count() }).ToList();

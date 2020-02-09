@@ -1,9 +1,14 @@
 ﻿function myMap() {
-
+    var lat = "27.102379";
+    var lng = "49.565335";
     //real jubail rcj location 
-    var myCenter = new google.maps.LatLng(27.102379, 49.565335);
+    var myCenter = new google.maps.LatLng(lat, lng);
+  
     if ((dbLongitude != undefined && dbLongitude != null) && (dbLatitude != undefined && dbLatitude != null)) {
         myCenter = new google.maps.LatLng(dbLatitude, dbLongitude);
+    } else {
+        $("#Latitude").val(lat);
+        $("#Longitude").val(lng);
     }
     var mapOptions = {
         center: myCenter,

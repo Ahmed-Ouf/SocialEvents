@@ -9,7 +9,7 @@
 {
     @Html.AntiForgeryToken()
     @Html.HiddenFor(m => m.Announcement.Id)
-    @Html.HiddenFor(m => m.Active)
+    @Html.HiddenFor(m => m.Announcement.Active)
 
     <div class="form-horizontal">
         <h4>Announcement</h4>

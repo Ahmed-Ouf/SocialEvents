@@ -8,6 +8,7 @@ namespace SocialEvents.Service
     public interface ISafeerService
     {
         vm.Employee GetEmployeeInfo(string empLogin);
+        List<Department> GetDepartments();
     }
 
     public class SafeerService : ISafeerService
@@ -60,6 +61,6 @@ namespace SocialEvents.Service
             return result;
         }
 
-
+      
     }
 }
