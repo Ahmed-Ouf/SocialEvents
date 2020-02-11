@@ -1,8 +1,10 @@
 ﻿using Autofac;
 using Autofac.Integration.Wcf;
+using AutoMapper;
 using SocialEvents.Data.Infrastructure;
 using SocialEvents.Data.Repositories;
 using SocialEvents.Service;
+using SocialEvents.WCFService.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,9 +20,14 @@ namespace SocialEvents.WCFService
         
         protected void Application_Start(object sender, EventArgs e)
         {
+            //AoutoMapper
+            IMapper mapper = Mapping.Init();
+
+
             var builder = new ContainerBuilder();
 
             // Register your service implementations.
+            builder.RegisterInstance(mapper).As<IMapper>();
             builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().InstancePerLifetimeScope();
             builder.RegisterType<DbFactory>().As<IDbFactory>().InstancePerLifetimeScope();
 

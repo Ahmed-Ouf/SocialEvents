@@ -2,6 +2,8 @@
 using System.Linq;
 using SocialEvents.ViewModel;
 using SocialEvents.Service;
+using AutoMapper;
+using SocialEvents.Model;
 
 namespace SocialEvents.WCFService
 {
@@ -9,28 +11,18 @@ namespace SocialEvents.WCFService
     {
 
         private readonly ICategoryService _CategoryService;
-        public CategoryWCFService(ICategoryService Category)
+        private readonly IMapper _mapper;
+        public CategoryWCFService(ICategoryService Category, IMapper mapper)
         {
             _CategoryService = Category;
+            _mapper = mapper;
         }
 
         public IEnumerable<CategoryViewModel> GetCategories()
         {
-            var result= _CategoryService.GetAllAtive().Select(e => new CategoryViewModel
-            {
-
-                Id = e.Id,
-                Name = e.Name,
-                EventImage = new EventImageViewModel
-                {
-                    Name = e.EventImage.Name,
-                    FileBase64 = e.EventImage.FileBase64
-                }
-
-            }).ToList();
-
-
-            return result;
+            var entity = _CategoryService.GetAllAtive().ToList();
+            var model = _mapper.Map<List<Category>, List<CategoryViewModel>>(entity);
+            return model;
         }
     }
 }

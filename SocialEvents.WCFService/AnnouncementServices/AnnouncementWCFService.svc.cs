@@ -3,6 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using SocialEvents.ViewModel;
+using AutoMapper;
+using SocialEvents.Model;
+
 namespace SocialEvents.WCFService
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "AnnouncementWCFService" in code, svc and config file together.
@@ -10,28 +13,20 @@ namespace SocialEvents.WCFService
     public class AnnouncementWCFService : IAnnouncementWCFService
     {
 
-    
+
         private readonly IAnnouncementService _AnnouncementService;
-        public AnnouncementWCFService(IAnnouncementService Announcement)
+        private readonly IMapper _mapper;
+        public AnnouncementWCFService(IAnnouncementService Announcement, IMapper mapper)
         {
             _AnnouncementService = Announcement;
+            _mapper = mapper;
         }
         public IEnumerable<AnnouncementViewModel> GetAnnouncements()
         {
-            var result = _AnnouncementService.GetAllPublished().Select(e=>
-            new AnnouncementViewModel
-            {
-                Id=e.Id,
-                Name=e.Name,
-                EventImage=new EventImageViewModel
-                {
-                    Name=e.EventImage.Name,
-                    FileBase64=e.EventImage.FileBase64
-                }
-            }
-            ).ToList();
+            var entities = _AnnouncementService.GetAllPublished().ToList();
+            var models = _mapper.Map<List<Announcement>, List<AnnouncementViewModel>>(entities);
 
-            return result;
+            return models;
         }
     }
 }

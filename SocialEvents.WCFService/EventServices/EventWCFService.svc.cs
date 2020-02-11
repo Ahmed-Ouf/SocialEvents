@@ -6,6 +6,8 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 using SocialEvents.ViewModel;
+using AutoMapper;
+using SocialEvents.Model;
 
 namespace SocialEvents.WCFService
 {
@@ -14,49 +16,18 @@ namespace SocialEvents.WCFService
     public class EventWCFService : IEventWCFService
     {
         private readonly IEventService _EventService;
-        public EventWCFService(IEventService EventService)
+        private readonly IMapper _mapper;
+        public EventWCFService(IEventService EventService,IMapper mapper)
         {
             _EventService = EventService;
+            _mapper = mapper;
         }
 
         public IEnumerable<EventViewModel> GetEvents()
         {
-
-            var result = _EventService.GetAllPublished().Select(e =>
-
-            new EventViewModel
-            {
-                Id = e.Id,
-                CategoryId=e.CategoryId,
-                LocationId=e.LocationId,
-                TargetGroupId=e.TargetGroupId,
-                DepartmentId=e.DepartmentId,
-                Address = e.Address,
-                EventNumber = e.EventNumber,
-                DateFrom = e.DateFrom,
-                DateTo = e.DateTo,
-                TimeFrom = e.TimeFrom,
-                TimeTo = e.TimeTo,
-                Fees = e.Fees,
-                Name = e.Name,
-                Department = new DepartmentViewModel { Id = e.Department.Id, DepartmentNameEn = e.Department.DepartmentNameEn },
-                Location = new LocationViewModel {  Id=e.LocationId,Longitude = e.Location.Longitude, Latitude = e.Location.Latitude, Name = e.Location.Name },
-                Category = new CategoryViewModel { Id=e.Category.Id , Name = e.Category.Name},
-                DaysOfWeek = e.DaysOfWeek,
-                TargetAge = e.TargetAge,
-                Description = e.Description,
-                EventUrl = e.EventUrl,
-                FacebookUrl = e.FacebookUrl,
-                twitterUrl = e.twitterUrl,
-                InstagramUrl = e.InstagramUrl,
-                WeekDays = e.WeekDays
-
-            }
-
-
-            ).ToList();
-
-            return result;
+            var entities=_EventService.GetAllPublished().ToList();
+            var models = _mapper.Map<List<Event>, List<EventViewModel>>(entities);
+            return models;
         }
     }
 }
