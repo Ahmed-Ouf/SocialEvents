@@ -19,14 +19,14 @@ namespace SocialEvents.Web.Controllers
         {
             CategoryService = Category;
         }
-        // GET: Category
+        // GET: CategoryViewModel
         public ActionResult Index()
         {
             var list = CategoryService.GetAllAtive();
             return View(list);
         }
 
-        // GET: Category/Details/5
+        // GET: CategoryViewModel/Details/5
         public ActionResult Details(Guid id)
         {
             var model = CategoryService.GetById(id);
@@ -34,14 +34,14 @@ namespace SocialEvents.Web.Controllers
             return View(model);
         }
 
-        // GET: Category/Create
+        // GET: CategoryViewModel/Create
         public ActionResult Create()
         {
 
             return View();
         }
 
-        // POST: Category/Create
+        // POST: CategoryViewModel/Create
         [HttpPost]
         public ActionResult Create(CategoryViewModel model)
         {
@@ -69,7 +69,7 @@ namespace SocialEvents.Web.Controllers
 
 
 
-        // GET: Category/Edit/5
+        // GET: CategoryViewModel/Edit/5
         public ActionResult Edit(Guid id)
         {
             var model = CategoryService.GetById(id);
@@ -77,7 +77,7 @@ namespace SocialEvents.Web.Controllers
             return View(vm);
         }
 
-        // POST: Category/Edit/5
+        // POST: CategoryViewModel/Edit/5
         [HttpPost]
         public ActionResult Edit(CategoryViewModel model)
         {
@@ -118,14 +118,14 @@ namespace SocialEvents.Web.Controllers
             }
         }
 
-        // GET: Category/Delete/5
+        // GET: CategoryViewModel/Delete/5
         public ActionResult Delete(Guid id)
         {
             var model = CategoryService.GetById(id);
             return View(model);
         }
 
-        // POST: Category/Delete/5
+        // POST: CategoryViewModel/Delete/5
         [HttpPost]
         public ActionResult Delete(Category model)
         {

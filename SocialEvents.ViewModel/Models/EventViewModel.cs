@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SocialEvents.ViewModel
 {
-    public class Event : AuditableEntity
+    public class EventViewModel : AuditableEntity
     {
         public Guid CategoryId { get; set; }
         public Guid LocationId { get; set; }
@@ -95,10 +95,10 @@ namespace SocialEvents.ViewModel
         public bool Published { get; set; }
 
         //relation 
-        public virtual Department Department { get; set; }
-        public virtual Location Location { get; set; }
-        public virtual TargetGroup TargetGroup { get; set; }
-        public virtual Category Category { get; set; }
+        public virtual DepartmentViewModel Department { get; set; }
+        public virtual LocationViewModel Location { get; set; }
+        public virtual TargetGroupViewModel TargetGroup { get; set; }
+        public virtual CategoryViewModel Category { get; set; }
 
         //not mapped
         [NotMapped]

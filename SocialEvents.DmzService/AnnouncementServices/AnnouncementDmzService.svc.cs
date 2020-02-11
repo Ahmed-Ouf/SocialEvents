@@ -18,7 +18,7 @@ namespace SocialEvents.DmzService
             _AnnouncementService = new AnnouncementWCFServiceClient();
         }
 
-        public List<vm.Announcement> GetAnnouncements()
+        public List<vm.AnnouncementViewModel> GetAnnouncements()
         {
             var result = _AnnouncementService.GetAnnouncements();
             return result;

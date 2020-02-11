@@ -5,7 +5,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
-using vm = SocialEvents.ViewModel;
+using SocialEvents.ViewModel;
 
 namespace SocialEvents.WCFService
 {
@@ -19,14 +19,18 @@ namespace SocialEvents.WCFService
             _EventService = EventService;
         }
 
-        public IEnumerable<vm.Event> GetEvents()
+        public IEnumerable<EventViewModel> GetEvents()
         {
 
             var result = _EventService.GetAllPublished().Select(e =>
 
-            new vm.Event
+            new EventViewModel
             {
                 Id = e.Id,
+                CategoryId=e.CategoryId,
+                LocationId=e.LocationId,
+                TargetGroupId=e.TargetGroupId,
+                DepartmentId=e.DepartmentId,
                 Address = e.Address,
                 EventNumber = e.EventNumber,
                 DateFrom = e.DateFrom,
@@ -35,9 +39,9 @@ namespace SocialEvents.WCFService
                 TimeTo = e.TimeTo,
                 Fees = e.Fees,
                 Name = e.Name,
-                Department = new vm.Department { DepartmentNameEn = e.Department.DepartmentNameEn },
-                Location = new vm.Location { Longitude = e.Location.Longitude, Latitude = e.Location.Latitude, Name = e.Location.Name },
-                Category = new vm.Category { Name = e.Name },
+                Department = new DepartmentViewModel { Id = e.Department.Id, DepartmentNameEn = e.Department.DepartmentNameEn },
+                Location = new LocationViewModel {  Id=e.LocationId,Longitude = e.Location.Longitude, Latitude = e.Location.Latitude, Name = e.Location.Name },
+                Category = new CategoryViewModel { Id=e.Category.Id , Name = e.Category.Name},
                 DaysOfWeek = e.DaysOfWeek,
                 TargetAge = e.TargetAge,
                 Description = e.Description,

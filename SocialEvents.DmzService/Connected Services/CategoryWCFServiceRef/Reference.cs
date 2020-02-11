@@ -16,7 +16,7 @@ namespace SocialEvents.DmzService.CategoryWCFServiceRef {
     public interface ICategoryWCFService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICategoryWCFService/GetCategories", ReplyAction="http://tempuri.org/ICategoryWCFService/GetCategoriesResponse")]
-        System.Collections.Generic.List<SocialEvents.ViewModel.Category> GetCategories();
+        System.Collections.Generic.List<SocialEvents.ViewModel.CategoryViewModel> GetCategories();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -46,7 +46,7 @@ namespace SocialEvents.DmzService.CategoryWCFServiceRef {
                 base(binding, remoteAddress) {
         }
         
-        public System.Collections.Generic.List<SocialEvents.ViewModel.Category> GetCategories() {
+        public System.Collections.Generic.List<SocialEvents.ViewModel.CategoryViewModel> GetCategories() {
             return base.Channel.GetCategories();
         }
     }

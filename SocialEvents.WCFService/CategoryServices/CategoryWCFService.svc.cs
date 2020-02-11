@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using vm = SocialEvents.ViewModel;
+using SocialEvents.ViewModel;
 using SocialEvents.Service;
 
 namespace SocialEvents.WCFService
@@ -14,14 +14,14 @@ namespace SocialEvents.WCFService
             _CategoryService = Category;
         }
 
-        public IEnumerable<vm.Category> GetCategories()
+        public IEnumerable<CategoryViewModel> GetCategories()
         {
-            var result= _CategoryService.GetAllAtive().Select(e => new vm.Category
+            var result= _CategoryService.GetAllAtive().Select(e => new CategoryViewModel
             {
 
                 Id = e.Id,
                 Name = e.Name,
-                EventImage = new vm.EventImage
+                EventImage = new EventImageViewModel
                 {
                     Name = e.EventImage.Name,
                     FileBase64 = e.EventImage.FileBase64

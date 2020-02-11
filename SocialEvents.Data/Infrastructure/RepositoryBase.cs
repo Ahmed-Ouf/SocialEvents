@@ -70,7 +70,7 @@ namespace SocialEvents.Data.Infrastructure
 
         public virtual IQueryable<T> GetAll()
         {
-            return dbSet;
+            return dbSet.OrderBy(e=> e.CreatedOn);
         }
 
         public virtual IQueryable<T> GetMany(Expression<Func<T, bool>> where)

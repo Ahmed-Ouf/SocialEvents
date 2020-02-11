@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SocialEvents.ViewModel
 {
-    public class TargetGroup : AuditableEntity
+    public class TargetGroupViewModel : AuditableEntity
     {
         [Required(ErrorMessageResourceName = "RequiredField", ErrorMessageResourceType = typeof(Resources.Resources))]
         [StringLength(500, ErrorMessageResourceName = "StringLengthMessage", ErrorMessageResourceType = typeof(Resources.Resources))]

@@ -15,30 +15,30 @@ namespace SocialEvents.MobileApi.Controllers
         {
             announcementWCFService = new AnnouncementDmzServiceRef.AnnouncementWCFServiceClient();
         }
-        // GET: api/Announcement
-        public IEnumerable<Announcement> Get()
+        // GET: api/AnnouncementViewModel
+        public IEnumerable<AnnouncementViewModel> Get()
         {
             var result = announcementWCFService.GetAnnouncements();
             return result;
         }
 
-        // GET: api/Announcement/5
+        // GET: api/AnnouncementViewModel/5
         public string Get(int id)
         {
             return "value";
         }
 
-        // POST: api/Announcement
+        // POST: api/AnnouncementViewModel
         public void Post([FromBody]string value)
         {
         }
 
-        // PUT: api/Announcement/5
+        // PUT: api/AnnouncementViewModel/5
         public void Put(int id, [FromBody]string value)
         {
         }
 
-        // DELETE: api/Announcement/5
+        // DELETE: api/AnnouncementViewModel/5
         public void Delete(int id)
         {
         }

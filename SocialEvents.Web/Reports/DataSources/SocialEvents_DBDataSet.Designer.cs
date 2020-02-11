@@ -462,12 +462,12 @@ namespace SocialEvents.Web.Reports.DataSources {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             internal void InitVars() {
-                this.columnCategory = base.Columns["Category"];
+                this.columnCategory = base.Columns["CategoryViewModel"];
                 this.columnEvent = base.Columns["Event"];
                 this.columnDescription = base.Columns["Description"];
                 this.columnTargetGroup = base.Columns["TargetGroup"];
                 this.columnLocation = base.Columns["Location"];
-                this.columnDepartment = base.Columns["Department"];
+                this.columnDepartment = base.Columns["DepartmentViewModel"];
                 this.columnDate = base.Columns["Date"];
                 this.columnFees = base.Columns["Fees"];
             }
@@ -475,7 +475,7 @@ namespace SocialEvents.Web.Reports.DataSources {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             private void InitClass() {
-                this.columnCategory = new global::System.Data.DataColumn("Category", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnCategory = new global::System.Data.DataColumn("CategoryViewModel", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCategory);
                 this.columnEvent = new global::System.Data.DataColumn("Event", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnEvent);
@@ -485,7 +485,7 @@ namespace SocialEvents.Web.Reports.DataSources {
                 base.Columns.Add(this.columnTargetGroup);
                 this.columnLocation = new global::System.Data.DataColumn("Location", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnLocation);
-                this.columnDepartment = new global::System.Data.DataColumn("Department", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnDepartment = new global::System.Data.DataColumn("DepartmentViewModel", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDepartment);
                 this.columnDate = new global::System.Data.DataColumn("Date", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDate);
@@ -893,12 +893,12 @@ namespace SocialEvents.Web.Reports.DataSources.SocialEvents_DBDataSetTableAdapte
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "EventsView";
-            tableMapping.ColumnMappings.Add("Category", "Category");
+            tableMapping.ColumnMappings.Add("CategoryViewModel", "CategoryViewModel");
             tableMapping.ColumnMappings.Add("Event", "Event");
             tableMapping.ColumnMappings.Add("Description", "Description");
             tableMapping.ColumnMappings.Add("Target Group", "TargetGroup");
             tableMapping.ColumnMappings.Add("Location", "Location");
-            tableMapping.ColumnMappings.Add("Department", "Department");
+            tableMapping.ColumnMappings.Add("DepartmentViewModel", "DepartmentViewModel");
             tableMapping.ColumnMappings.Add("Date", "Date");
             tableMapping.ColumnMappings.Add("Fees", "Fees");
             this._adapter.TableMappings.Add(tableMapping);
@@ -917,7 +917,7 @@ namespace SocialEvents.Web.Reports.DataSources.SocialEvents_DBDataSetTableAdapte
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT Category, Event, Description, [Target Group], Location, Department, Date, " +
+            this._commandCollection[0].CommandText = "SELECT CategoryViewModel, Event, Description, [Target Group], Location, DepartmentViewModel, Date, " +
                 "Fees FROM dbo.EventsView";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }

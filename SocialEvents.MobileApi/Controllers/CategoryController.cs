@@ -14,30 +14,30 @@ namespace SocialEvents.MobileApi.Controllers
         {
             categoryWCFService = new CategoryDmzServiceRef.CategoryWCFServiceClient();
         }
-        // GET: api/Category
-        public IEnumerable<Category> Get()
+        // GET: api/CategoryViewModel
+        public IHttpActionResult Get()
         {
             var result = categoryWCFService.GetCategories();
-            return result;
+            return Ok(result);
         }
 
-        // GET: api/Category/5
+        // GET: api/CategoryViewModel/5
         public string Get(int id)
         {
             return "value";
         }
 
-        // POST: api/Category
+        // POST: api/CategoryViewModel
         public void Post([FromBody]string value)
         {
         }
 
-        // PUT: api/Category/5
+        // PUT: api/CategoryViewModel/5
         public void Put(int id, [FromBody]string value)
         {
         }
 
-        // DELETE: api/Category/5
+        // DELETE: api/CategoryViewModel/5
         public void Delete(int id)
         {
         }

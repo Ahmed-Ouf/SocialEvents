@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ServiceModel;
-using vm = SocialEvents.ViewModel;
+using SocialEvents.ViewModel;
 
 namespace SocialEvents.WCFService
 {
@@ -9,6 +9,6 @@ namespace SocialEvents.WCFService
     public interface IAnnouncementWCFService
     {
         [OperationContract]
-        IEnumerable<vm.Announcement> GetAnnouncements();
+        IEnumerable<AnnouncementViewModel> GetAnnouncements();
     }
 }

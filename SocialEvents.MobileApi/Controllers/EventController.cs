@@ -16,7 +16,7 @@ namespace SocialEvents.MobileApi.Controllers
             eventWCFService = new EventDmzServiceRef.EventWCFServiceClient();
         }
         // GET: api/Event
-        public IEnumerable<Event> Get()
+        public IEnumerable<EventViewModel> Get()
         {
             var result=eventWCFService.GetEvents();
             return result;

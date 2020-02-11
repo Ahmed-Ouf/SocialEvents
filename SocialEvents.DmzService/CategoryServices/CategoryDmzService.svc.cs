@@ -14,7 +14,7 @@ namespace SocialEvents.DmzService
             _CategoryService = new CategoryWCFServiceClient();
         }
 
-        public List<vm.Category> GetCategories()
+        public List<vm.CategoryViewModel> GetCategories()
         {
             var result = _CategoryService.GetCategories();
 

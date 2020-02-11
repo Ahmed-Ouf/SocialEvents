@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using vm = SocialEvents.ViewModel;
+using SocialEvents.ViewModel;
 namespace SocialEvents.WCFService
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "AnnouncementWCFService" in code, svc and config file together.
@@ -16,14 +16,14 @@ namespace SocialEvents.WCFService
         {
             _AnnouncementService = Announcement;
         }
-        public IEnumerable<vm.Announcement> GetAnnouncements()
+        public IEnumerable<AnnouncementViewModel> GetAnnouncements()
         {
             var result = _AnnouncementService.GetAllPublished().Select(e=>
-            new vm.Announcement
+            new AnnouncementViewModel
             {
                 Id=e.Id,
                 Name=e.Name,
-                EventImage=new vm.EventImage
+                EventImage=new EventImageViewModel
                 {
                     Name=e.EventImage.Name,
                     FileBase64=e.EventImage.FileBase64

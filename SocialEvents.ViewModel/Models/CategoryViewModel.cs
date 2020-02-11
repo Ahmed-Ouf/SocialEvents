@@ -5,11 +5,11 @@ using System.Web;
 
 namespace SocialEvents.ViewModel
 {
-    public class Category : AuditableEntity
+    public class CategoryViewModel : AuditableEntity
     {
         [Required(ErrorMessageResourceName = "RequiredField", ErrorMessageResourceType = typeof(Resources.Resources))]
         [StringLength(500, ErrorMessageResourceName = "StringLengthMessage", ErrorMessageResourceType = typeof(Resources.Resources))]
-        [Display(Name = "Category", ResourceType = typeof(Resources.Resources))]
+        [Display(Name = "CategoryViewModel", ResourceType = typeof(Resources.Resources))]
         public string Name { get; set; }
 
         [Required(ErrorMessageResourceName = "RequiredField", ErrorMessageResourceType = typeof(Resources.Resources))]
@@ -19,7 +19,7 @@ namespace SocialEvents.ViewModel
         public string Color { get; set; }
 
         [Display(Name = "EventImage", ResourceType = typeof(Resources.Resources))]
-        public EventImage EventImage { get; set; }
+        public EventImageViewModel EventImage { get; set; }
 
         //relation 
        // public virtual ICollection<Event> Events { get; set; }

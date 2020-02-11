@@ -16,7 +16,7 @@ namespace SocialEvents.MobileApi.AnnouncementDmzServiceRef {
     public interface IAnnouncementWCFService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAnnouncementWCFService/GetAnnouncements", ReplyAction="http://tempuri.org/IAnnouncementWCFService/GetAnnouncementsResponse")]
-        System.Collections.Generic.List<SocialEvents.ViewModel.Announcement> GetAnnouncements();
+        System.Collections.Generic.List<SocialEvents.ViewModel.AnnouncementViewModel> GetAnnouncements();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -46,7 +46,7 @@ namespace SocialEvents.MobileApi.AnnouncementDmzServiceRef {
                 base(binding, remoteAddress) {
         }
         
-        public System.Collections.Generic.List<SocialEvents.ViewModel.Announcement> GetAnnouncements() {
+        public System.Collections.Generic.List<SocialEvents.ViewModel.AnnouncementViewModel> GetAnnouncements() {
             return base.Channel.GetAnnouncements();
         }
     }

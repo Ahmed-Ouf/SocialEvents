@@ -16,7 +16,7 @@ namespace SocialEvents.DmzService.EventWCFServiceRef {
     public interface IEventWCFService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEventWCFService/GetEvents", ReplyAction="http://tempuri.org/IEventWCFService/GetEventsResponse")]
-        System.Collections.Generic.List<SocialEvents.ViewModel.Event> GetEvents();
+        System.Collections.Generic.List<SocialEvents.ViewModel.EventViewModel> GetEvents();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -46,7 +46,7 @@ namespace SocialEvents.DmzService.EventWCFServiceRef {
                 base(binding, remoteAddress) {
         }
         
-        public System.Collections.Generic.List<SocialEvents.ViewModel.Event> GetEvents() {
+        public System.Collections.Generic.List<SocialEvents.ViewModel.EventViewModel> GetEvents() {
             return base.Channel.GetEvents();
         }
     }

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ServiceModel;
-using vm = SocialEvents.ViewModel;
+using SocialEvents.ViewModel;
 
 namespace SocialEvents.WCFService
 {
@@ -10,7 +10,7 @@ namespace SocialEvents.WCFService
     {
 
         [OperationContract]
-        IEnumerable<vm.Category> GetCategories();
+        IEnumerable<CategoryViewModel> GetCategories();
 
     }
 

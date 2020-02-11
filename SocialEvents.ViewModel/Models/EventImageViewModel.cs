@@ -1,12 +1,17 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Web;
 
 namespace SocialEvents.ViewModel
-{ 
-    public class Notification : AuditableEntity
+{
+    public class EventImageViewModel
     {
-        [Required(ErrorMessageResourceName = "RequiredField", ErrorMessageResourceType = typeof(Resources.Resources))]
         [StringLength(500, ErrorMessageResourceName = "StringLengthMessage", ErrorMessageResourceType = typeof(Resources.Resources))]
-        [Display(Name = "Notification", ResourceType = typeof(Resources.Resources))]
+        [Display(Name = "Name", ResourceType = typeof(Resources.Resources))]
         public string Name { get; set; }
+
+        public string FileBase64 { get; set; }
+
+
     }
 }

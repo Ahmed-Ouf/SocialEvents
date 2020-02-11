@@ -2,7 +2,7 @@
 
 namespace SocialEvents.ViewModel
 {
-    public class Location : AuditableEntity
+    public class LocationViewModel : AuditableEntity
     {
         [Required(ErrorMessageResourceName = "RequiredField", ErrorMessageResourceType = typeof(Resources.Resources))]
         [StringLength(500, ErrorMessageResourceName = "StringLengthMessage", ErrorMessageResourceType = typeof(Resources.Resources))]

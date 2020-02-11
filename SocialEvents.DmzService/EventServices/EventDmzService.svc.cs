@@ -19,7 +19,7 @@ namespace SocialEvents.DmzService
             _EventService = new EventWCFServiceClient();
         }
 
-        public List<vm.Event> GetEvents()
+        public List<vm.EventViewModel> GetEvents()
         {
 
             var result = _EventService.GetEvents();

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
-using vm = SocialEvents.ViewModel;
+using SocialEvents.ViewModel;
 
 
 namespace SocialEvents.WCFService
@@ -14,6 +14,6 @@ namespace SocialEvents.WCFService
     public interface IEventWCFService
     {
         [OperationContract]
-        IEnumerable<vm.Event> GetEvents();
+        IEnumerable<EventViewModel> GetEvents();
     }
 }

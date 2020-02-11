@@ -19,28 +19,28 @@ namespace SocialEvents.Web.Controllers
         {
             announcementService = announcement;
         }
-        // GET: Announcement
+        // GET: AnnouncementViewModel
         public ActionResult Index()
         {
             var list = announcementService.GetAllAtive();
             return View(list);
         }
 
-        // GET: Announcement/Details/5
+        // GET: AnnouncementViewModel/Details/5
         public ActionResult Details(Guid id)
         {
             var model = announcementService.GetById(id);
             return View(model);
         }
 
-        // GET: Announcement/Create
+        // GET: AnnouncementViewModel/Create
         public ActionResult Create()
         {
 
             return View();
         }
 
-        // POST: Announcement/Create
+        // POST: AnnouncementViewModel/Create
         [HttpPost]
         public ActionResult Create(AnnouncementViewModel model)
         {
@@ -81,7 +81,7 @@ namespace SocialEvents.Web.Controllers
             }
         }
 
-        // GET: Announcement/Edit/5
+        // GET: AnnouncementViewModel/Edit/5
         public ActionResult Edit(Guid id)
         {
             var model = announcementService.GetById(id);
@@ -89,7 +89,7 @@ namespace SocialEvents.Web.Controllers
             return View(new AnnouncementViewModel { Announcement = model });
         }
 
-        // POST: Announcement/Edit/5
+        // POST: AnnouncementViewModel/Edit/5
         [HttpPost]
         public ActionResult Edit(AnnouncementViewModel model)
         {
@@ -109,14 +109,14 @@ namespace SocialEvents.Web.Controllers
             }
         }
 
-        // GET: Announcement/Delete/5
+        // GET: AnnouncementViewModel/Delete/5
         public ActionResult Delete(Guid id)
         {
             var model = announcementService.GetById(id);
             return View(model);
         }
 
-        // POST: Announcement/Delete/5
+        // POST: AnnouncementViewModel/Delete/5
         [HttpPost]
         public ActionResult Delete(Announcement model)
         {

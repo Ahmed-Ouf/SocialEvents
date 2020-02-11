@@ -17,6 +17,7 @@ namespace SocialEvents.Web
 
         protected void Application_Start()
         {
+
             // Init database
            // System.Data.Entity.Database.SetInitializer(new StoreSeedData());
 
