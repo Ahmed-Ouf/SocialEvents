@@ -50,7 +50,7 @@ namespace SocialEvents.WCFService
             // Set the dependency resolver.
             var container = builder.Build();
             AutofacHostFactory.Container = container;
-
+            log4net.Config.XmlConfigurator.Configure();
         }
 
         protected void Session_Start(object sender, EventArgs e)

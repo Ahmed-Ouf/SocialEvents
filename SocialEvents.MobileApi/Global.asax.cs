@@ -1,5 +1,7 @@
-﻿using System;
+﻿using SocialEvents.MobileApi.Helpers;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net.Http.Formatting;
 using System.Web;
@@ -23,6 +25,8 @@ namespace SocialEvents.MobileApi
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            log4net.Config.XmlConfigurator.Configure();
+
         }
 
 
@@ -31,6 +35,17 @@ namespace SocialEvents.MobileApi
             GlobalConfiguration.Configuration.Formatters.Clear();
             GlobalConfiguration.Configuration.Formatters.Add(new JsonMediaTypeFormatter());
         }
+        protected void Application_Error(object sender, EventArgs e)
+        {
+            Exception ex = Server.GetLastError();
+            Log.Error(ex.Message, ex);
+            using (EventLog eventLog = new EventLog("Application"))
+            {
+                eventLog.Source = "CEO WebApi";
+                eventLog.WriteEntry(ex.Message, EventLogEntryType.Error, 2030, 3);
+            }
 
+
+        }
     }
 }
