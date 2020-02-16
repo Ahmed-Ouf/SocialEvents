@@ -7,6 +7,7 @@ using SocialEvents.Service;
 using SocialEvents.WCFService.Helpers;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.Security;
@@ -69,7 +70,15 @@ namespace SocialEvents.WCFService
 
         protected void Application_Error(object sender, EventArgs e)
         {
+            Exception ex = Server.GetLastError();
+            Log.Error(ex.Message, ex);
 
+
+            using (EventLog eventLog = new EventLog("Application"))
+            {
+                eventLog.Source = "SocialEvents WCF Service";
+                eventLog.WriteEntry(ex.Message, EventLogEntryType.Error);
+            }
         }
 
         protected void Session_End(object sender, EventArgs e)

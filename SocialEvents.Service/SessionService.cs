@@ -12,10 +12,12 @@ namespace SocialEvents.Service
     {
         private readonly ISafeerService safeerService;
         private readonly ISacabService sacabService;
-        public SessionService(ISacabService _sacabService, ISafeerService _safeerService)
+        private readonly IDepartmentService departmentService;
+        public SessionService(ISacabService _sacabService, ISafeerService _safeerService, IDepartmentService _departmentService)
         {
             sacabService = _sacabService;
             safeerService = _safeerService;
+            departmentService = _departmentService;
         }
 
         public vm.CurrentUserViewModel GetCurrentUserInfo(string empLogin)
@@ -25,9 +27,18 @@ namespace SocialEvents.Service
             var sacabUserRoles = sacabService.GetUserRolesByUserName(sacabUserName);
             var roles = sacabUserRoles.Select(e => e.SecurityRoleCode).ToList();
 
+            //TODO: Remove comments
+#if !DEBUG 
+            //var department = departmentService.GetBySafeerDepartmentId(safeerEmployee?.DepartmentID);
+            //if (department == null)
+            //{
+            //    return null;
+            //}
+#endif
+
             var currentUser = new vm.CurrentUserViewModel
             {
-                DepartmentID = safeerEmployee?.DepartmentID,
+                SafeerDepartmentId = safeerEmployee?.DepartmentID,
                 LoginName = safeerEmployee?.LoginName,
                 Roles = roles
             };

@@ -115,7 +115,9 @@ namespace SocialEvents.Data.Infrastructure
             IQueryable<T> query = dbSet;
 
             foreach (Expression<Func<T, object>> include in includes)
+            {
                 query = query.Include(include);
+            }
 
             if (filter != null)
                 query = query.Where(filter);

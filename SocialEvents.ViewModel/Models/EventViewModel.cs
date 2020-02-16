@@ -36,12 +36,15 @@ namespace SocialEvents.ViewModel
         public string Address { get; set; }
 
         [Required(ErrorMessageResourceName = "RequiredField", ErrorMessageResourceType = typeof(Resources.Resources))]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         [Display(Name = "DateFrom", ResourceType = typeof(Resources.Resources))]
         public DateTime DateFrom { get; set; }
+        public string DateFromFormated => DateFrom.ToString("dd/MM/yyyy");
 
         [Required(ErrorMessageResourceName = "RequiredField", ErrorMessageResourceType = typeof(Resources.Resources))]
         [Display(Name = "DateTo", ResourceType = typeof(Resources.Resources))]
         public DateTime DateTo { get; set; }
+        public string DateToFormated => DateTo.ToString("dd/MM/yyyy");
 
         [Required(ErrorMessageResourceName = "RequiredField", ErrorMessageResourceType = typeof(Resources.Resources))]
         [Display(Name = "TimeFrom", ResourceType = typeof(Resources.Resources))]

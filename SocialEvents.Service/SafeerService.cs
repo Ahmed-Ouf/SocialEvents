@@ -52,7 +52,7 @@ namespace SocialEvents.Service
             var safeerDepts = safeerService.GetAllDepartments();
             var result = safeerDepts.Select(e => new Department
             {
-                DepartmentID = e.DepartmentID,
+                SafeerDepartmentId = e.DepartmentID,
                 DepartmentNameEn = e.DepartmentNameEn,
                 DepartmentNameAr = e.DepartmentNameAr
             }

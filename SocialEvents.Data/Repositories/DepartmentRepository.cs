@@ -5,6 +5,12 @@ using System.Linq;
 
 namespace SocialEvents.Data.Repositories
 {
+    public interface IDepartmentRepository : IRepository<Department>
+    {
+        Category GetCategoryByName(string categoryName);
+    }
+
+
     public class DepartmentRepository : RepositoryBase<Department>, IDepartmentRepository
     {
         public DepartmentRepository(IDbFactory dbFactory)
@@ -19,8 +25,5 @@ namespace SocialEvents.Data.Repositories
 
     }
 
-    public interface IDepartmentRepository : IRepository<Department>
-    {
-        Category GetCategoryByName(string categoryName);
-    }
+
 }

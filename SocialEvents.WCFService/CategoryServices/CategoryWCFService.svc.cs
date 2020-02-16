@@ -4,9 +4,11 @@ using SocialEvents.ViewModel;
 using SocialEvents.Service;
 using AutoMapper;
 using SocialEvents.Model;
+using SocialEvents.WCFService.Helpers;
 
 namespace SocialEvents.WCFService
 {
+    [GlobalErrorBehavior(typeof(GlobalErrorHandler))]
     public class CategoryWCFService : ICategoryWCFService
     {
 

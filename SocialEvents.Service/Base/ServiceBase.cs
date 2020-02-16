@@ -4,6 +4,7 @@ using SocialEvents.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 
 namespace SocialEvents.Service
 {
@@ -71,8 +72,6 @@ namespace SocialEvents.Service
         {
             unitOfWork.SaveChanges();
         }
-
-      
 
         #endregion ICategoryService Members
     }

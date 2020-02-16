@@ -17,6 +17,6 @@ namespace SocialEvents.Model
         [Required(ErrorMessageResourceName = "RequiredField", ErrorMessageResourceType = typeof(Resources.Resources))]
         [StringLength(500, ErrorMessageResourceName = "StringLengthMessage", ErrorMessageResourceType = typeof(Resources.Resources))]
         [Display(Name = "Department", ResourceType = typeof(Resources.Resources))]
-        public string DepartmentID { get; set; }
+        public string SafeerDepartmentId { get; set; }
     }
 }

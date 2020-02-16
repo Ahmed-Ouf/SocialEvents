@@ -10,6 +10,6 @@ namespace SocialEvents.ViewModel
     {
         public string LoginName { get; set; }
         public List<string> Roles { get; set; }
-        public string DepartmentID { get; set; }
+        public string SafeerDepartmentId { get; set; }
     }
 }

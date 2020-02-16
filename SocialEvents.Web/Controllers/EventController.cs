@@ -7,11 +7,12 @@ using SocialEvents.Resources;
 using SocialEvents.Web.ViewModels;
 using System.Linq;
 using Beneficiary.Web.Helpers;
+using SocialEvents.ViewModel;
 
 namespace SocialEvents.Web.Controllers
 {
     [RoleAuthorize(Roles = "SocialEventsAdmin,SocialEventsSupervisor")]
-    
+
     public class EventController : BaseController
     {
 
@@ -20,6 +21,8 @@ namespace SocialEvents.Web.Controllers
         private readonly IDepartmentService DepartmentService;
         private readonly ILocationService LocationService;
         private readonly ITargetGroupService TargetGroupService;
+        private Department department;
+        private bool IsSocialServicesDept;
         public EventController(IEventService Event, ICategoryService category, IDepartmentService department, ILocationService location, ITargetGroupService targetGroup)
         {
             EventService = Event;
@@ -28,10 +31,9 @@ namespace SocialEvents.Web.Controllers
             LocationService = location;
             TargetGroupService = targetGroup;
             ViewBag.DDL = new Func<string, object, dynamic>(fullDropDownList);
+
         }
         //private
-
-
         private dynamic fullDropDownList(string switch_on, object selectedId)
         {
             dynamic resultSelectList;
@@ -112,17 +114,50 @@ namespace SocialEvents.Web.Controllers
             return resultSelectList;
         }
 
+        private void CheckAdminDepartment()
+        {
+            var sessionUserInfo = (CurrentUserViewModel)Session["current-user"];
+
+            string socialEventsDeptId = "20870";//"20870" => إدارة الخدمات الإجتماعية ;
+            string GeneralEducationDeptId = "20950";//"20870" => إدارة التعليم العام ;
+
+#if DEBUG
+            ViewBag.IsSocialServicesDept = IsSocialServicesDept = socialEventsDeptId == socialEventsDeptId;
+            ViewBag.Department = department = DepartmentService.GetBySafeerDepartmentId(socialEventsDeptId);
+#else
+            //TODO: Remove commented
+        //ViewBag.IsSocialServicesDept = IsSocialServicesDept = socialEventsDeptId == GeneralEducationDeptId;
+        //ViewBag.Department = department = DepartmentService.GetBySafeerDepartmentId(sessionUserInfo.SafeerDepartmentId);
+             ViewBag.IsSocialServicesDept = IsSocialServicesDept = socialEventsDeptId == socialEventsDeptId;
+            ViewBag.Department = department = DepartmentService.GetBySafeerDepartmentId(socialEventsDeptId);
+
+#endif
+
+
+
+        }
+
 
         // GET: Event
         public ActionResult Index()
         {
-            var list = EventService.GetAllAtiveByDepartment("DepartmentNameOrId");
-            return View(list);
+            List<Event> events = new List<Event>();
+            CheckAdminDepartment();
+            if (!IsSocialServicesDept)
+            {
+                events = EventService.GetAllAtiveByDepartment(department.Id).ToList();
+            }
+            else
+            {
+                events = EventService.GetAllAtive().ToList();
+            }
+            return View(events);
         }
 
         // GET: Event/Details/5
         public ActionResult Details(Guid id)
         {
+            CheckAdminDepartment();
             var model = EventService.GetById(id);
             return View(model);
         }
@@ -130,7 +165,9 @@ namespace SocialEvents.Web.Controllers
         // GET: Event/Create
         public ActionResult Create()
         {
+            CheckAdminDepartment();
             return View();
+
         }
 
         // POST: Event/Create
@@ -139,11 +176,11 @@ namespace SocialEvents.Web.Controllers
         {
             try
             {
-
+                CheckAdminDepartment();
                 ValidateDateAndTime(model);
                 if (ModelState.IsValid)
                 {
-                   
+
                     model.WeekDays = string.Join(",", model.DaysOfWeek);
                     EventService.Add(model);
                     EventService.SaveChanges();
@@ -167,6 +204,7 @@ namespace SocialEvents.Web.Controllers
         // GET: Event/Edit/5
         public ActionResult Edit(Guid id)
         {
+            CheckAdminDepartment();
             var model = EventService.GetById(id);
             if (!string.IsNullOrEmpty(model.WeekDays))
             {
@@ -181,6 +219,7 @@ namespace SocialEvents.Web.Controllers
         {
             try
             {
+                CheckAdminDepartment();
                 ValidateDateAndTime(model);
                 if (ModelState.IsValid)
                 {
@@ -203,6 +242,7 @@ namespace SocialEvents.Web.Controllers
         // GET: Event/Delete/5
         public ActionResult Delete(Guid id)
         {
+            CheckAdminDepartment();
             var model = EventService.GetById(id);
             return View(model);
         }
@@ -213,6 +253,7 @@ namespace SocialEvents.Web.Controllers
         {
             try
             {
+                CheckAdminDepartment();
                 // TODO: Add delete logic here
                 EventService.Deactivate(model);
                 EventService.SaveChanges();
@@ -242,6 +283,7 @@ namespace SocialEvents.Web.Controllers
 
         public ActionResult Approval(Guid id)
         {
+            CheckAdminDepartment();
             var model = new ApprovalViewModel { Id = id };
             return View(model);
         }
@@ -249,6 +291,7 @@ namespace SocialEvents.Web.Controllers
         [HttpPost]
         public ActionResult Approval(ApprovalViewModel approval)
         {
+            CheckAdminDepartment();
             if (ModelState.IsValid)
             {
                 var eventModel = new Event

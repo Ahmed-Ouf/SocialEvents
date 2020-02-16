@@ -13,7 +13,7 @@ namespace SocialEvents.Service
         void Publish(Guid id);
         void Approval(Event eventModel);
         IEnumerable<Event> GetAllPublished();
-        IEnumerable<Event> GetAllAtiveByDepartment(string department);
+        IEnumerable<Event> GetAllAtiveByDepartment(Guid departmentId);
     }
 
     public class EventService : ServiceBase<Event>, IEventService
@@ -33,15 +33,15 @@ namespace SocialEvents.Service
             entity.Reaseon = eventModel.Reaseon;
         }
 
-        public IEnumerable<Event> GetAllAtiveByDepartment(string department)
+        public IEnumerable<Event> GetAllAtiveByDepartment(Guid departmentId )
         {
-            //var deptId=
-            return GetAllAtive();
+            var result = EventRepository.GetAll().Where(e => (departmentId == null || e.DepartmentId == departmentId) && e.Active).ToList();
+            return result;
         }
 
         public IEnumerable<Event> GetAllPublished()
         {
-            var result = GetAllAtive().Where(e=>e.Published);
+            var result = EventRepository.GetAll().Where(e => e.Published && e.Active);
             return result;
         }
 

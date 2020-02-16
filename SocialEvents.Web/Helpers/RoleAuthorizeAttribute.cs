@@ -48,7 +48,7 @@ namespace Beneficiary.Web.Helpers
             bool result = false;
             var selectedRoles = Roles.Split(',');
             var currentUserInfo=(vm.CurrentUserViewModel)httpContext.Session["current-user"]; 
-            var sessionRoles = currentUserInfo.Roles;
+            var sessionRoles = currentUserInfo?.Roles;
 
             if (sessionRoles != null && sessionRoles.Any())
             {
