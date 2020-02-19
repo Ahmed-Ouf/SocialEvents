@@ -14,6 +14,7 @@ namespace SocialEvents.Service
         void Approval(Event eventModel);
         IEnumerable<Event> GetAllPublished();
         IEnumerable<Event> GetAllAtiveByDepartment(Guid departmentId);
+        bool IsDublicatedEventNumber(Guid id, string eventNumber);
     }
 
     public class EventService : ServiceBase<Event>, IEventService
@@ -33,7 +34,7 @@ namespace SocialEvents.Service
             entity.Reaseon = eventModel.Reaseon;
         }
 
-        public IEnumerable<Event> GetAllAtiveByDepartment(Guid departmentId )
+        public IEnumerable<Event> GetAllAtiveByDepartment(Guid departmentId)
         {
             var result = EventRepository.GetAll().Where(e => (departmentId == null || e.DepartmentId == departmentId) && e.Active).ToList();
             return result;
@@ -42,6 +43,12 @@ namespace SocialEvents.Service
         public IEnumerable<Event> GetAllPublished()
         {
             var result = EventRepository.GetAll().Where(e => e.Published && e.Active);
+            return result;
+        }
+
+        public bool IsDublicatedEventNumber(Guid id, string eventNumber)
+        {
+            var result = EventRepository.GetAll().Where(e => e.Id != id && e.EventNumber == eventNumber)?.Any() ?? false;
             return result;
         }
 

@@ -90,6 +90,21 @@ namespace SocialEvents.Web.Controllers
                     }
                     break;
 
+                case "RegistrationState":
+                    {
+                        List<SelectListItem> list = new List<SelectListItem>();
+                        list.Add(new SelectListItem() { Text = Resources.Resources.Available, Value = "0" });
+                        list.Add(new SelectListItem() { Text = Resources.Resources.Completed, Value = "1" });
+                        list.Add(new SelectListItem() { Text = Resources.Resources.Expired, Value = "2" });
+                        list.Add(new SelectListItem() { Text = Resources.Resources.Closed, Value = "3" });
+
+                        selectedId = selectedId ?? -1;
+                        var selectedItem = list.FirstOrDefault(s => s.Value == ((int)selectedId).ToString());
+
+                        resultSelectList = new SelectList(list, "Value", "Text", selectedItem);
+                    }
+                    break;
+
                 case "DaysOfWeek":
                     {
                         List<SelectListItem> list = new List<SelectListItem>();
@@ -178,6 +193,7 @@ namespace SocialEvents.Web.Controllers
             {
                 CheckAdminDepartment();
                 ValidateDateAndTime(model);
+                ValidateEventNumber(model);
                 if (ModelState.IsValid)
                 {
 
@@ -198,6 +214,8 @@ namespace SocialEvents.Web.Controllers
                 return View();
             }
         }
+
+
 
 
 
@@ -317,6 +335,14 @@ namespace SocialEvents.Web.Controllers
             if (model.DateFrom > model.DateTo)
             {
                 ModelState.AddModelError("DateTo", string.Format(Resources.Resources.ErrorMsgBigger, Resources.Resources.DateTo, Resources.Resources.DateFrom));
+            }
+        }
+
+        private void ValidateEventNumber(Event model)
+        {
+            if (EventService.IsDublicatedEventNumber(model.Id,model.EventNumber))
+            {
+                ModelState.AddModelError("EventNumber", string.Format(Resources.Resources.DublicatedEventNumber, Resources.Resources.EventNumber));
             }
         }
 

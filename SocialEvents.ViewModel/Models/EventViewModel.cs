@@ -5,9 +5,37 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SocialEvents.Resources.Helpers;
 
 namespace SocialEvents.ViewModel
 {
+    public enum StateEnum
+    {
+        [Display(Name = "Pending", ResourceType = typeof(Resources.Resources))]
+        Pending,
+
+        [Display(Name = "Approved", ResourceType = typeof(Resources.Resources))]
+        Approved,
+
+        [Display(Name = "Rejected", ResourceType = typeof(Resources.Resources))]
+        Rejected
+    }
+
+    public enum RegistrationStateEnum
+    {
+        [Display(Name = "Available", ResourceType = typeof(Resources.Resources))]
+        Available,
+
+        [Display(Name = "Completed", ResourceType = typeof(Resources.Resources))]
+        Completed,
+
+        [Display(Name = "Expired", ResourceType = typeof(Resources.Resources))]
+        Expired,
+
+        [Display(Name = "Closed", ResourceType = typeof(Resources.Resources))]
+        Closed
+    }
+
     public class EventViewModel : AuditableEntity
     {
         public Guid CategoryId { get; set; }
@@ -87,6 +115,18 @@ namespace SocialEvents.ViewModel
         [Display(Name = "State", ResourceType = typeof(Resources.Resources))]
         public StateEnum State { get; set; }
 
+        [Display(Name = "RegistrationState", ResourceType = typeof(Resources.Resources))]
+        public RegistrationStateEnum RegistrationState { get; set; }
+
+        public string RegistrationStateDescriptionAR
+        {
+            get
+            {
+                return ResourcesHelper.GetAR(RegistrationState.GetDisplayName());
+            }
+            set { return; }
+        }
+
         [StringLength(500, ErrorMessageResourceName = "StringLengthMessage", ErrorMessageResourceType = typeof(Resources.Resources))]
         [Display(Name = "Reaseon", ResourceType = typeof(Resources.Resources))]
         public string Reaseon { get; set; }
@@ -111,10 +151,5 @@ namespace SocialEvents.ViewModel
 
     }
 
-    public enum StateEnum
-    {
-        Pending,
-        Approved,
-        Rejected
-    }
+   
 }

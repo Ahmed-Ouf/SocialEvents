@@ -265,4 +265,22 @@
   <data name="All" xml:space="preserve">
     <value>All</value>
   </data>
+  <data name="Available" xml:space="preserve">
+    <value>Available</value>
+  </data>
+  <data name="Completed" xml:space="preserve">
+    <value>Completed</value>
+  </data>
+  <data name="Expired" xml:space="preserve">
+    <value>Expired</value>
+  </data>
+  <data name="Closed" xml:space="preserve">
+    <value>Closed</value>
+  </data>
+  <data name="RegistrationState" xml:space="preserve">
+    <value>Registration State</value>
+  </data>
+  <data name="DublicatedEventNumber" xml:space="preserve">
+    <value>{0} already used</value>
+  </data>
 </root>

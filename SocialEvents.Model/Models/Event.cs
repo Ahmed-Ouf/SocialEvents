@@ -8,6 +8,33 @@ using System.Threading.Tasks;
 
 namespace SocialEvents.Model
 {
+    public enum StateEnum
+    {
+        [Display(Name = "Pending", ResourceType = typeof(Resources.Resources))]
+        Pending,
+
+        [Display(Name = "Approved", ResourceType = typeof(Resources.Resources))]
+        Approved,
+
+        [Display(Name = "Rejected", ResourceType = typeof(Resources.Resources))]
+        Rejected
+    }
+    
+    public enum RegistrationStateEnum
+    {
+        [Display(Name = "Available", ResourceType = typeof(Resources.Resources))]
+        Available,
+
+        [Display(Name = "Completed", ResourceType = typeof(Resources.Resources))]
+        Completed,
+
+        [Display(Name = "Expired", ResourceType = typeof(Resources.Resources))]
+        Expired,
+
+        [Display(Name = "Closed", ResourceType = typeof(Resources.Resources))]
+        Closed
+    }
+
     public class Event : AuditableEntity
     {
         public Guid CategoryId { get; set; }
@@ -84,6 +111,9 @@ namespace SocialEvents.Model
         [Display(Name = "State", ResourceType = typeof(Resources.Resources))]
         public StateEnum State { get; set; }
 
+        [Display(Name = "RegistrationState", ResourceType = typeof(Resources.Resources))]
+        public RegistrationStateEnum RegistrationState { get; set; }
+
         [StringLength(500, ErrorMessageResourceName = "StringLengthMessage", ErrorMessageResourceType = typeof(Resources.Resources))]
         [Display(Name = "Reaseon", ResourceType = typeof(Resources.Resources))]
         public string Reaseon { get; set; }
@@ -108,10 +138,5 @@ namespace SocialEvents.Model
 
     }
 
-    public enum StateEnum
-    {
-        Pending,
-        Approved,
-        Rejected
-    }
+
 }
