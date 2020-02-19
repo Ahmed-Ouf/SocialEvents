@@ -106,6 +106,15 @@ namespace SocialEvents.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Available.
+        /// </summary>
+        public static string Available {
+            get {
+                return ResourceManager.GetString("Available", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Category.
         /// </summary>
         public static string Category {
@@ -115,11 +124,29 @@ namespace SocialEvents.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Closed.
+        /// </summary>
+        public static string Closed {
+            get {
+                return ResourceManager.GetString("Closed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Color.
         /// </summary>
         public static string Color {
             get {
                 return ResourceManager.GetString("Color", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Completed.
+        /// </summary>
+        public static string Completed {
+            get {
+                return ResourceManager.GetString("Completed", resourceCulture);
             }
         }
         
@@ -187,6 +214,15 @@ namespace SocialEvents.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} already used.
+        /// </summary>
+        public static string DublicatedEventNumber {
+            get {
+                return ResourceManager.GetString("DublicatedEventNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} should be bigger than {1}.
         /// </summary>
         public static string ErrorMsgBigger {
@@ -237,6 +273,15 @@ namespace SocialEvents.Resources {
         public static string Excel {
             get {
                 return ResourceManager.GetString("Excel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Expired.
+        /// </summary>
+        public static string Expired {
+            get {
+                return ResourceManager.GetString("Expired", resourceCulture);
             }
         }
         
@@ -390,6 +435,15 @@ namespace SocialEvents.Resources {
         public static string Reaseon {
             get {
                 return ResourceManager.GetString("Reaseon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Registration State.
+        /// </summary>
+        public static string RegistrationState {
+            get {
+                return ResourceManager.GetString("RegistrationState", resourceCulture);
             }
         }
         

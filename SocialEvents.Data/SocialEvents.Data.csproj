@@ -97,6 +97,10 @@
     <Compile Include="Migrations\202002120632307_updateSafeerDepartmentId.designer.cs">
       <DependentUpon>202002120632307_updateSafeerDepartmentId.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202002190503554_AddRigistratoinStateToEvent.cs" />
+    <Compile Include="Migrations\202002190503554_AddRigistratoinStateToEvent.designer.cs">
+      <DependentUpon>202002190503554_AddRigistratoinStateToEvent.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\LoginAuditRepositor.cs" />
@@ -147,6 +151,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202002120632307_updateSafeerDepartmentId.resx">
       <DependentUpon>202002120632307_updateSafeerDepartmentId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002190503554_AddRigistratoinStateToEvent.resx">
+      <DependentUpon>202002190503554_AddRigistratoinStateToEvent.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
