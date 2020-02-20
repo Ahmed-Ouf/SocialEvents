@@ -15,6 +15,7 @@ namespace SocialEvents.Web.App_Start
                 "~/Scripts/dataTable/jquery.dataTables.min.js",
                 // "~/Scripts/dataTable/dataTables.bootstrap.min.js",
                 "~/Theme/js/dataTables.bootstrap4.min.js",
+                "~/Theme/js/scripts.js",
                 "~/Scripts/dataTable/datetime-moment.js",
                 "~/Scripts/dataTable/dataTables.rowGroup.min.js",
                 "~/Scripts/dataTable/dataTables.buttons.min.js",
@@ -35,9 +36,9 @@ namespace SocialEvents.Web.App_Start
                 "~/Theme/js/bootstrap.bundle.min.js",
                 "~/Theme/js/font-awesome/all.min.js",
                 "~/Scripts/select2.js",
-                "~/Theme/assets/demo/chart-area-demo.js",
-                "~/Theme/assets/demo/chart-bar-demo.js",
-                "~/Theme/assets/demo/chart-pie-demo.js",
+                //"~/Theme/assets/demo/chart-area-demo.js",
+               // "~/Theme/assets/demo/chart-bar-demo.js",
+                //"~/Theme/assets/demo/chart-pie-demo.js",
                // "~/Theme/assets/demo/datatables-demo.js",
                 "~/js/site.js"));
             //------------color pickup-----------

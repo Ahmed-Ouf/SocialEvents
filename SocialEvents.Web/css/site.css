@@ -39,8 +39,10 @@
     cursor: pointer;
     transition: all 500ms;
     color: #ffffff;
+    font-weight:bold;
 }
 
     .change_lang:hover {
-        background-color: #333;
+        background-color: #007bff !important;
+        color: #ffffff;
     }
