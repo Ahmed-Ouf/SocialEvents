@@ -173,8 +173,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Connected Services\TargetGroupDmzServiceRef\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\AnnouncementController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\TargetGroupController.cs" />
     <Compile Include="Controllers\EventController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
@@ -225,6 +231,13 @@
     <None Include="Connected Services\EventDmzServiceRef\configuration91.svcinfo" />
     <None Include="Connected Services\EventDmzServiceRef\configuration.svcinfo" />
     <None Include="Connected Services\EventDmzServiceRef\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Connected Services\TargetGroupDmzServiceRef\TargetGroupDmzService.disco" />
+    <None Include="Connected Services\TargetGroupDmzServiceRef\configuration91.svcinfo" />
+    <None Include="Connected Services\TargetGroupDmzServiceRef\configuration.svcinfo" />
+    <None Include="Connected Services\TargetGroupDmzServiceRef\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -295,6 +308,17 @@
     <Content Include="Content\bootstrap-reboot.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
+    <None Include="Connected Services\TargetGroupDmzServiceRef\TargetGroupDmzService.wsdl" />
+    <None Include="Connected Services\TargetGroupDmzServiceRef\TargetGroupDmzService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\TargetGroupDmzServiceRef\TargetGroupDmzService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\TargetGroupDmzServiceRef\TargetGroupDmzService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Properties\DataSources\SocialEvents.ViewModel.TargetGroupViewModel.datasource" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -424,6 +448,7 @@
     <WCFMetadataStorage Include="Connected Services\AnnouncementDmzServiceRef\" />
     <WCFMetadataStorage Include="Connected Services\CategoryDmzServiceRef\" />
     <WCFMetadataStorage Include="Connected Services\EventDmzServiceRef\" />
+    <WCFMetadataStorage Include="Connected Services\TargetGroupDmzServiceRef\" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
