@@ -151,7 +151,10 @@
     <Content Include="Content\spectrum.css" />
     <Content Include="css\bootstrap.css" />
     <Content Include="css\site.css" />
+    <Content Include="Theme\css\bootstrap-rtl.css" />
+    <Content Include="Theme\css\bootstrap.css" />
     <Content Include="Theme\css\dataTables.bootstrap4.min.css" />
+    <Content Include="Theme\css\styles-ar.css" />
     <Content Include="Theme\css\styles.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />

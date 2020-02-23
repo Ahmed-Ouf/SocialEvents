@@ -24,6 +24,20 @@
     <title>@ViewBag.Title</title>
     <!-- Bootstrap -->
     @Styles.Render("~/bootstrap/css")
+
+
+    @if (CultureHelper.IsRighToLeft())
+    {
+        //<link href="~/Theme/css/bootstrap-rtl.css" rel="stylesheet" />
+        <link href="~/Theme/css/styles-ar.css" rel="stylesheet" />
+
+
+    }
+    else
+    {
+        <link href="~/Theme/css/styles.css" rel="stylesheet" />
+    }
+
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/
     html5shiv.js"></script>
@@ -132,15 +146,15 @@
 
 
                         <div class="sb-sidenav-menu-heading">Addons</div>
-                        <a class="nav-link" href="charts.html">
+                        <a class="nav-link" href="@Url.Action("Index","Event")">
                             <div class="sb-nav-link-icon"><i class="fas fa-calendar-check"></i></div>
                             Event
                         </a>
-                        <a class="nav-link" href="tables.html">
+                        <a class="nav-link" href="@Url.Action("Index","Announcement")">
                             <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                             Announcement
                         </a>
-                        <a class="nav-link" href="tables.html">
+                        <a class="nav-link" href="@Url.Action("Index","Report")">
                             <div class="sb-nav-link-icon"><i class="fas fa-file-prescription"></i></div>
                             Report
                         </a>
@@ -152,10 +166,10 @@
                         </a>
                         <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="layout-sidenav-light.html">Category</a>
-                                <a class="nav-link" href="layout-sidenav-light.html">Location</a>
-                                <a class="nav-link" href="layout-sidenav-light.html">Notification</a>
-                                <a class="nav-link" href="layout-sidenav-light.html">TargetGroup</a>
+                                <a class="nav-link" href="@Url.Action("Index","Category")">Category</a>
+                                <a class="nav-link" href="@Url.Action("Index","Location")">Location</a>
+                                <a class="nav-link" href="@Url.Action("Index","Notification")">Notification</a>
+                                <a class="nav-link" href="@Url.Action("Index","TargetGroup")">TargetGroup</a>
                             </nav>
                         </div>
                     </div>
@@ -169,10 +183,11 @@
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid">
-                    <h1 class="mt-4">Dashboard</h1>
-                    <ol class="breadcrumb mb-4">
-                        <li class="breadcrumb-item active">Dashboard</li>
-                    </ol>
+                    @*<h1 class="mt-4">Dashboard</h1>
+                        <ol class="breadcrumb mb-4">
+                            <li class="breadcrumb-item active">Dashboard</li>
+                        </ol>*@
+                    <br />;
                     @RenderBody()
                 </div>
             </main>

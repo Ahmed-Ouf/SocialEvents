@@ -36,10 +36,6 @@ namespace SocialEvents.Web.App_Start
                 "~/Theme/js/bootstrap.bundle.min.js",
                 "~/Theme/js/font-awesome/all.min.js",
                 "~/Scripts/select2.js",
-                //"~/Theme/assets/demo/chart-area-demo.js",
-               // "~/Theme/assets/demo/chart-bar-demo.js",
-                //"~/Theme/assets/demo/chart-pie-demo.js",
-               // "~/Theme/assets/demo/datatables-demo.js",
                 "~/js/site.js"));
             //------------color pickup-----------
             //bundles.Add(new ScriptBundle("~/spectrum/js").Include("~/Scripts/spectrum.js"));
@@ -55,7 +51,8 @@ namespace SocialEvents.Web.App_Start
                 "~/Content/dataTable/rowGroup.dataTables.min.css",
                 "~/Content/css/select2.css",
                 "~/Content/Chart.css",
-                "~/Theme/css/styles.css",
+                // "~/Theme/css/styles.css",
+                //"~/Theme/css/bootstrap-rtl.css",
                 "~/css/site.css"));
 
 
