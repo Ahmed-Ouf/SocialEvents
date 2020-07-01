@@ -15,6 +15,8 @@ namespace SocialEvents.Service
         IEnumerable<Event> GetAllPublished();
         IEnumerable<Event> GetAllAtiveByDepartment(Guid departmentId);
         bool IsDublicatedEventNumber(Guid id, string eventNumber);
+
+        IEnumerable<Event> GetAllPending();
     }
 
     public class EventService : ServiceBase<Event>, IEventService
@@ -43,6 +45,11 @@ namespace SocialEvents.Service
         public IEnumerable<Event> GetAllPublished()
         {
             var result = EventRepository.GetAll().Where(e => e.Published && e.Active);
+            return result;
+        }
+        public IEnumerable<Event> GetAllPending()
+        {
+            var result = EventRepository.GetAll().Where(e => e.State==StateEnum.Pending && e.Active);
             return result;
         }
 

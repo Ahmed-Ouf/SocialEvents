@@ -37,9 +37,20 @@ namespace SocialEvents.Model
 
     public class Event : AuditableEntity
     {
+        [Display(Name = "CategoryId", ResourceType = typeof(Resources.Resources))]
+        [Required(ErrorMessageResourceName = "RequiredField", ErrorMessageResourceType = typeof(Resources.Resources))] 
         public Guid CategoryId { get; set; }
+
+        [Required(ErrorMessageResourceName = "RequiredField", ErrorMessageResourceType = typeof(Resources.Resources))]
+        [Display(Name = "Location", ResourceType = typeof(Resources.Resources))] 
         public Guid LocationId { get; set; }
+        
+        [Required(ErrorMessageResourceName = "RequiredField", ErrorMessageResourceType = typeof(Resources.Resources))]
+        [Display(Name = "TargetGroup", ResourceType = typeof(Resources.Resources))]
         public Guid TargetGroupId { get; set; }
+
+        [Required(ErrorMessageResourceName = "RequiredField", ErrorMessageResourceType = typeof(Resources.Resources))]
+        [Display(Name = "Department", ResourceType = typeof(Resources.Resources))]
         public Guid DepartmentId { get; set; }
 
         [Required(ErrorMessageResourceName = "RequiredField", ErrorMessageResourceType = typeof(Resources.Resources))]
@@ -109,6 +120,7 @@ namespace SocialEvents.Model
         public string InstagramUrl { get; set; }
 
         [Display(Name = "State", ResourceType = typeof(Resources.Resources))]
+        [Required(ErrorMessageResourceName = "RequiredField", ErrorMessageResourceType = typeof(Resources.Resources))]
         public StateEnum State { get; set; }
 
         [Display(Name = "RegistrationState", ResourceType = typeof(Resources.Resources))]

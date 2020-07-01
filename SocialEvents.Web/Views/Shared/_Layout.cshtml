@@ -12,30 +12,31 @@
 {
     if (culture.Contains(c))
     {
-        // @:hidden
-        @:d-none
+        @:hidden
     }
 }
 <html lang="@CultureHelper.GetCurrentNeutralCulture()" dir="@(CultureHelper.IsRighToLeft() ? "rtl" : "ltr")">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="" />
+    <meta name="Author" content="RCJ IT Department" />
     <title>@ViewBag.Title</title>
+    <!-- mobile settings -->
+    <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
+
+
+
+    <!-- FONT AWESOME -->
+    @*<link href="~/assets/font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet" />
+        <script src="~/assets/js/fontawesome.js"></script>*@
+
     <!-- Bootstrap -->
     @Styles.Render("~/bootstrap/css")
 
-
     @if (CultureHelper.IsRighToLeft())
     {
-        //<link href="~/Theme/css/bootstrap-rtl.css" rel="stylesheet" />
-        <link href="~/Theme/css/styles-ar.css" rel="stylesheet" />
-
-
-    }
-    else
-    {
-        <link href="~/Theme/css/styles.css" rel="stylesheet" />
+        @Styles.Render("~/rtl-ar/css")
     }
 
     <!--[if lt IE 9]>
@@ -45,182 +46,249 @@
     respond.min.js"></script>
     <![endif]-->
 </head>
-<body class="sb-nav-fixed">
-    <div>
-        @*<nav id="myNavbar" class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
-                <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbarCollapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    @Html.ActionLink("SocialEvents", "Index", "Home", new { }, new { @class = "navbar-brand" })
-                </div>
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <ul class="nav navbar-nav">
-                        <li class="active">
-                            @Html.ActionLink("Announcement", "Index", "Announcement")
-                        </li>
-                        <li class="active">
-                            @Html.ActionLink("Category", "Index", "Category")
-                        </li>
-                        <li class="active">
-                            @Html.ActionLink("Event", "Index", "Event")
-                        </li>
-                        <li class="active">
-                            @Html.ActionLink("Location", "Index", "Location")
-                        </li>
-                        <li class="active">
-                            @Html.ActionLink("Notification", "Index", "Notification")
-                        </li>
-                        <li class="active">
-                            @Html.ActionLink("TargetGroup", "Index", "TargetGroup")
-                        </li>
-                        <li class="active">
-                            @Html.ActionLink("Reports","Index","Report")
-                        </li>
-                    </ul>
-                    <!--Start Language-->
-                    <a href="@Url.Action("SetCulture", new { culture = "en", url = Request.Url.AbsoluteUri })" class="change_lang bring_left @selected("en", culture)" title="English">EN</a>
-                    <a href="@Url.Action("SetCulture", new { culture = "ar-EG", url = Request.Url.AbsoluteUri })" class="change_lang bring_left @selected("ar", culture)" style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif" title="عربي">ع</a>
-                    <!--/End Language-->
-                    <a href="#">@User.Identity.Name</a>
-                </div>
+<body>
+
+
+    <!-- WRAPPER -->
+    <div id="wrapper" class="clearfix">
+
+        <!--
+            ASIDE
+            Keep it outside of #wrapper (responsive purpose)
+        -->
+        <aside id="aside">
+            <!--
+                Always open:
+                <li class="active always-open">
+
+                LABELS:
+                    <span class="label label-danger pull-right">1</span>
+                    <span class="label label-default pull-right">1</span>
+                    <span class="label label-warning pull-right">1</span>
+                    <span class="label label-success pull-right">1</span>
+                    <span class="label label-info pull-right">1</span>
+            -->
+            <nav id="sideNav">
+                <!-- MAIN MENU -->
+                <ul class="nav nav-list">
+                    <li class="active">
+                        <!-- dashboard -->
+                        <a class="dashboard" href="@Url.Action( "Index", "Home")">
+                            <i class="main-icon fa fa-home"></i> <span>الرئيسة</span>
+                        </a>
+                    </li>
+
+                    <li class="">
+                        <a href="#">
+                            <i class="fa fa-menu-arrow pull-right"></i>
+                            <i class="main-icon fa fa-calendar"></i> <span>الفعاليات</span>
+                        </a>
+                        <ul>
+                            <!-- submenus -->
+                            <li><a href="@Url.Action( "Index", "Event")"><i class="fa fa-fw fa-list"></i> استعراض الفعاليات</a></li>
+                            <li><a href="@Url.Action( "Create","Event")"><i class="fa fa-fw fa-plus"></i> إضافة فعالية جديدة</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="">
+                        <a href="#">
+                            <i class="fa fa-menu-arrow pull-right"></i>
+                            <i class="main-icon fa fa-cog"></i> <span>إدارة النظام</span>
+                        </a>
+                        <ul>
+                            <!-- submenus -->
+                            <li><a href="@Url.Action( "PendingEvents", "Event")"><i class="fa fa-fw fa-check-square-o"></i> اعتماد الفعاليات</a></li>
+                            <li><a href="@Url.Action( "Index", "Announcement")"><i class="fa fa-fw fa-bullhorn"></i> التعاميم</a></li>
+                            <li><a href="@Url.Action( "Index", "Notification")"><i class="fa fa-fw fa-flag"></i> التنبيهات</a></li>
+                            <li><a href="@Url.Action("Index","Report")"><i class="fa fa-fw fa-file-pdf-o"></i> التقارير</a></li>
+                            @*<li><a href="#"><i class="fa fa-fw fa-bar-chart"></i> الإحصاءيات</a></li>*@
+                        </ul>
+                    </li>
+                    <li class="">
+                        <a href="#">
+                            <i class="fa fa-menu-arrow pull-right"></i>
+                            <i class="main-icon fa fa-sliders"></i> <span>إعدادات النظام</span>
+                        </a>
+                        <ul>
+                            <!-- submenus -->
+                            <li><a href="@Url.Action( "Index", "Location")"><i class="fa fa-fw fa-map-signs"></i> المواقع</a></li>
+                            <li><a href="@Url.Action( "Index", "Category")"><i class="fa fa-fw fa-sitemap"></i> التصنيفات</a></li>
+                            <li><a href="@Url.Action("Index", "TargetGroup")"><i class="fa fa-fw fa-user-circle"></i> الفئات المستهدفة</a></li>
+                            @*<li><a href="#"><i class="fa fa-fw fa-users"></i> الإدارات وَ المستخدمين</a></li>*@
+                        </ul>
+                    </li>
+                    <!--<li class="">
+                        <a href="#">
+                            <i class="fa fa-menu-arrow pull-right"></i>
+                            <i class="main-icon fa fa-mobile"></i> <span>إعدادات التطبيق</span>
+                        </a>
+                        <ul>-->
+                    <!-- submenus -->
+                    <!--<li><a href="#"><i class="fa fa-fw fa-address-card"></i> معلومات التواصل</a></li>
+                            <li><a href="#"><i class="fa fa-fw fa-address-card-o"></i> معلومات التطبيق</a></li>
+                            <li><a href="#"><i class="fa fa-fw fa-toggle-on"></i> الإتاحة</a></li>
+                        </ul>
+                    </li>-->
+
+                </ul>
+
+                <!-- 2nd MAIN LIST -->
+                <!--<h3 class="sr-only">خدمات المطور</h3>
+                <ul class="nav nav-list">
+                    <li class="">
+                        <a href="#">
+                            <i class="fa fa-menu-arrow pull-right"></i>
+                            <i class="main-icon fa fa-code"></i> <span>خدمات المطور</span>
+                        </a>
+                        <ul>-->
+                <!-- submenus -->
+                <!--<li><a href="#"><i class="fa fa-fw fa-info-circle"></i> معلومات النظام</a></li>
+                            <li><a href="#"><i class="fa fa-fw fa-book"></i> سجل الأخطاء</a></li>
+                            <li><a href="#"><i class="fa fa-fw fa-id-badge"></i> مديري النظام</a></li>
+                            <li><a href="#"><i class="fa fa-fw fa-wrench"></i> صيانة النظام</a></li>
+                        </ul>
+                    </li>
+                </ul>-->
+
             </nav>
 
-            <div class="container-fluid">
-                <div class="row" style="margin-top:50px;">
-                    <div class="col-md-12">
+            <span id="asidebg"><!-- aside fixed background --></span>
+        </aside>
+        <!-- /ASIDE -->
+        <!-- HEADER -->
+        <header id="header">
 
+            <!-- Mobile Button -->
+            <button id="mobileMenuBtn"></button>
 
-                        @RenderBody()
+            <!-- Logo -->
+            <span class="logo pull-left">
+                <a href="default.html"><img src="~/assets/images/logo_org.png" alt="admin panel" height="35" /></a>
+            </span>
 
-                    </div>
-                </div>
-            </div>*@
-    </div>
+            <!--<form method="get" action="" class="search pull-left hidden-xs">
+                <input type="text" class="form-control" name="k" placeholder="البحث عن..." />
+            </form>-->
 
+            <nav>
 
-    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-        <a class="navbar-brand" href="index.html">@Resources.SocialEvents</a><button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#">
-            <i class="fas fa-bars"></i>
-        </button><!-- Navbar Search-->
-        <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
-            <div class="input-group">
-                @*<input class="form-control" type="text" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" />*@
-                <div class="input-group-append">
-                    @*<button class="btn btn-primary" type="button"><i class="fas fa-search"></i></button>*@
+                <!-- OPTIONS LIST -->
+                <ul class="nav pull-right">
 
-                </div>
-            </div>
-        </form>
-        <!-- Navbar-->
-        @*<ul class="navbar-nav ml-auto ml-md-0">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                        <a class="dropdown-item" href="#">Settings</a><a class="dropdown-item" href="#">Activity Log</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="login.html">Logout</a>
-                    </div>
-                </li>
-            </ul>*@
-        <!--Start Language-->
-        <a href="@Url.Action("SetCulture", new { culture = "en", url = Request.Url.AbsoluteUri })" class="change_lang bring_left @selected("en", culture)" title="English">EN</a>
-        <a href="@Url.Action("SetCulture", new { culture = "ar-EG", url = Request.Url.AbsoluteUri })" class="change_lang bring_left @selected("ar", culture)" style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif" title="عربي">ع</a>
-        <!--/End Language-->
-    </nav>
-    <div id="layoutSidenav">
-        <div id="layoutSidenav_nav">
-            <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
-                <div class="sb-sidenav-menu">
-                    <div class="nav">
-                        <div class="sb-sidenav-menu-heading">Core</div>
-                        <a class="nav-link" href="@Url.Action("Index","Home")">
-                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                            Dashboard
+                    <!-- USER OPTIONS -->
+                    <li class="dropdown pull-left">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                            <img class="user-avatar" alt="" src="~/assets/images/noavatar.jpg" height="34" />
+                            <span class="user-name">
+                                <span class="hidden-xs">
+                                    سلطان العتيبي
+                                </span>
+                            </span>
                         </a>
 
-
-                        <div class="sb-sidenav-menu-heading">Addons</div>
-                        <a class="nav-link" href="@Url.Action("Index","Event")">
-                            <div class="sb-nav-link-icon"><i class="fas fa-calendar-check"></i></div>
-                            Event
-                        </a>
-                        <a class="nav-link" href="@Url.Action("Index","Announcement")">
-                            <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                            Announcement
-                        </a>
-                        <a class="nav-link" href="@Url.Action("Index","Report")">
-                            <div class="sb-nav-link-icon"><i class="fas fa-file-prescription"></i></div>
-                            Report
-                        </a>
-                        <div class="sb-sidenav-menu-heading">Interface</div>
-                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
-                            <div class="sb-nav-link-icon"><i class="fas fa-sliders-h"></i></div>
-                            Setting
-                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                        </a>
-                        <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="@Url.Action("Index","Category")">Category</a>
-                                <a class="nav-link" href="@Url.Action("Index","Location")">Location</a>
-                                <a class="nav-link" href="@Url.Action("Index","Notification")">Notification</a>
-                                <a class="nav-link" href="@Url.Action("Index","TargetGroup")">TargetGroup</a>
-                            </nav>
+                    </li>
+                    <li class="dropdown pull-left">
+                        <div class="">
+                            <!--Start Language-->
+                            <a href="@Url.Action("SetCulture", new { culture = "en", url = Request.Url.AbsoluteUri })" class="change_lang bring_left btn @selected("en", culture)" title="English">EN</a>
+                            <a href="@Url.Action("SetCulture", new { culture = "ar-EG", url = Request.Url.AbsoluteUri })" class="change_lang bring_left btn @selected("ar", culture)" style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif" title="عربي">ع</a>
+                            <!--/End Language-->
                         </div>
-                    </div>
-                </div>
-                <div class="sb-sidenav-footer">
-                    <div class="small">Logged in as:</div>
-                    @User.Identity.Name
-                </div>
+
+                    </li>
+                    <!-- /USER OPTIONS -->
+
+                </ul>
+                <!-- /OPTIONS LIST -->
+
             </nav>
-        </div>
-        <div id="layoutSidenav_content">
-            <main>
-                <div class="container-fluid">
-                    @*<h1 class="mt-4">Dashboard</h1>
-                        <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active">Dashboard</li>
-                        </ol>*@
-                    <br />;
+
+        </header>
+        <!-- /HEADER -->
+        <!--
+            MIDDLE
+        -->
+        <section id="middle">
+
+            <div id="content" class="padding-20">
+
+                <div class="row">
+
                     @RenderBody()
+
                 </div>
-            </main>
-            <footer class="py-4 bg-light mt-auto">
-                <div class="container-fluid">
-                    <div class="d-flex align-items-center justify-content-between small">
-                        <div class="text-muted">Copyright &copy; Your Website 2019</div>
-                        <div>
-                            <a href="#">Privacy Policy</a>
-                            &middot;
-                            <a href="#">Terms &amp; Conditions</a>
-                        </div>
-                    </div>
-                </div>
-            </footer>
-        </div>
+
+            </div>
+
+        </section>
+        <!-- /MIDDLE -->
+
     </div>
 
 
 
+
+    <!-- JAVASCRIPT FILES -->
 
     @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bootstrap/js")
-    @RenderSection("scripts", false)
+    @* @Scripts.Render("~/bootstrap/js")*@
+    <script type="text/javascript">
+        var plugin_path = '/assets/plugins/';
+    </script>
+    @* <script type="text/javascript" src="assets/plugins/jquery/jquery-2.2.3.min.js"></script>
+        <script type="text/javascript" src="assets/js/app.js"></script>*@
+
+    <!-- PAGE LEVEL SCRIPT -->
 
 
+
+
+
+
+    <script type="text/javascript">
+        /*
+            Toastr Notification On Load
+
+            TYPE:
+                primary
+                info
+                error
+                success
+                warning
+
+            POSITION
+                top-right
+                top-left
+                top-center
+                top-full-width
+                bottom-right
+                bottom-left
+                bottom-center
+                bottom-full-width
+
+            false = click link (example: "http://www.stepofweb.com")
+        _toastr("أهلاً سلطان، لديك 5 تنبيهات جديدة","top-center","error",false);
+        */
+
+
+
+
+        /** الفئات CHART
+        ******************************************* **/
+        //loadScript(plugin_path + 'chart.chartjs/Chart.min.js', function () {
+
+
+        //});
+
+
+    </script>
     <script>
         $(function () {
             $('.select2').select2({
-                dir: "rtl"
+                dir: "@(SocialEvents.Web.Helpers.CultureHelper.IsRighToLeft() ? "rtl": "ltr"))"
             });
-         MyDataTable = $("table").not('.noDataTable').DataTable({
-                    "responsive": true,
+         MyDataTable = $("table.dataTable").not('.noDataTable').DataTable({
+                    "responsive": false,
                     //"ordering": false,
              "language": {
                         "url": "@(SocialEvents.Web.Helpers.CultureHelper.IsRighToLeft() ? Url.Content("~/language/arabic.json")    : Url.Content("~/language/english.json"))"
@@ -232,7 +300,7 @@
                     },
                     ],
 
-                    dom: 'lBfrtip',
+             dom: 'Bfrtip',
                     buttons: [
                             {
                                 extend: 'print',
@@ -261,7 +329,6 @@
                              var val = $.fn.dataTable.util.escapeRegex(
                                  $(this).val()
                              );
-
                              column
                                  .search(val ? '^' + val + '$' : '', true, false)
                                  .draw();
@@ -277,7 +344,7 @@
 
 
                 MyDataTable.on('init', function () {
-                    $(".dt-buttons :button").removeClass("dt-button ").addClass("btn btn-outline-secondary btn-sm");
+                    $(".dt-buttons :button").removeClass("dt-button ").addClass("btn btn-default");
                     $("#DataTables_Table_0_filter .input-sm").removeClass("input-sm ").css("margin", "0 10px");
                     var pageNumber = sessionStorage.getItem(window.location.protocol + "/dt.page");
                     if (pageNumber) {
@@ -298,5 +365,6 @@
         });
     </script>
 
+    @RenderSection("scripts", false)
 </body>
 </html>

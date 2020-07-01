@@ -1,41 +1,94 @@
 ﻿@model SocialEvents.Web.ViewModels.ApprovalViewModel
+    @{ 
+        ViewBag.Title = "اتخاذ اجراء";
+    }
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    @Html.HiddenFor(m=>m.Id);
-    
-    <div class="form-horizontal">
-        <h4>ApprovalViewModel</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.State, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EnumDropDownListFor(model => model.State, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.State, "", new { @class = "text-danger" })
-            </div>
+    @Html.HiddenFor(m => m.Id);
+
+
+    <!-- MIDDLE-->
+<div class="col-md-12">
+
+    <!--page title & breadcrumb-->
+    <header id="page-header">
+        <ol class="breadcrumb">
+            <li><a href="@Url.Action("Index","Home")">الرئيسة</a></li>
+            <li><a href="@Url.Action("Index","Event")">الفاعليات</a></li>
+        </ol>
+        <h1><i class='fa fa-fw fa-calendar'></i> @ViewBag.Title</h1>
+
+    </header><!--./page title & breadcrumb-->
+
+    <div id="content">
+
+        <div class="col-lg-12">
+            <ul>
+                <li>    يتم من خلالها اتخاذ اجراء علي الفاعليات الخاصة بكل ادارة</li>
+            </ul>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Reason, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Reason, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Reason, "", new { @class = "text-danger" })
+        <div class="row">
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <!--col: left-->
+            <div class="col-md-12 col-lg-12">
+                <div id="" class="panel panel-default">
+
+                    <div class="panel-heading">
+
+                        <span class="elipsis">
+                            <!-- panel title -->
+                            <strong><i class="fa fa-fw fa-plus"></i> اتخاذ اجراء</strong>
+                        </span>
+
+                        <!-- right options -->
+                        <ul class="options pull-right list-inline">
+                            <li><a href="#" class="opt panel_colapse" data-toggle="tooltip" title="" data-placement="bottom" data-original-title="إغلاق/فتح"></a></li>
+                        </ul>
+                        <!-- /right options -->
+
+                    </div>
+
+                    <!-- panel content -->
+                    <div class="panel-body">
+
+                        <div class="form-group">
+
+                            @Html.LabelFor(model => model.State, htmlAttributes: new { @class = "sr-only" })
+                            @Html.DropDownListFor(model => model.State, (SelectList)ViewBag.DDL("State", null), Resources.State, new { @class = "form-control select2" })
+                            @Html.ValidationMessageFor(model => model.State, "", new { @class = "text-danger" })
+
+                        </div>
+                        <div class="form-group">
+
+                            @Html.LabelFor(model => model.Reason, htmlAttributes: new { @class = "sr-only" })
+                            @Html.TextAreaFor(model => model.Reason, new { @class = "form-control",placeholder="سبب الرفض" })
+                            @Html.ValidationMessageFor(model => model.Reason, "", new { @class = "text-danger" })
+
+                        </div>
+
+                        <hr />
+                        <button type="submit" class="btn btn-block btn-primary">حفظ</button>
+
+                    </div>
+                    <!-- /panel content -->
+
+                </div>
             </div>
+            <!--./col left-->
+
         </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </div>
     </div>
+
+</div>
+    <!-- /MIDDLE -->
 }
-    <div>
-        @Html.ActionLink("Back to List", "Index")
-    </div>
+
 
 @section Scripts {
 }

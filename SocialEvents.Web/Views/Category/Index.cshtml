@@ -1,45 +1,130 @@
 ﻿@model IEnumerable<SocialEvents.Model.Category>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = Resources.Category;
 }
 
-<h2>Index</h2>
+<!-- MIDDLE-->
+<div class="col-md-12">
+    <!--page title & breadcrumb-->
+    <header id="page-header">
+        <ol class="breadcrumb">
+            <li><a href="/home">الرئيسة</a></li>
+        </ol>
+        <h1><i class='fa fa-fw fa-sitemap'></i> @ViewBag.Title</h1>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Color)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EventImage)
-        </th>
-        <th></th>
-    </tr>
+    </header><!--./page title & breadcrumb-->
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Color)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EventImage)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+    <div id="content" class="padding-20">
 
-</table>
+        <div class="row">
+            <div class="col-lg-12">
+                <ul>
+                    <li>يتم من خلالها استعراض جميع التصنيفات المتاحة في النظام</li>
+                </ul>
+            </div>
+        </div>
+
+        <div>
+            @Html.ActionLink("إضافة جديد", "Create", null, new { @class = "btn btn-primary" })
+        </div>
+
+    </div>
+    <div class="row">
+
+        <!--col: right-->
+        <div class="col-md-12 col-lg-12">
+
+            <div id="" class="panel panel-info">
+
+                <div class="panel-heading">
+
+                    <span class="elipsis">
+                        <!-- panel title -->
+                        <strong class=""><i class="fa fa-fw fa-flip-horizontal fa-list"></i> @ViewBag.Title</strong>
+                    </span>
+
+
+                    <!-- right options -->
+                    <ul class="options pull-right list-inline">
+                        <li><a href="#" class="opt panel_colapse" data-toggle="tooltip" title="" data-placement="bottom" data-original-title="إغلاق/فتح"></a></li>
+                        <li><a href="#" class="opt panel_fullscreen hidden-xs" data-toggle="tooltip" title="" data-placement="bottom" data-original-title="كامل الشاشة"><i class="fa fa-expand"></i></a></li>
+                    </ul>
+                    <!-- /right options -->
+
+
+                </div>
+
+                <!-- panel content -->
+                <div class="panel-body">
+
+                    <div class="table-responsive">
+                        <table class="dataTable table table-condensed table-hover table-striped nomargin">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Name)
+                                    </th>
+
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Color)
+                                    </th>
+
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.EventImage)
+                                    </th>
+
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr class="trHover">
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Name)
+                                        </td>
+
+                                        <td>
+                                            <div class="text-center">
+                                                @Html.DisplayFor(modelItem => item.Color)
+                                            </div>
+                                           
+                                        </td>
+                                        <td>
+                                            <img src="data:image/png;base64,@item.EventImage.FileBase64" class="" width="60" height="40" style="border: 1px solid lightgray;">
+
+                                        </td>
+
+                                        <td>
+                                            <a href="@Url.Action("Edit","Category", new { id = item.Id })">
+                                                <i class="fa fa-fw fa-pencil text-success" data-toggle="tooltip" data-placement="top" title="تعديل"></i>
+                                            </a>
+                                            <a href="@Url.Action("Details","Category", new { id = item.Id })">
+                                                <i class="fa fa-fw fa-dashboard text-success" data-toggle="tooltip" data-placement="top" title="تفاصيل"></i>
+                                            </a>
+                                            <a href="@Url.Action("Delete","Category", new { id = item.Id })">
+                                                <i class="fa fa-fw fa-trash text-danger" data-toggle="tooltip" data-placement="top" title="حذف"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+
+                        </table>
+                    </div>
+
+                </div>
+                <!-- /panel content -->
+
+            </div>
+
+
+        </div>
+        <!--./col: right-->
+
+
+    </div>
+
+</div>
+<!-- /MIDDLE -->

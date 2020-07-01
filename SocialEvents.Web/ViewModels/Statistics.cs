@@ -12,5 +12,6 @@ namespace SocialEvents.Web.ViewModels
         public List<ChartItem> Cateogries { get; set; }
         public List<ChartItem> Locations { get; set; }
         public List<ChartItem> MonthEvents { get; set; }
+        public List<SocialEvents.Model.Event> Events { get; set; }
     }
 }

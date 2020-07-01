@@ -1,172 +1,238 @@
 ﻿@using SocialEvents.Web.Helpers
 @model IEnumerable<Event>
 @{
+    ViewBag.Title = Resources.Reports; 
     var LastCategory = Guid.Empty;
 }
+<!-- MIDDLE-->
+<div class="col-md-12">
 
-<div>
+    <!--page title & breadcrumb-->
+    <header id="page-header">
+        <ol class="breadcrumb">
+            <li><a href="@Url.Action("Index","Home")">@Resources.Home</a></li>
+        </ol>
+        <h1><i class='fa fa-fw fa-file-pdf-o'></i> @ViewBag.Title</h1>
 
-    <!-- Nav tabs -->
-    <ul class="nav nav-tabs" role="tablist">
-        <li role="presentation" class="active"><a href="#Category" aria-controls="Category" role="tab" data-toggle="tab">@Resources.Category</a></li>
-        <li role="presentation"><a href="#Months" aria-controls="Months" role="tab" data-toggle="tab">@Resources.Months</a></li>
-        <li role="presentation"><a href="#Department" aria-controls="Department" role="tab" data-toggle="tab">@Resources.Department</a></li>
-    </ul>
-    <br />
-    <br />
-    <div class="row">
-        <div class="col-md-12">
-            <div class="form-group">
-                    <div class="col-md-1">
-                        @Html.Label(Resources.Year, htmlAttributes: new { @class = "control-label" })
+    </header><!--./page title & breadcrumb-->
+
+    <div id="content">
+        <br />
+        <div class="col-lg-12">
+            <ul>
+                <li>    يتم من خلالها استعراض التقارير المتاحة في النظام </li>
+            </ul>
+        </div>
+
+        <div class="row">
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <!--col: left-->
+            <div class="col-md-12 col-lg-12">
+                <div id="" class="panel panel-default">
+
+                    <div class="panel-heading">
+
+                        <span class="elipsis">
+                            <!-- panel title -->
+                            <strong><i class="fa fa-fw fa-plus"></i>@Resources.Btn_Details @Resources.Reports</strong>
+                        </span>
+
+                  
+                        <!-- right options -->
+                        <ul class="options pull-right list-inline">
+                            <li><a href="#" class="opt panel_colapse" data-toggle="tooltip" title="" data-placement="bottom" data-original-title="إغلاق/فتح"></a></li>
+                            <li><a href="#" class="opt panel_fullscreen hidden-xs" data-toggle="tooltip" title="" data-placement="bottom" data-original-title="كامل الشاشة"><i class="fa fa-expand"></i></a></li>
+                        </ul>
+                        <!-- /right options -->
 
                     </div>
-                    <div class="col-md-2">
-                        <select class="form-control" id="year-ddl">
-                            <option value="-1">@Resources.All</option>
-                            @foreach (var item in Model.OrderBy(e => e.DateFrom.Year).Select(e => new { Year = e.DateFrom.Year }).ToList().Distinct())
-                            {
-                                <option value="@item.Year">@item.Year</option>
-                            }
-                        </select>
-                    </div>
 
+                    <!-- panel content -->
+                    <div class="panel-body">
+
+                        <div>
+
+                            <!-- Nav tabs -->
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li role="presentation" class="active"><a href="#Category" aria-controls="Category" role="tab" data-toggle="tab">@Resources.Category</a></li>
+                                <li role="presentation"><a href="#Months" aria-controls="Months" role="tab" data-toggle="tab">@Resources.Months</a></li>
+                                <li role="presentation"><a href="#Department" aria-controls="Department" role="tab" data-toggle="tab">@Resources.Department</a></li>
+                            </ul>
+                            <br />
+                            <br />
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <div class="col-md-1">
+                                            @Html.Label(Resources.Year, htmlAttributes: new { @class = "control-label" })
+
+                                        </div>
+                                        <div class="col-md-2">
+                                            <select class="form-control" id="year-ddl">
+                                                <option value="-1">@Resources.All</option>
+                                                @foreach (var item in Model.OrderBy(e => e.DateFrom.Year).Select(e => new { Year = e.DateFrom.Year }).ToList().Distinct())
+                                                {
+                                                    <option value="@item.Year">@item.Year</option>
+                                                }
+                                            </select>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <br />
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+
+                                <div role="tabpanel" class="tab-pane active" id="Category">
+                                    <div class="col-md-12">
+                                        <table id="CategoryTable" class="table table-bordered table-hover noDataTable">
+                                            <thead>
+                                                <tr>
+                                                    <th> @Resources.Category </th>
+                                                    <th> @Resources.EventNumber </th>
+                                                    <th> @Resources.Event </th>
+                                                    <th> @Resources.DateFrom </th>
+                                                    <th> @Resources.TargetGroup </th>
+                                                    <th> @Resources.Location </th>
+                                                    <th> @Resources.Fees </th>
+                                                    <th> @Resources.Category </th>
+                                                    <th> @Resources.Year </th>
+                                                </tr>
+
+                                            </thead>
+
+                                            <tbody>
+                                                @foreach (var item in Model)
+                                                {
+                                                    <tr>
+                                                        <td></td>
+                                                        <td>@item.EventNumber </td>
+                                                        <td>@item.Name </td>
+                                                        <td>@item.DateFrom.ToShortDateString()</td>
+                                                        <td>@item.TargetGroup.Name </td>
+                                                        <td>@item.Location.Name </td>
+                                                        <td>@item.Fees.ToString("##.##") </td>
+                                                        <td>@item.Category.Name</td>
+                                                        <td>@item.DateFrom.Year</td>
+                                                    </tr>
+                                                }
+
+                                            </tbody>
+
+
+                                        </table>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane" id="Months">
+                                    <div class="col-md-12">
+                                        <table id="MonthsTable" class="table table-bordered table-hover noDataTable" style="width:100%;">
+                                            <thead>
+                                                <tr>
+                                                    <th> @Resources.Month </th>
+                                                    <th> @Resources.EventNumber </th>
+                                                    <th> @Resources.Event </th>
+                                                    <th> @Resources.DateFrom </th>
+                                                    <th> @Resources.TargetGroup </th>
+                                                    <th> @Resources.Location </th>
+                                                    <th> @Resources.Fees </th>
+                                                    <th> @Resources.Month </th>
+                                                    <th> @Resources.Year </th>
+                                                </tr>
+
+                                            </thead>
+
+                                            <tbody>
+                                                @foreach (var item in Model)
+                                                {
+                                                    <tr>
+                                                        <td></td>
+                                                        <td>@item.EventNumber </td>
+                                                        <td>@item.Name </td>
+                                                        <td>@item.DateFrom.ToShortDateString()</td>
+                                                        <td>@item.TargetGroup.Name </td>
+                                                        <td>@item.Location.Name </td>
+                                                        <td>@item.Fees.ToString("##.##") </td>
+                                                        <td>@item.DateFrom.ToMonthName()</td>
+                                                        <td>@item.DateFrom.Year</td>
+                                                    </tr>
+                                                }
+
+                                            </tbody>
+
+
+                                        </table>
+                                    </div>
+
+
+                                </div>
+                                <div role="tabpanel" class="tab-pane" id="Department">
+                                    <div class="col-md-12">
+
+                                        <table id="DepartmentTable" class="table table-bordered table-hover noDataTable" style="width:100%;">
+                                            <thead>
+                                                <tr>
+                                                    <th> @Resources.Department </th>
+                                                    <th> @Resources.EventNumber </th>
+                                                    <th> @Resources.Event </th>
+                                                    <th> @Resources.DateFrom </th>
+                                                    <th> @Resources.TargetGroup </th>
+                                                    <th> @Resources.Location </th>
+                                                    <th> @Resources.Fees </th>
+                                                    <th> @Resources.Month </th>
+                                                    <th> @Resources.Year </th>
+                                                </tr>
+
+                                            </thead>
+
+                                            <tbody>
+                                                @foreach (var item in Model)
+                                                {
+                                                    <tr>
+                                                        <td></td>
+                                                        <td>@item.EventNumber </td>
+                                                        <td>@item.Name </td>
+                                                        <td>@item.DateFrom.ToShortDateString()</td>
+                                                        <td>@item.TargetGroup.Name </td>
+                                                        <td>@item.Location.Name </td>
+                                                        <td>@item.Fees.ToString("##.##") </td>
+                                                        <td>@item.Department.DepartmentNameAr</td>
+                                                        <td>@item.DateFrom.Year</td>
+                                                    </tr>
+                                                }
+
+                                            </tbody>
+
+
+                                        </table>
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <!-- /panel content -->
+
+                </div>
             </div>
+            <!--./col left-->
+
         </div>
 
     </div>
-    
-    <!-- Tab panes -->
-    <div class="tab-content">
 
-        <div role="tabpanel" class="tab-pane active" id="Category">
-            <div class="col-md-12">
-                <table id="CategoryTable" class="table table-bordered table-hover noDataTable">
-                    <thead>
-                        <tr>
-                            <th> @Resources.Category </th>
-                            <th> @Resources.EventNumber </th>
-                            <th> @Resources.Event </th>
-                            <th> @Resources.DateFrom </th>
-                            <th> @Resources.TargetGroup </th>
-                            <th> @Resources.Location </th>
-                            <th> @Resources.Fees </th>
-                            <th> @Resources.Category </th>
-                            <th> @Resources.Year </th>
-                        </tr>
-
-                    </thead>
-
-                    <tbody>
-                        @foreach (var item in Model)
-                        {
-                            <tr>
-                                <td></td>
-                                <td>@item.EventNumber </td>
-                                <td>@item.Name </td>
-                                <td>@item.DateFrom.ToShortDateString()</td>
-                                <td>@item.TargetGroup.Name </td>
-                                <td>@item.Location.Name </td>
-                                <td>@item.Fees.ToString("##.##") </td>
-                                <td>@item.Category.Name</td>
-                                <td>@item.DateFrom.Year</td>
-                            </tr>
-                        }
-
-                    </tbody>
-
-
-                </table>
-            </div>
-        </div>
-        <div role="tabpanel" class="tab-pane" id="Months">
-            <div class="col-md-12">
-                <table id="MonthsTable" class="table table-bordered table-hover noDataTable" style="width:100%;">
-                    <thead>
-                        <tr>
-                            <th> @Resources.Month </th>
-                            <th> @Resources.EventNumber </th>
-                            <th> @Resources.Event </th>
-                            <th> @Resources.DateFrom </th>
-                            <th> @Resources.TargetGroup </th>
-                            <th> @Resources.Location </th>
-                            <th> @Resources.Fees </th>
-                            <th> @Resources.Month </th>
-                            <th> @Resources.Year </th>
-                        </tr>
-
-                    </thead>
-
-                    <tbody>
-                        @foreach (var item in Model)
-                        {
-                            <tr>
-                                <td></td>
-                                <td>@item.EventNumber </td>
-                                <td>@item.Name </td>
-                                <td>@item.DateFrom.ToShortDateString()</td>
-                                <td>@item.TargetGroup.Name </td>
-                                <td>@item.Location.Name </td>
-                                <td>@item.Fees.ToString("##.##") </td>
-                                <td>@item.DateFrom.ToMonthName()</td>
-                                <td>@item.DateFrom.Year</td>
-                            </tr>
-                        }
-
-                    </tbody>
-
-
-                </table>
-            </div>
-
-
-        </div>
-        <div role="tabpanel" class="tab-pane" id="Department">
-            <div class="col-md-12">
-
-                <table id="DepartmentTable" class="table table-bordered table-hover noDataTable" style="width:100%;">
-                    <thead>
-                        <tr>
-                            <th> @Resources.Department </th>
-                            <th> @Resources.EventNumber </th>
-                            <th> @Resources.Event </th>
-                            <th> @Resources.DateFrom </th>
-                            <th> @Resources.TargetGroup </th>
-                            <th> @Resources.Location </th>
-                            <th> @Resources.Fees </th>
-                            <th> @Resources.Month </th>
-                            <th> @Resources.Year </th>
-                        </tr>
-
-                    </thead>
-
-                    <tbody>
-                        @foreach (var item in Model)
-                        {
-                            <tr>
-                                <td></td>
-                                <td>@item.EventNumber </td>
-                                <td>@item.Name </td>
-                                <td>@item.DateFrom.ToShortDateString()</td>
-                                <td>@item.TargetGroup.Name </td>
-                                <td>@item.Location.Name </td>
-                                <td>@item.Fees.ToString("##.##") </td>
-                                <td>@item.Department.DepartmentNameAr</td>
-                                <td>@item.DateFrom.Year</td>
-                            </tr>
-                        }
-
-                    </tbody>
-
-
-                </table>
-            </div>
-        </div>
-
-
-
-    </div>
 </div>
+<!-- /MIDDLE -->
+
+
 
 
 @{
@@ -221,6 +287,9 @@
             //-----------------------------------categoryTable-----------------------------------
             var tables = $('.table').DataTable({
                 "ordering": false,
+                "language": {
+                        "url": "@(SocialEvents.Web.Helpers.CultureHelper.IsRighToLeft() ? Url.Content("~/language/arabic.json")    : Url.Content("~/language/english.json"))"
+                },
                 "columnDefs": [
                     {
                         "targets": [-1],

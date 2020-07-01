@@ -1,0 +1,14 @@
+.alert {
+    border-left: 0;
+    border-right: rgba(0,0,0,0.1) 5px solid !important;
+}
+
+.tooltip.right .tooltip-arrow {
+    left: 0;
+    right: unset;
+}
+
+.input-group-addon:first-child {
+    border-left: 0px solid #ccc !important;
+    border-right: 1px solid #ccc !important;
+}

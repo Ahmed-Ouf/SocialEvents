@@ -141,10 +141,9 @@ namespace SocialEvents.Web.Controllers
             ViewBag.Department = department = DepartmentService.GetBySafeerDepartmentId(socialEventsDeptId);
 #else
             //TODO: Remove commented
-        //ViewBag.IsSocialServicesDept = IsSocialServicesDept = socialEventsDeptId == GeneralEducationDeptId;
-        //ViewBag.Department = department = DepartmentService.GetBySafeerDepartmentId(sessionUserInfo.SafeerDepartmentId);
-             ViewBag.IsSocialServicesDept = IsSocialServicesDept = socialEventsDeptId == socialEventsDeptId;
-            ViewBag.Department = department = DepartmentService.GetBySafeerDepartmentId(socialEventsDeptId);
+        ViewBag.IsSocialServicesDept = IsSocialServicesDept = (socialEventsDeptId == sessionUserInfo.SafeerDepartmentId);
+        ViewBag.Department = department = DepartmentService.GetBySafeerDepartmentId(sessionUserInfo.SafeerDepartmentId);
+           
 
 #endif
 
@@ -283,11 +282,16 @@ namespace SocialEvents.Web.Controllers
             }
         }
 
-
+        /// <summary>
+        /// this method make event published and approved
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public ActionResult Publish(Guid id)
         {
             try
             {
+                
                 EventService.Publish(id);
                 EventService.SaveChanges();
                 return RedirectToAction("Index");
@@ -323,6 +327,21 @@ namespace SocialEvents.Web.Controllers
                 EventService.SaveChanges();
             }
             return RedirectToAction("Index");
+        }
+
+        public ActionResult PendingEvents()
+        {
+            List<Event> events = new List<Event>();
+            CheckAdminDepartment();
+            if (!IsSocialServicesDept)
+            {
+                events = EventService.GetAllAtiveByDepartment(department.Id).ToList();
+            }
+            else
+            {
+                events = EventService.GetAllPending().ToList();
+            }
+            return View(events);
         }
 
         //private 

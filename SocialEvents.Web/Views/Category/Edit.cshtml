@@ -1,80 +1,121 @@
 ﻿@model SocialEvents.Web.ViewModels.CategoryViewModel
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = Resources.Btn_Edit;
 }
 
-<h2>Edit</h2>
-
-
-@using (Html.BeginForm("Edit", "Category", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
+@using (Html.BeginForm("Edit", "Category", FormMethod.Post, new { enctype = "multipart/form-data", @class = "", role = "form" }))
 {
     @Html.AntiForgeryToken()
     @Html.HiddenFor(m => m.Category.Id)
     @Html.HiddenFor(m => m.Category.Active)
     @Html.HiddenFor(m => m.Category.EventImage.FileBase64)
+    <!-- MIDDLE-->
+    <div class="col-md-12">
 
-    <div class="form-horizontal">
-        <h4>Category</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.Category.Name, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Category.Name, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Category.Name, "", new { @class = "text-danger" })
-            </div>
-        </div>
+        <!--page title & breadcrumb-->
+        <header id="page-header">
+            <ol class="breadcrumb">
+                <li><a href="@Url.Action("Index","Home")">@Resources.Home</a></li>
+                <li><a href="@Url.Action("Index","Category")">@Resources.Category</a></li>
+            </ol>
+            <h1><i class='fa fa-fw fa-sitemap'></i> @ViewBag.Title</h1>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Category.Color, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Category.Color, new { htmlAttributes = new { @class = "form-control", type = "color" } })
-                @Html.ValidationMessageFor(model => model.Category.Color, "", new { @class = "text-danger" })
+        </header><!--./page title & breadcrumb-->
+
+        <div id="content">
+            <br />
+            <div class="col-lg-12">
+                <ul>
+                    <li>    يتم من خلالها تعديل تصنيف ليستخدم في الفاعاليات</li>
+                </ul>
             </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.Category.EventImage, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.DisplayFor(model => model.Category.EventImage)
-                    @Html.ValidationMessageFor(model => model.Category.EventImage, "", new { @class = "text-danger" })
-                </div>
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.Category.EventImage, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="input-group image-preview">
-                    <input type="text" class="form-control image-preview-filename" disabled="disabled"> <!-- don't give a name === doesn't send on POST/GET -->
-                    <div class="input-group-btn">
-                        <!-- image-preview-clear button -->
-                        <button type="button" class="btn btn-default image-preview-clear" style="display:none;">
-                            <span class="glyphicon glyphicon-remove"></span> Clear
-                        </button>
-                        <!-- image-preview-input -->
-                        <div class="btn btn-default image-preview-input">
-                            <span class="glyphicon glyphicon-folder-open"></span>
-                            <span class="image-preview-input-title">Browse</span>
-                            <input type="file" accept="image/png, image/jpeg, image/gif" name="File" /> <!-- rename it -->
+
+            <div class="row">
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <!--col: left-->
+                <div class="col-md-12 col-lg-12">
+                    <div id="" class="panel panel-default">
+
+                        <div class="panel-heading">
+
+                            <span class="elipsis">
+                                <!-- panel title -->
+                                <strong><i class="fa fa-fw fa-plus"></i> تعديل تـصنيف</strong>
+                            </span>
+
+                            <!-- right options -->
+                            <ul class="options pull-right list-inline">
+                                <li><a href="#" class="opt panel_colapse" data-toggle="tooltip" title="" data-placement="bottom" data-original-title="إغلاق/فتح"></a></li>
+                            </ul>
+                            <!-- /right options -->
+
                         </div>
+
+                        <!-- panel content -->
+                        <div class="panel-body">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Category.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    @Html.EditorFor(model => model.Category.Name, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Category.Name, "", new { @class = "text-danger" })
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Category.Color, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    @Html.EditorFor(model => model.Category.Color, new { htmlAttributes = new { @class = "form-control", type = "color" } })
+                                    @Html.ValidationMessageFor(model => model.Category.Color, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Category.EventImage, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="checkbox">
+                                        @Html.DisplayFor(model => model.Category.EventImage)
+                                        @Html.ValidationMessageFor(model => model.Category.EventImage, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.File, htmlAttributes: new { @class = "control-label col-md-1" })
+                                    <div class="col-md-12">
+                                        @*  @Html.EditorFor(model => model.File, new { htmlAttributes = new { @class = "form-control", accept = "image/png,image/jpeg,image/bmp" } })*@
+                                        <div class="input-group image-preview">
+                                            <input type="text" class="form-control image-preview-filename" disabled="disabled"> <!-- don't give a name === doesn't send on POST/GET -->
+                                            <div class="input-group-btn">
+                                                <!-- image-preview-clear button -->
+                                                <button type="button" class="btn btn-default image-preview-clear" style="display:none;">
+                                                    <span class="glyphicon glyphicon-remove"></span> @Resources.Clear
+                                                </button>
+                                                <!-- image-preview-input -->
+                                                <div class="btn btn-default image-preview-input">
+                                                    <span class="glyphicon glyphicon-folder-open"></span>
+                                                    <span class="image-preview-input-title">@Resources.Browse</span>
+                                                    <input type="file" accept="image/png, image/jpeg, image/gif" name="File" /> <!-- rename it -->
+                                                </div>
+                                            </div>
+                                        </div><!-- /input-group image-preview [TO HERE]-->
+                                        @Html.ValidationMessageFor(model => model.File, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+
+                            <hr />
+                            <button type="submit" class="btn btn-block btn-primary">@Resources.Btn_Save</button>
+
+                        </div>
+                        <!-- /panel content -->
+
                     </div>
-                </div><!-- /input-group image-preview [TO HERE]-->
-                @Html.ValidationMessageFor(model => model.File, "", new { @class = "text-danger" })
+                </div>
+                <!--./col left-->
+
             </div>
+
         </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
-        </div>
     </div>
+    <!-- /MIDDLE -->
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
 @section Scripts {
     <script>

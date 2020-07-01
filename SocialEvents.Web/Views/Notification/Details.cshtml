@@ -1,26 +1,78 @@
 ﻿@model SocialEvents.Model.Notification
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = Resources.Btn_Details;
 }
 
-<h2>Details</h2>
 
-<div>
-    <h4>TargetGroup</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+<!-- MIDDLE-->
+<div class="col-md-12">
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+    <!--page title & breadcrumb-->
+    <header id="page-header">
+        <ol class="breadcrumb">
+            <li><a href="@Url.Action("Index","Home")">@Resources.Home</a></li>
+            <li><a href="@Url.Action("Index","Notification")">@Resources.Notifications</a></li>
+        </ol>
+        <h1><i class='fa fa-fw fa-newspaper-o'></i> @ViewBag.Title</h1>
 
-    </dl>
+    </header><!--./page title & breadcrumb-->
+
+    <div id="content">
+        <br />
+        <div class="col-lg-12">
+            <ul>
+                <li>    يتم من خلالها استعراض الاشعار </li>
+            </ul>
+        </div>
+
+        <div class="row">
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <!--col: left-->
+            <div class="col-md-12 col-lg-12">
+                <div id="" class="panel panel-default">
+
+                    <div class="panel-heading">
+
+                        <span class="elipsis">
+                            <!-- panel title -->
+                            <strong><i class="fa fa-fw fa-plus"></i>@Resources.Btn_Details @Resources.Notification</strong>
+                        </span>
+
+                        <!-- right options -->
+                        <ul class="options pull-right list-inline">
+                            <li><a href="#" class="opt panel_colapse" data-toggle="tooltip" title="" data-placement="bottom" data-original-title="إغلاق/فتح"></a></li>
+                        </ul>
+                        <!-- /right options -->
+
+                    </div>
+
+                    <!-- panel content -->
+                    <div class="panel-body">
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                            @Html.DisplayFor(m => m.Name)
+
+                        </div>
+
+                        <hr />
+                        <div class="col-md-12">
+                            @Html.ActionLink(Resources.Btn_Back, "Index", null, new { @class = "btn btn-block  btn-info" })
+                        </div>
+
+
+                    </div>
+                    <!-- /panel content -->
+
+                </div>
+            </div>
+            <!--./col left-->
+
+        </div>
+
+    </div>
+
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+<!-- /MIDDLE -->
