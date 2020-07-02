@@ -4,6 +4,11 @@
     ViewBag.Title = Resources.Reports; 
     var LastCategory = Guid.Empty;
 }
+    <style>
+        #CategoryTable_info{
+            float:left;
+        }
+    </style>
 <!-- MIDDLE-->
 <div class="col-md-12">
 
@@ -69,7 +74,7 @@
 
                                         </div>
                                         <div class="col-md-2">
-                                            <select class="form-control" id="year-ddl">
+                                            <select class="form-control select2" id="year-ddl">
                                                 <option value="-1">@Resources.All</option>
                                                 @foreach (var item in Model.OrderBy(e => e.DateFrom.Year).Select(e => new { Year = e.DateFrom.Year }).ToList().Distinct())
                                                 {
