@@ -17,6 +17,7 @@ namespace SocialEvents.Service
         bool IsDublicatedEventNumber(Guid id, string eventNumber);
 
         IEnumerable<Event> GetAllPending();
+        IEnumerable<Event> GetAllComming();
     }
 
     public class EventService : ServiceBase<Event>, IEventService
@@ -64,6 +65,20 @@ namespace SocialEvents.Service
             var entity = GetById(id);
             entity.Published = true;
             entity.State = StateEnum.Approved;
+        }
+
+        public IEnumerable<Event> GetAllComming()
+        {
+            var year = DateTime.Now.Year;
+            var month = DateTime.Now.Month;
+            var day = DateTime.Now.Day;
+            var result = EventRepository.GetAll().Where(e => 
+            e.State == StateEnum.Approved 
+            && e.Active 
+            && e.DateFrom.Year>= year
+            && e.DateFrom.Month>= month
+            );
+            return result;
         }
 
         #region IEventService Members

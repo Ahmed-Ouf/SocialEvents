@@ -11,7 +11,7 @@ using SocialEvents.ViewModel;
 
 namespace SocialEvents.Web.Controllers
 {
-    [RoleAuthorize(Roles = "SocialEventsAdmin,SocialEventsSupervisor")]
+    //[RoleAuthorize(Roles = "SocialEventsAdmin,SocialEventsSupervisor")]
 
     public class EventController : BaseController
     {

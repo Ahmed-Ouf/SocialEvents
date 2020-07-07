@@ -1408,45 +1408,6 @@
     <Content Include="assets\plugins\jqgrid\plugins\ui.multiselect.css" />
     <Content Include="assets\plugins\jqgrid\plugins\ui.multiselect.js" />
     <Content Include="assets\plugins\jqgrid\update.txt" />
-    <Content Include="assets\plugins\jquery-file-upload\cors\postmessage.html" />
-    <Content Include="assets\plugins\jquery-file-upload\cors\result.html" />
-    <Content Include="assets\plugins\jquery-file-upload\css\blueimp-gallery.min.css" />
-    <Content Include="assets\plugins\jquery-file-upload\css\demo-ie8.css" />
-    <Content Include="assets\plugins\jquery-file-upload\css\demo.css" />
-    <Content Include="assets\plugins\jquery-file-upload\css\jquery.fileupload-noscript.css" />
-    <Content Include="assets\plugins\jquery-file-upload\css\jquery.fileupload-ui-noscript.css" />
-    <Content Include="assets\plugins\jquery-file-upload\css\jquery.fileupload-ui.css" />
-    <Content Include="assets\plugins\jquery-file-upload\css\jquery.fileupload.css" />
-    <Content Include="assets\plugins\jquery-file-upload\css\style.css" />
-    <Content Include="assets\plugins\jquery-file-upload\img\loading.gif" />
-    <Content Include="assets\plugins\jquery-file-upload\img\progressbar.gif" />
-    <Content Include="assets\plugins\jquery-file-upload\js\app.js" />
-    <Content Include="assets\plugins\jquery-file-upload\js\cors\jquery.postmessage-transport.js" />
-    <Content Include="assets\plugins\jquery-file-upload\js\cors\jquery.xdr-transport.js" />
-    <Content Include="assets\plugins\jquery-file-upload\js\jquery.fileupload-angular.js" />
-    <Content Include="assets\plugins\jquery-file-upload\js\jquery.fileupload-audio.js" />
-    <Content Include="assets\plugins\jquery-file-upload\js\jquery.fileupload-image.js" />
-    <Content Include="assets\plugins\jquery-file-upload\js\jquery.fileupload-jquery-ui.js" />
-    <Content Include="assets\plugins\jquery-file-upload\js\jquery.fileupload-process.js" />
-    <Content Include="assets\plugins\jquery-file-upload\js\jquery.fileupload-ui.js" />
-    <Content Include="assets\plugins\jquery-file-upload\js\jquery.fileupload-validate.js" />
-    <Content Include="assets\plugins\jquery-file-upload\js\jquery.fileupload-video.js" />
-    <Content Include="assets\plugins\jquery-file-upload\js\jquery.fileupload.js" />
-    <Content Include="assets\plugins\jquery-file-upload\js\jquery.iframe-transport.js" />
-    <Content Include="assets\plugins\jquery-file-upload\js\main.js" />
-    <Content Include="assets\plugins\jquery-file-upload\js\vendor\canvas-to-blob.min.js" />
-    <Content Include="assets\plugins\jquery-file-upload\js\vendor\jquery.blueimp-gallery.min.js" />
-    <Content Include="assets\plugins\jquery-file-upload\js\vendor\jquery.ui.widget.js" />
-    <Content Include="assets\plugins\jquery-file-upload\js\vendor\load-image.min.js" />
-    <Content Include="assets\plugins\jquery-file-upload\js\vendor\tmpl.js" />
-    <Content Include="assets\plugins\jquery-file-upload\js\vendor\tmpl.min.js" />
-    <Content Include="assets\plugins\jquery-file-upload\server\gae-go\static\favicon.ico" />
-    <Content Include="assets\plugins\jquery-file-upload\server\gae-go\static\robots.txt" />
-    <Content Include="assets\plugins\jquery-file-upload\server\gae-python\static\favicon.ico" />
-    <Content Include="assets\plugins\jquery-file-upload\server\gae-python\static\robots.txt" />
-    <Content Include="assets\plugins\jquery-file-upload\server\node\server.js" />
-    <Content Include="assets\plugins\jquery-file-upload\server\php\index.php" />
-    <Content Include="assets\plugins\jquery-file-upload\server\php\UploadHandler.php" />
     <Content Include="assets\plugins\jquery-footable\css\fonts\footable.svg" />
     <Content Include="assets\plugins\jquery-footable\css\footable.core.css" />
     <Content Include="assets\plugins\jquery-footable\css\footable.core.min.css" />
@@ -1845,17 +1806,6 @@
     <Content Include="assets\plugins\footable\less\footable.core.less" />
     <Content Include="assets\plugins\footable\less\footable.metro.less" />
     <Content Include="assets\plugins\footable\less\footable.standalone.less" />
-    <Content Include="assets\plugins\jquery-file-upload\server\gae-go\app.yaml" />
-    <Content Include="assets\plugins\jquery-file-upload\server\gae-go\app\main.go" />
-    <Content Include="assets\plugins\jquery-file-upload\server\gae-python\app.yaml" />
-    <Content Include="assets\plugins\jquery-file-upload\server\gae-python\main.py" />
-    <Content Include="assets\plugins\jquery-file-upload\server\node\.gitignore" />
-    <Content Include="assets\plugins\jquery-file-upload\server\node\package.json" />
-    <Content Include="assets\plugins\jquery-file-upload\server\node\public\files\.gitignore" />
-    <Content Include="assets\plugins\jquery-file-upload\server\node\public\files\thumbnail\.gitignore" />
-    <Content Include="assets\plugins\jquery-file-upload\server\node\tmp\.gitignore" />
-    <Content Include="assets\plugins\jquery-file-upload\server\php\files\.gitignore" />
-    <Content Include="assets\plugins\jquery-file-upload\server\php\files\.htaccess" />
     <Content Include="assets\plugins\jquery-footable\css\fonts\footable.eot" />
     <Content Include="assets\plugins\jquery-footable\css\fonts\footable.ttf" />
     <Content Include="assets\plugins\jquery-footable\css\fonts\footable.woff" />
@@ -2089,7 +2039,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="assets\plugins\jquery-file-upload\server\php\files\thumbnail\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Reports\Report1.rdlc" />

@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace SocialEvents.Web.Controllers
 {
-    [RoleAuthorize(Roles = "SocialEventsAdmin")]
+    //[RoleAuthorize(Roles = "SocialEventsAdmin")]
     public class NotificationController : BaseController
     {
         private readonly INotificationService NotificationService;
