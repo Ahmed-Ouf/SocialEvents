@@ -18,7 +18,7 @@
         <header id="page-header">
             <ol class="breadcrumb">
                 <li><a href="@Url.Action("Index","Home")">@Resources.Home</a></li>
-                <li><a href="@Url.Action("Index","Announcement")">@Resources.Announcement</a></li>
+                <li><a href="@Url.Action("Index","Announcement")">@Resources.Announcements</a></li>
             </ol>
             <h1><i class='fa fa-fw fa-bullhorn'></i> @ViewBag.Title</h1>
 
@@ -28,7 +28,7 @@
             <br />
             <div class="col-lg-12">
                 <ul>
-                    <li>    يتم من خلالها أضافة التعميم</li>
+                    <li>    يتم من خلالها أضافة @Resources.Announcements</li>
                 </ul>
             </div>
 
@@ -43,7 +43,7 @@
 
                             <span class="elipsis">
                                 <!-- panel title -->
-                                <strong><i class="fa fa-fw fa-plus"></i> @Resources.Btn_Create  @Resources.Announcement</strong>
+                                <strong><i class="fa fa-fw fa-plus"></i> @Resources.Btn_Create  @Resources.Announcements</strong>
                             </span>
 
                             <!-- right options -->
@@ -66,12 +66,11 @@
                             </div>
 
                             <div class="form-group">
-                                <span class="col-md-1"> @Resources.Published</span>
-                                <label class="switch switch-success">
-                                    <input type="checkbox" name="Announcement.Published" id="Announcement_Published" checked value="true">
-                                    <span class="switch-label" data-on="نعم" data-off="لا"></span>
-                                </label>
-                                @Html.ValidationMessageFor(model => model.Announcement.Published, "", new { @class = "text-danger" })
+                                @Html.LabelFor(model => model.Announcement.Published, htmlAttributes: new { @class = "control-label col-md-1" })
+                                <div class="">
+                                    @Html.EditorFor(model => model.Announcement.Published)
+                                    @Html.ValidationMessageFor(model => model.Announcement.Published, "", new { @class = "text-danger" })
+                                </div>
                             </div>
                             <div class="clearfix"></div>
                             <div class="form-group">

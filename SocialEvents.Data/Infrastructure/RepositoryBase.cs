@@ -110,6 +110,12 @@ namespace SocialEvents.Data.Infrastructure
             Update(entity);
         }
 
+        public void Activate(T entity)
+        {
+            entity.Active = true;
+            Update(entity);
+        }
+
         public IQueryable<T> Where(Expression<Func<T, bool>> filter = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, params Expression<Func<T, object>>[] includes)
         {
             IQueryable<T> query = dbSet;

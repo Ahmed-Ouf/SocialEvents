@@ -12,7 +12,7 @@ namespace SocialEvents.Web.Helpers
             bool result = false;
             var selectedRoles = roles.Split(',');
             var currentUserInfo= (vm.CurrentUserViewModel)HttpContext.Current.Session["current-user"];
-            var sessionRoles = currentUserInfo.Roles;
+            var sessionRoles = currentUserInfo?.Roles;
             if (sessionRoles != null && sessionRoles.Any())
             {
                 result = selectedRoles.Any(r => sessionRoles.Contains(r));

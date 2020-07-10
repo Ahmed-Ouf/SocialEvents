@@ -1,6 +1,7 @@
 ﻿using SocialEvents.Data.Infrastructure;
 using SocialEvents.Data.Repositories;
 using SocialEvents.Model;
+using SocialEvents.Service.FCM;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -25,7 +26,14 @@ namespace SocialEvents.Service
 
         #region INotificationService Members
 
-
+        public override void Add(Notification model)
+        {
+            base.Add(model);
+            if (model.Active)
+            {
+                FCMNotificationService.Send("تنبية", model.Name);
+            }
+        }
         #endregion INotificationService Members
     }
 }

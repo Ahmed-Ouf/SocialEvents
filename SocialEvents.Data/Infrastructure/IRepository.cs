@@ -39,6 +39,7 @@ namespace SocialEvents.Data.Infrastructure
         void Deactivate(object Id);
 
         void Deactivate(T entity);
+        void Activate(T entity);
 
         IQueryable<T> Where(Expression<Func<T, bool>> filter = null,
                             Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,

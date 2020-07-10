@@ -1,6 +1,7 @@
 ﻿using SocialEvents.Data.Infrastructure;
 using SocialEvents.Data.Repositories;
 using SocialEvents.Model;
+using SocialEvents.Service.FCM;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,7 +30,22 @@ namespace SocialEvents.Service
         {
             this.EventRepository = EventRepository;
         }
-
+        public override void Add(Event model)
+        {
+            base.Add(model);
+            if (model.Active && model.State == StateEnum.Approved && model.Published)
+            {
+                FCMNotificationService.Send(model.Name, model.Description);
+            }
+        }
+        public override void Update(Event model)
+        {
+            base.Update(model);
+            if (model.Active && model.State == StateEnum.Approved && model.Published)
+            {
+                FCMNotificationService.Send(model.Name, model.Description);
+            }
+        }
         public void Approval(Event eventModel)
         {
             var entity = GetById(eventModel.Id);
@@ -50,7 +66,7 @@ namespace SocialEvents.Service
         }
         public IEnumerable<Event> GetAllPending()
         {
-            var result = EventRepository.GetAll().Where(e => e.State==StateEnum.Pending && e.Active);
+            var result = EventRepository.GetAll().Where(e => e.State == StateEnum.Pending && e.Active);
             return result;
         }
 
@@ -65,6 +81,11 @@ namespace SocialEvents.Service
             var entity = GetById(id);
             entity.Published = true;
             entity.State = StateEnum.Approved;
+
+            if (entity.Active && entity.State == StateEnum.Approved && entity.Published)
+            {
+                FCMNotificationService.Send(entity.Name, entity.Description);
+            }
         }
 
         public IEnumerable<Event> GetAllComming()
@@ -72,11 +93,11 @@ namespace SocialEvents.Service
             var year = DateTime.Now.Year;
             var month = DateTime.Now.Month;
             var day = DateTime.Now.Day;
-            var result = EventRepository.GetAll().Where(e => 
-            e.State == StateEnum.Approved 
-            && e.Active 
-            && e.DateFrom.Year>= year
-            && e.DateFrom.Month>= month
+            var result = EventRepository.GetAll().Where(e =>
+            e.State == StateEnum.Approved
+            && e.Active
+            && e.DateFrom.Year >= year
+            && e.DateFrom.Month >= month
             );
             return result;
         }

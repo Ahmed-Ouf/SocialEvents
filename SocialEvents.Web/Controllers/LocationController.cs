@@ -20,7 +20,7 @@ namespace SocialEvents.Web.Controllers
         // GET: Location
         public ActionResult Index()
         {
-            var list = LocationService.GetAllAtive();
+            var list = LocationService.GetAll();
             return View(list);
         }
 
@@ -117,6 +117,20 @@ namespace SocialEvents.Web.Controllers
             {
                 return View();
             }
+        }
+        public ActionResult Activate(Guid id)
+        {
+            var model = LocationService.GetById(id);
+            LocationService.Activate(model);
+                LocationService.SaveChanges();
+            return RedirectToAction("Index");
+        }
+        public ActionResult DeActivate(Guid id)
+        {
+            var model = LocationService.GetById(id);
+            LocationService.Deactivate(model);
+                LocationService.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }

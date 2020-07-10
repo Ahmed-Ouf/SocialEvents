@@ -20,7 +20,7 @@ namespace SocialEvents.Web.Controllers
         // GET: TargetGroup
         public ActionResult Index()
         {
-            var list = TargetGroupService.GetAllAtive();
+            var list = TargetGroupService.GetAll();
             return View(list);
         }
 
@@ -47,7 +47,7 @@ namespace SocialEvents.Web.Controllers
                 if (ModelState.IsValid)
                 {
 
-            
+
                     TargetGroupService.Add(model);
                     TargetGroupService.SaveChanges();
                 }
@@ -64,8 +64,8 @@ namespace SocialEvents.Web.Controllers
                 return View();
             }
         }
- 
-        
+
+
 
         // GET: TargetGroup/Edit/5
         public ActionResult Edit(Guid id)
@@ -117,6 +117,21 @@ namespace SocialEvents.Web.Controllers
             {
                 return View();
             }
+        }
+
+        public ActionResult Activate(Guid id)
+        {
+            var model = TargetGroupService.GetById(id);
+            TargetGroupService.Activate(model);
+            TargetGroupService.SaveChanges();
+            return RedirectToAction("Index");
+        }
+        public ActionResult DeActivate(Guid id)
+        {
+            var model = TargetGroupService.GetById(id);
+            TargetGroupService.Deactivate(model);
+            TargetGroupService.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }
