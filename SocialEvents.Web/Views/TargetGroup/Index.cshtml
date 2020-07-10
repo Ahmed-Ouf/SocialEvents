@@ -65,7 +65,9 @@
                                     <th>
                                         @Html.DisplayNameFor(model => model.Name)
                                     </th>
-
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Active)
+                                    </th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -76,17 +78,29 @@
                                         <td>
                                             @Html.DisplayFor(modelItem => item.Name)
                                         </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Active)
+                                        </td>
 
                                         <td>
                                             <a href="@Url.Action("Edit","TargetGroup", new { id = item.Id })">
                                                 <i class="fa fa-fw fa-pencil text-success" data-toggle="tooltip" data-placement="top" title="تعديل"></i>
                                             </a>
                                             @*<a href="@Url.Action("Details","TargetGroup", new { id = item.Id })">
-                                                <i class="fa fa-fw fa-dashboard text-success" data-toggle="tooltip" data-placement="top" title="تفاصيل"></i>
-                                            </a>*@
-                                            <a href="@Url.Action("Delete","TargetGroup", new { id = item.Id })">
-                                                <i class="fa fa-fw fa-trash text-danger" data-toggle="tooltip" data-placement="top" title="حذف"></i>
-                                            </a>
+            <i class="fa fa-fw fa-dashboard text-success" data-toggle="tooltip" data-placement="top" title="تفاصيل"></i>
+        </a>*@
+                                            @if (item.Active)
+                                            {
+                                                <a href="@Url.Action("DeActivate","TargetGroup", new { id = item.Id })">
+                                                    <i class="fa fa-thumbs-down text-danger" data-toggle="tooltip" data-placement="top" title="@Resources.Deactivate"></i>
+                                                </a>
+                                            }
+                                            else
+                                            {
+                                                <a href="@Url.Action("Activate","TargetGroup", new { id = item.Id })">
+                                                    <i class="fa fa-thumbs-up text-info" data-toggle="tooltip" data-placement="top" title="@Resources.Activate"></i>
+                                                </a>
+                                            }
                                         </td>
                                     </tr>
                                 }

@@ -7,6 +7,7 @@
     var actionName = ViewContext.RouteData.GetRequiredString("action");
     actionName = actionName == "Index" ? "" : "/" + actionName;
     controllerName = controllerName.Replace("Controller", "");
+    string thisUrl = controllerName + actionName;
 }
 @helper selected(string c, string culture)
 {
@@ -25,7 +26,7 @@
     <!-- mobile settings -->
     <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
 
-
+    <link rel="shortcut icon" type="image/x-icon" href="~/favicon.ico" />
 
     <!-- FONT AWESOME -->
     @*<link href="~/assets/font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet" />
@@ -70,65 +71,74 @@
             -->
             <nav id="sideNav">
                 <!-- MAIN MENU -->
-                <ul class="nav nav-list">
+                <ul class="nav nav-list" id="sideNavUl">
                     <li class="active">
                         <!-- dashboard -->
-                        <a class="dashboard" href="@Url.Action( "Index", "Home")">
+                        <a class="dashboard" href="@Url.Action("Index", "Home")">
                             <i class="main-icon fa fa-home"></i> <span>الرئيسة</span>
                         </a>
                     </li>
+                    @*//TODO: REmove True ||*@
+                    @if (true || User.HasAnyRoles("SocialEventsAdmin,SocialEventsSupervisor"))
+                    {
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-menu-arrow pull-right"></i>
+                                <i class="main-icon fa fa-calendar"></i> <span>الفعاليات</span>
+                            </a>
+                            <ul>
 
-                    <li class="">
-                        <a href="#">
-                            <i class="fa fa-menu-arrow pull-right"></i>
-                            <i class="main-icon fa fa-calendar"></i> <span>الفعاليات</span>
-                        </a>
-                        <ul>
-                            <!-- submenus -->
-                            <li><a href="@Url.Action( "Index", "Event")"><i class="fa fa-fw fa-list"></i> استعراض الفعاليات</a></li>
-                            <li><a href="@Url.Action( "Create","Event")"><i class="fa fa-fw fa-plus"></i> إضافة فعالية جديدة</a></li>
-                        </ul>
-                    </li>
+                                <!-- submenus -->
+                                <li><a href="@Url.Action("Index", "Event")"><i class="fa fa-fw fa-list"></i> استعراض الفعاليات</a></li>
+                                <li><a href="@Url.Action("Create", "Event")"><i class="fa fa-fw fa-plus"></i> إضافة فعالية جديدة</a></li>
 
-                    <li class="">
-                        <a href="#">
-                            <i class="fa fa-menu-arrow pull-right"></i>
-                            <i class="main-icon fa fa-cog"></i> <span>إدارة النظام</span>
-                        </a>
-                        <ul>
-                            <!-- submenus -->
-                            <li><a href="@Url.Action( "PendingEvents", "Event")"><i class="fa fa-fw fa-check-square-o"></i> اعتماد الفعاليات</a></li>
-                            <li><a href="@Url.Action( "Index", "Announcement")"><i class="fa fa-fw fa-bullhorn"></i> التعاميم</a></li>
-                            @*<li><a href="@Url.Action( "Index", "Notification")"><i class="fa fa-fw fa-flag"></i> التنبيهات</a></li>*@
-                            <li><a href="@Url.Action("Index","Report")"><i class="fa fa-fw fa-file-pdf-o"></i> التقارير</a></li>
-                            @*<li><a href="#"><i class="fa fa-fw fa-bar-chart"></i> الإحصاءيات</a></li>*@
-                        </ul>
-                    </li>
-                    <li class="">
-                        <a href="#">
-                            <i class="fa fa-menu-arrow pull-right"></i>
-                            <i class="main-icon fa fa-sliders"></i> <span>إعدادات النظام</span>
-                        </a>
-                        <ul>
-                            <!-- submenus -->
-                            <li><a href="@Url.Action( "Index", "Location")"><i class="fa fa-fw fa-map-signs"></i> المواقع</a></li>
-                            <li><a href="@Url.Action( "Index", "Category")"><i class="fa fa-fw fa-sitemap"></i> التصنيفات</a></li>
-                            <li><a href="@Url.Action("Index", "TargetGroup")"><i class="fa fa-fw fa-user-circle"></i> الفئات المستهدفة</a></li>
-                            @*<li><a href="#"><i class="fa fa-fw fa-users"></i> الإدارات وَ المستخدمين</a></li>*@
-                        </ul>
-                    </li>
+
+                            </ul>
+                        </li>
+                    }
+                    @*//TODO: REmove True ||*@
+                    @if (true || User.HasAnyRoles("SocialEventsAdmin"))
+                    {
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-menu-arrow pull-right"></i>
+                                <i class="main-icon fa fa-cog"></i> <span>إدارة النظام</span>
+                            </a>
+                            <ul>
+                                <!-- submenus -->
+                                <li><a href="@Url.Action("PendingEvents", "Event")"><i class="fa fa-fw fa-check-square-o"></i> اعتماد الفعاليات</a></li>
+                                <li><a href="@Url.Action("Index", "Announcement")"><i class="fa fa-fw fa-bullhorn"></i> @Resources.Announcements</a></li>
+                                <li><a href="@Url.Action("Index", "Notification")"><i class="fa fa-fw fa-flag"></i> @Resources.Notifications</a></li>
+                                <li><a href="@Url.Action("Index", "Report")"><i class="fa fa-fw fa-file-pdf-o"></i> التقارير</a></li>
+                                @*<li><a href="#"><i class="fa fa-fw fa-bar-chart"></i> الإحصاءيات</a></li>*@
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-menu-arrow pull-right"></i>
+                                <i class="main-icon fa fa-sliders"></i> <span>إعدادات النظام</span>
+                            </a>
+                            <ul>
+                                <!-- submenus -->
+                                <li><a href="@Url.Action("Index", "Location")"><i class="fa fa-fw fa-map-signs"></i> المواقع</a></li>
+                                <li><a href="@Url.Action("Index", "Category")"><i class="fa fa-fw fa-sitemap"></i> التصنيفات</a></li>
+                                <li><a href="@Url.Action("Index", "TargetGroup")"><i class="fa fa-fw fa-user-circle"></i> الفئات المستهدفة</a></li>
+                                @*<li><a href="#"><i class="fa fa-fw fa-users"></i> الإدارات وَ المستخدمين</a></li>*@
+                            </ul>
+                        </li>
+                    }
                     <!--<li class="">
-                        <a href="#">
-                            <i class="fa fa-menu-arrow pull-right"></i>
-                            <i class="main-icon fa fa-mobile"></i> <span>إعدادات التطبيق</span>
-                        </a>
-                        <ul>-->
+    <a href="#">
+        <i class="fa fa-menu-arrow pull-right"></i>
+        <i class="main-icon fa fa-mobile"></i> <span>إعدادات التطبيق</span>
+    </a>
+    <ul>-->
                     <!-- submenus -->
                     <!--<li><a href="#"><i class="fa fa-fw fa-address-card"></i> معلومات التواصل</a></li>
-                            <li><a href="#"><i class="fa fa-fw fa-address-card-o"></i> معلومات التطبيق</a></li>
-                            <li><a href="#"><i class="fa fa-fw fa-toggle-on"></i> الإتاحة</a></li>
-                        </ul>
-                    </li>-->
+            <li><a href="#"><i class="fa fa-fw fa-address-card-o"></i> معلومات التطبيق</a></li>
+            <li><a href="#"><i class="fa fa-fw fa-toggle-on"></i> الإتاحة</a></li>
+        </ul>
+    </li>-->
 
                 </ul>
 
@@ -181,7 +191,7 @@
                             <img class="user-avatar" alt="" src="~/assets/images/noavatar.jpg" height="34" />
                             <span class="user-name">
                                 <span class="hidden-xs">
-                                    سلطان العتيبي
+                                    @User.Identity.Name
                                 </span>
                             </span>
                         </a>
@@ -233,7 +243,7 @@
     @Scripts.Render("~/bundles/jquery")
     @* @Scripts.Render("~/bootstrap/js")*@
     <script type="text/javascript">
-        var plugin_path = '/assets/plugins/';
+        var plugin_path = "@Url.Content("~/assets/plugins/")" ;
     </script>
     @* <script type="text/javascript" src="assets/plugins/jquery/jquery-2.2.3.min.js"></script>
         <script type="text/javascript" src="assets/js/app.js"></script>*@
@@ -245,7 +255,15 @@
 
 
 
-    <script type="text/javascript">
+<script type="text/javascript">
+
+        $(function () {
+            //active ui link from aside bar
+            if ($('#sideNavUl a[href*="@thisUrl"]')[0]) {
+
+                $($($('#sideNavUl a[href*="@thisUrl"]')[0].closest("li")).addClass("active").closest("ul").closest("li")).addClass("menu-open");
+            }
+        });
         /*
             Toastr Notification On Load
 
@@ -281,12 +299,14 @@
         //});
 
 
-    </script>
+</script>
     <script>
         $(function () {
+
             $('.select2').select2({
                 dir: "@(SocialEvents.Web.Helpers.CultureHelper.IsRighToLeft() ? "rtl": "ltr"))"
             });
+
          MyDataTable = $("table.dataTable").not('.noDataTable').DataTable({
                     "responsive": false,
                     //"ordering": false,

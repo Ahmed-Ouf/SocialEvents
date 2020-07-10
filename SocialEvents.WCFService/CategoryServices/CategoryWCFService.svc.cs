@@ -22,7 +22,7 @@ namespace SocialEvents.WCFService
 
         public IEnumerable<CategoryViewModel> GetCategories()
         {
-            var entity = _CategoryService.GetAllAtive().ToList();
+            var entity = _CategoryService.GetAll().ToList();
             var model = _mapper.Map<List<Category>, List<CategoryViewModel>>(entity);
             return model;
         }

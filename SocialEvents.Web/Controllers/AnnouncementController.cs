@@ -95,6 +95,7 @@ namespace SocialEvents.Web.Controllers
         {
             try
             {
+                ModelState.Remove("File");
                 if (ModelState.IsValid)
                 {
                     ConvertFileToBase64(model);

@@ -73,6 +73,9 @@
                                     <th>
                                         @Html.DisplayNameFor(model => model.EventImage)
                                     </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Active)
+                                    </th>
 
                                     <th></th>
                                 </tr>
@@ -89,13 +92,15 @@
                                             <div class="text-center">
                                                 @Html.DisplayFor(modelItem => item.Color)
                                             </div>
-                                           
+
                                         </td>
                                         <td>
                                             <img src="data:image/png;base64,@item.EventImage.FileBase64" class="" width="60" height="40" style="border: 1px solid lightgray;">
 
                                         </td>
-
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Active)
+                                        </td>
                                         <td>
                                             <a href="@Url.Action("Edit","Category", new { id = item.Id })">
                                                 <i class="fa fa-fw fa-pencil text-success" data-toggle="tooltip" data-placement="top" title="تعديل"></i>
@@ -103,9 +108,19 @@
                                             <a href="@Url.Action("Details","Category", new { id = item.Id })">
                                                 <i class="fa fa-fw fa-dashboard text-success" data-toggle="tooltip" data-placement="top" title="تفاصيل"></i>
                                             </a>
-                                            <a href="@Url.Action("Delete","Category", new { id = item.Id })">
-                                                <i class="fa fa-fw fa-trash text-danger" data-toggle="tooltip" data-placement="top" title="حذف"></i>
-                                            </a>
+                                            @if (item.Active)
+                                            {
+                                                <a href="@Url.Action("DeActivate","Category", new { id = item.Id })">
+                                                    <i class="fa fa-thumbs-down text-danger" data-toggle="tooltip" data-placement="top" title="@Resources.Deactivate"></i>
+                                                </a>
+                                            }
+                                            else
+                                            {
+                                                <a href="@Url.Action("Activate","Category", new { id = item.Id })">
+                                                    <i class="fa fa-thumbs-up text-info" data-toggle="tooltip" data-placement="top" title="@Resources.Activate"></i>
+                                                </a>
+                                            }
+
                                         </td>
                                     </tr>
                                 }

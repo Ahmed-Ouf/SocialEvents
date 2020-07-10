@@ -228,22 +228,19 @@
 
                                 <div class="row mb-10">
                                     <div class="col-lg-6">
-                                        <label class="switch switch-success">
-                                            <input type="checkbox" name="Published" id="Published" checked value="true">
-                                            <span class="switch-label" data-on="نعم" data-off="لا"></span>
-                                            <span> النشر</span>
-                                        </label>
+                                        @Html.LabelFor(model => model.Published, htmlAttributes: new { @class = "control-label col-md-1" })
+                                        <div class="">
+                                            @Html.EditorFor(model => model.Published)
                                             @Html.ValidationMessageFor(model => model.Published, "", new { @class = "text-danger" })
+                                        </div>
                                     </div>
 
                                     <div class="col-lg-6">
-                                        <label class="switch switch-success">
-                                            <input type="checkbox" name="Notifiable" id="Notifiable" checked value="true">
-                                            @*@Html.EditorFor(model => model.Notifiable)*@
-                                            <span class="switch-label" data-on="نعم" data-off="لا"></span>
-                                            <span> التنبيه</span>
-                                        </label>
+                                        @Html.LabelFor(model => model.Notifiable, htmlAttributes: new { @class = "control-label col-md-1" })
+                                        <div class="">
+                                            @Html.EditorFor(model => model.Notifiable)
                                             @Html.ValidationMessageFor(model => model.Notifiable, "", new { @class = "text-danger" })
+                                        </div>
                                     </div>
                                 </div>
                             }

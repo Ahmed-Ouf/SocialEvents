@@ -360,4 +360,13 @@
   <data name="Btn_Change" xml:space="preserve">
     <value>تغير</value>
   </data>
+  <data name="Announcements" xml:space="preserve">
+    <value>الشرائح المتحركة</value>
+  </data>
+  <data name="Deactivate" xml:space="preserve">
+    <value>تعطيل</value>
+  </data>
+  <data name="Activate" xml:space="preserve">
+    <value>تفعيل</value>
+  </data>
 </root>
