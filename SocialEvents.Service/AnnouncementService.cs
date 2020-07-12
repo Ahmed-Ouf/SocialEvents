@@ -1,7 +1,6 @@
 ﻿using SocialEvents.Data.Infrastructure;
 using SocialEvents.Data.Repositories;
 using SocialEvents.Model;
-using SocialEvents.Service.FCM;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,10 +39,6 @@ namespace SocialEvents.Service
 
                 base.Add(model);
 
-                if (model.Active && model.Published)
-                {
-                    FCMNotificationService.Send("تعميم", model.Name);
-                }
             }
             catch (System.Exception ex)
             {
@@ -55,11 +50,6 @@ namespace SocialEvents.Service
         {
             model.Active = true;
             base.Update(model);
-            if (model.Active && model.Published)
-            {
-                FCMNotificationService.Send("تعميم", model.Name);
-            }
-
         }
 
         public void Publish(Guid id)
@@ -67,11 +57,6 @@ namespace SocialEvents.Service
             var entity = this.announcementRepository.GetById(id);
             entity.Published = true;
             this.announcementRepository.Update(entity);
-            if (entity.Active && entity.Published)
-            {
-                FCMNotificationService.Send("تعميم", entity.Name);
-            }
-
         }
 
         public IEnumerable<Announcement> GetAllPublished()

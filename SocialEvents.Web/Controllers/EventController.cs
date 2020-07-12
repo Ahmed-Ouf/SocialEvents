@@ -208,9 +208,9 @@ namespace SocialEvents.Web.Controllers
 
                 return RedirectToAction("Index");
             }
-            catch
+            catch(Exception ex) 
             {
-                return View();
+                return View(model);
             }
         }
 

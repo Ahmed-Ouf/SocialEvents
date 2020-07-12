@@ -106,7 +106,7 @@
                                                     @Resources.Pending
                                                     break;
                                                 case StateEnum.Approved:
-                                                    @Resources.ApprovedState 
+                                                    @Resources.ApprovedState
                                                     break;
                                                 case StateEnum.Rejected:
                                                     @Resources.RejectedState
@@ -122,46 +122,50 @@
 
                                             @if (department != null)
                                             {
-                                            <span>
-                                                @if (item.State == StateEnum.Pending)
-                                                {
+                                                <span>
+                                                    @*@if (item.State == StateEnum.Pending)
+                                                        {
+                                                        }*@
                                                     <a href="@Url.Action("Edit","Event", new { id = item.Id })">
                                                         <i class="fa fa-fw fa-pencil text-success" data-toggle="tooltip" data-placement="top" title="@Resources.Btn_Edit"></i>
                                                     </a>
-                                                }
 
-                                                <a href="@Url.Action("Details","Event", new { id = item.Id })">
-                                                    <i class="fa fa-fw fa-dashboard text-success" data-toggle="tooltip" data-placement="top" title="@Resources.Btn_Details"></i>
-                                                </a>
-                                                @if (ViewBag.IsSocialServicesDept)
-                                                {
-                                                    <a href="@Url.Action("Approval","Event", new { id = item.Id })">
-                                                        <i class="fa fa-fw fa-check text-success" data-toggle="tooltip" data-placement="top" title="@Resources.Approved"></i>
+                                                    <a href="@Url.Action("Details","Event", new { id = item.Id })">
+                                                        <i class="fa fa-fw fa-dashboard text-success" data-toggle="tooltip" data-placement="top" title="@Resources.Btn_Details"></i>
                                                     </a>
-
-                                                    <a href="@Url.Action("Publish","Event", new { id = item.Id })">
-                                                        <i class="fa fa-fw fa-eye text-success" data-toggle="tooltip" data-placement="top" title="@Resources.Published"></i>
-                                                    </a>
-
-                                                    <a href="@Url.Action("Delete","Event", new { id = item.Id })">
-                                                        <i class="fa fa-fw fa-trash text-danger" data-toggle="tooltip" data-placement="top" title="@Resources.Btn_Delete"></i>
-                                                    </a>
-                                                }
-                                                else
-                                                {
-                                                    if (item.State==StateEnum.Approved)
+                                                    @if (ViewBag.IsSocialServicesDept)
                                                     {
-                                                        <a href="@Url.Action("Publish","Event", new { id = item.Id })">
-                                                            <i class="fa fa-fw fa-eye text-success" data-toggle="tooltip" data-placement="top" title="@Resources.Published"></i>
+                                                        if (item.State != StateEnum.Approved)
+                                                        {
+                                                            <a href="@Url.Action("Approval", "Event", new { id = item.Id })">
+                                                                <i class="fa fa-fw fa-check text-success" data-toggle="tooltip" data-placement="top" title="@Resources.Approved"></i>
+                                                            </a>
+                                                        }
+                                                        if (!item.Published)
+                                                        {
+                                                            <a href="@Url.Action("Publish", "Event", new { id = item.Id })">
+                                                                <i class="fa fa-fw fa-eye text-success" data-toggle="tooltip" data-placement="top" title="@Resources.Published"></i>
+                                                            </a>
+                                                        }
+                                                        <a href="@Url.Action("Delete","Event", new { id = item.Id })">
+                                                            <i class="fa fa-fw fa-trash text-danger" data-toggle="tooltip" data-placement="top" title="@Resources.Btn_Delete"></i>
                                                         </a>
                                                     }
+                                                    else
+                                                    {
+                                                        if (item.State == StateEnum.Approved && !item.Published)
+                                                        {
+                                                            <a href="@Url.Action("Publish","Event", new { id = item.Id })">
+                                                                <i class="fa fa-fw fa-eye text-success" data-toggle="tooltip" data-placement="top" title="@Resources.Published"></i>
+                                                            </a>
+                                                        }
 
 
-                                                    <a href="@Url.Action("Delete","Event", new { id = item.Id })">
-                                                        <i class="fa fa-fw fa-trash text-danger" data-toggle="tooltip" data-placement="top" title="@Resources.Btn_Delete"></i>
-                                                    </a>
-                                                }
-                                            </span>
+                                                        <a href="@Url.Action("Delete","Event", new { id = item.Id })">
+                                                            <i class="fa fa-fw fa-trash text-danger" data-toggle="tooltip" data-placement="top" title="@Resources.Btn_Delete"></i>
+                                                        </a>
+                                                    }
+                                                </span>
                                             }
 
                                         </td>
@@ -191,7 +195,7 @@
 
                                         </th>*@
                                     <th class="Searchable">
-                                       
+
                                     </th>
                                     <th>
 

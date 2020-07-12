@@ -11,7 +11,7 @@
 {
     @Html.AntiForgeryToken()
 
-   
+
 
     <!-- MIDDLE-->
     <div class="col-md-12">
@@ -26,14 +26,14 @@
 
         </header><!--./page title & breadcrumb-->
 
-        <div id="content" >
+        <div id="content">
 
-                <div class="col-lg-12">
-                    <br />
-                    <ul>
-                        <li>يتم من خلالها اضافة الفاعليات الخاصة بكل ادارة</li>
-                    </ul>
-                </div>
+            <div class="col-lg-12">
+                <br />
+                <ul>
+                    <li>يتم من خلالها اضافة الفاعليات الخاصة بكل ادارة</li>
+                </ul>
+            </div>
 
             <div class="row">
 
@@ -125,7 +125,7 @@
 
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        
+
                                         @Html.LabelFor(model => model.TargetAge, htmlAttributes: new { @class = "sr-only" })
                                         @Html.EditorFor(model => model.TargetAge, new { htmlAttributes = new { @class = "form-control", placeholder = "الفئة العمرية" } })
                                         @Html.ValidationMessageFor(model => model.TargetAge, "", new { @class = "text-danger" })
@@ -155,7 +155,7 @@
                             <div class="row mb-0">
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                       
+
                                         @Html.LabelFor(model => model.DateFrom, htmlAttributes: new { @class = "" })
                                         @Html.EditorFor(model => model.DateFrom, new { htmlAttributes = new { @class = "form-control", Type = "date" } })
                                         @Html.ValidationMessageFor(model => model.DateFrom, "", new { @class = "text-danger" })
@@ -164,7 +164,7 @@
 
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                       
+
                                         @Html.LabelFor(model => model.DateTo, htmlAttributes: new { @class = "" })
                                         @Html.EditorFor(model => model.DateTo, new { htmlAttributes = new { @class = "form-control", Type = "date" } })
                                         @Html.ValidationMessageFor(model => model.DateTo, "", new { @class = "text-danger" })
@@ -173,7 +173,7 @@
 
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        
+
                                         @Html.LabelFor(model => model.TimeFrom, htmlAttributes: new { @class = "control-label col-md-2" })
                                         @Html.EditorFor(model => model.TimeFrom, new { htmlAttributes = new { @class = "form-control", Type = "time" } })
                                         @Html.ValidationMessageFor(model => model.TimeFrom, "", new { @class = "text-danger" })
@@ -182,7 +182,7 @@
 
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                         @Html.LabelFor(model => model.TimeTo, htmlAttributes: new { @class = "" })
+                                        @Html.LabelFor(model => model.TimeTo, htmlAttributes: new { @class = "" })
                                         @Html.EditorFor(model => model.TimeTo, new { htmlAttributes = new { @class = "form-control", Type = "time" } })
                                         @Html.ValidationMessageFor(model => model.TimeTo, "", new { @class = "text-danger" })
                                     </div>
@@ -190,14 +190,14 @@
                             </div>
 
                             <div class="form-group">
-                        
+
                                 @Html.LabelFor(model => model.EventUrl, htmlAttributes: new { @class = "sr-only" })
                                 @Html.EditorFor(model => model.EventUrl, new { htmlAttributes = new { @class = "form-control", placeholder = "رابط الفعالية" } })
                                 @Html.ValidationMessageFor(model => model.EventUrl, "", new { @class = "text-danger" })
                             </div>
 
                             <div class="form-group">
-                        
+
 
                                 @Html.LabelFor(model => model.FacebookUrl, htmlAttributes: new { @class = "sr-only" })
                                 @Html.EditorFor(model => model.FacebookUrl, new { htmlAttributes = new { @class = "form-control", placeholder = "الفيس بوك" } })
@@ -226,26 +226,27 @@
 
                                 </div>
 
-                                <div class="row mb-10">
-                                    <div class="col-lg-6">
-                                        @Html.LabelFor(model => model.Published, htmlAttributes: new { @class = "control-label col-md-1" })
-                                        <div class="">
-                                            @Html.EditorFor(model => model.Published)
-                                            @Html.ValidationMessageFor(model => model.Published, "", new { @class = "text-danger" })
-                                        </div>
-                                    </div>
 
-                                    <div class="col-lg-6">
-                                        @Html.LabelFor(model => model.Notifiable, htmlAttributes: new { @class = "control-label col-md-1" })
-                                        <div class="">
-                                            @Html.EditorFor(model => model.Notifiable)
-                                            @Html.ValidationMessageFor(model => model.Notifiable, "", new { @class = "text-danger" })
-                                        </div>
+                            }
+                            <div class="row mb-10">
+                                <div class="col-lg-6">
+                                    @Html.LabelFor(model => model.Published, htmlAttributes: new { @class = "control-label col-md-1" })
+                                    <div class="">
+                                        @Html.EditorFor(model => model.Published)
+                                        @Html.ValidationMessageFor(model => model.Published, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
-                            }
-                      
-                    <hr />
+
+                                <div class="col-lg-6">
+                                    @Html.LabelFor(model => model.Notifiable, htmlAttributes: new { @class = "control-label col-md-1" })
+                                    <div class="">
+                                        @Html.EditorFor(model => model.Notifiable)
+                                        @Html.ValidationMessageFor(model => model.Notifiable, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <hr />
                             <button type="submit" class="btn btn-block btn-primary">إضافة</button>
 
                         </div>

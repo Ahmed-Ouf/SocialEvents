@@ -1,7 +1,6 @@
 ﻿using SocialEvents.Data.Infrastructure;
 using SocialEvents.Data.Repositories;
 using SocialEvents.Model;
-using SocialEvents.Service.FCM;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -16,11 +15,13 @@ namespace SocialEvents.Service
     public class NotificationService :ServiceBase<Notification>, INotificationService
     {
         private readonly INotificationRepository NotificationRepository;
+        private readonly IFCMNotificationService FCMNotificationService;
 
-        public NotificationService(IRepository<Notification> repository, INotificationRepository NotificationRepository, IUnitOfWork unitOfWork)
+        public NotificationService(IRepository<Notification> repository, IFCMNotificationService fCMNotificationService, INotificationRepository NotificationRepository, IUnitOfWork unitOfWork)
             :base(repository,unitOfWork)
         {
             this.NotificationRepository = NotificationRepository;
+            FCMNotificationService =  fCMNotificationService;
         }
 
 

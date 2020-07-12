@@ -9,22 +9,29 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace SocialEvents.Service.FCM
+namespace SocialEvents.Service
 {
-   public static class  FCMNotificationService
+
+
+    public interface IFCMNotificationService
     {
-        public static void Send(string tilte, string body)
+        void Send(string tilte, string body);
+    }
+    public class FCMNotificationService : IFCMNotificationService
+    {
+
+        public void Send(string tilte, string body)
         {
             // Read the Credentials from a File, which is not under Version Control:
-            var settings = FileBasedFcmClientSettings.CreateFromFile(ConfigrationHelper.FirebaseServiceFile) ;
+            var settings = FileBasedFcmClientSettings.CreateFromFile(ConfigrationHelper.FirebaseServiceFile);
 
             // Construct the Client:
             using (var client = new FcmClient(settings))
             {
                 var notification = new Notification
                 {
-                    Title = tilte ?? "Notification Title",
-                    Body = body ?? "Notification Body Text"
+                    Title = tilte ?? "",
+                    Body = $"تم اضافة فاعلية : {body}"
                 };
 
                 // The Message should be sent to the News Topic:
@@ -33,8 +40,20 @@ namespace SocialEvents.Service.FCM
                     ValidateOnly = false,
                     Message = new Message
                     {
-                        Topic = "news",
-                        Notification = notification
+                        Condition = "!('anytopicyoudontwanttouse' in topics)",
+                        Notification = notification,
+                        ApnsConfig = new ApnsConfig
+                        {
+                            Payload = new ApnsConfigPayload
+                            {
+
+                                Aps = new Aps
+                                {
+                                    Sound = "default",
+                                }
+                            }
+                        }
+
                     }
                 };
 

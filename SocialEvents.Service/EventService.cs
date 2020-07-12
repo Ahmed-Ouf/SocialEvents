@@ -1,7 +1,6 @@
 ﻿using SocialEvents.Data.Infrastructure;
 using SocialEvents.Data.Repositories;
 using SocialEvents.Model;
-using SocialEvents.Service.FCM;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +13,7 @@ namespace SocialEvents.Service
         void Publish(Guid id);
         void Approval(Event eventModel);
         IEnumerable<Event> GetAllPublished();
+        IEnumerable<Event> GetAllApprovedPublished();
         IEnumerable<Event> GetAllAtiveByDepartment(Guid departmentId);
         bool IsDublicatedEventNumber(Guid id, string eventNumber);
 
@@ -24,27 +24,43 @@ namespace SocialEvents.Service
     public class EventService : ServiceBase<Event>, IEventService
     {
         private readonly IEventRepository EventRepository;
+        private readonly ICategoryRepository CategoryRepository;
+        private readonly IFCMNotificationService FCMNotificationService;
 
-        public EventService(IRepository<Event> repository, IEventRepository EventRepository, IUnitOfWork unitOfWork)
+        public EventService(IRepository<Event> repository, ICategoryRepository categoryRepository, IFCMNotificationService fCMNotificationService, IEventRepository EventRepository, IUnitOfWork unitOfWork)
             : base(repository, unitOfWork)
         {
             this.EventRepository = EventRepository;
+            this.FCMNotificationService = fCMNotificationService;
+            CategoryRepository = categoryRepository;
         }
         public override void Add(Event model)
         {
             base.Add(model);
+            var entity = GetById(model.Id);
+
+            var cat = CategoryRepository.GetById(model.CategoryId);
             if (model.Active && model.State == StateEnum.Approved && model.Published)
             {
-                FCMNotificationService.Send(model.Name, model.Description);
+                FCMNotificationService.Send(cat.Name, model.Name);
             }
         }
         public override void Update(Event model)
         {
-            base.Update(model);
-            if (model.Active && model.State == StateEnum.Approved && model.Published)
+            try
             {
-                FCMNotificationService.Send(model.Name, model.Description);
+                base.Update(model);
+                var cat = CategoryRepository.GetById(model.CategoryId);
+                if (model.Active && model.State == StateEnum.Approved && model.Published)
+                {
+                    FCMNotificationService.Send(cat.Name, model.Name);
+                }
             }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
         }
         public void Approval(Event eventModel)
         {
@@ -61,7 +77,13 @@ namespace SocialEvents.Service
 
         public IEnumerable<Event> GetAllPublished()
         {
-            var result = EventRepository.GetAll().Where(e => e.Published && e.Active && e.State==StateEnum.Approved);
+            var result = EventRepository.GetAll().Where(e => e.Published && e.Active);
+            return result;
+        }
+
+        public IEnumerable<Event> GetAllApprovedPublished()
+        {
+            var result = EventRepository.GetAll().Where(e => e.Published && e.Active && e.State == StateEnum.Approved);
             return result;
         }
         public IEnumerable<Event> GetAllPending()
@@ -81,10 +103,10 @@ namespace SocialEvents.Service
             var entity = GetById(id);
             entity.Published = true;
             entity.State = StateEnum.Approved;
-
+            var cat = CategoryRepository.GetById(entity.CategoryId);
             if (entity.Active && entity.State == StateEnum.Approved && entity.Published)
             {
-                FCMNotificationService.Send(entity.Name, entity.Description);
+                FCMNotificationService.Send(cat.Name, entity.Name);
             }
         }
 

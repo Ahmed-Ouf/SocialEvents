@@ -240,24 +240,25 @@
 
                             </div>
 
-                            <div class="row mb-10">
-                                <div class="col-lg-6">
-                                    @Html.LabelFor(model => model.Published, htmlAttributes: new { @class = "control-label col-md-1" })
-                                    <div class="">
-                                        @Html.EditorFor(model => model.Published)
-                                        @Html.ValidationMessageFor(model => model.Published, "", new { @class = "text-danger" })
-                                    </div>
-                                </div>
 
-                                <div class="col-lg-6">
-                                    @Html.LabelFor(model => model.Notifiable, htmlAttributes: new { @class = "control-label col-md-1" })
-                                    <div class="">
-                                        @Html.EditorFor(model => model.Notifiable)
-                                        @Html.ValidationMessageFor(model => model.Notifiable, "", new { @class = "text-danger" })
-                                    </div>
+                        }    
+                        <div class="row mb-10">
+                            <div class="col-lg-6">
+                                @Html.LabelFor(model => model.Published, htmlAttributes: new { @class = "control-label col-md-1" })
+                                <div class="">
+                                    @Html.EditorFor(model => model.Published)
+                                    @Html.ValidationMessageFor(model => model.Published, "", new { @class = "text-danger" })
                                 </div>
                             </div>
-                        }
+
+                            <div class="col-lg-6">
+                                @Html.LabelFor(model => model.Notifiable, htmlAttributes: new { @class = "control-label col-md-1" })
+                                <div class="">
+                                    @Html.EditorFor(model => model.Notifiable)
+                                    @Html.ValidationMessageFor(model => model.Notifiable, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
 
                         <hr />
                         <button type="submit" class="btn btn-block btn-primary">حفظ</button>
