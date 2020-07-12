@@ -9,7 +9,7 @@ using System.Web.Mvc;
 namespace SocialEvents.Web.Controllers
 {
 
-    [RoleAuthorize(Roles = "SocialEventsUser")]
+   // [RoleAuthorize(Roles = "SocialEventsUser")]
     public class HomeController : BaseController
     {
         private readonly IEventService EventService;
@@ -18,7 +18,7 @@ namespace SocialEvents.Web.Controllers
         private readonly ILocationService LocationService;
         private readonly ITargetGroupService TargetGroupService;
         private readonly ISafeerService SafeerService;
-        public HomeController(IEventService Event, ICategoryService category, IDepartmentService department, ILocationService location, ITargetGroupService targetGroup,ISafeerService safeerService)
+        public HomeController(IEventService Event, ICategoryService category, IDepartmentService department, ILocationService location, ITargetGroupService targetGroup, ISafeerService safeerService)
         {
             EventService = Event;
             CategoryService = category;
@@ -51,6 +51,30 @@ namespace SocialEvents.Web.Controllers
             model.Locations = list.GroupBy(e => e.LocationId).Select(g => new ChartItem { Id = g.Key, Name = g.FirstOrDefault().Location.Name, Count = g.Count() }).ToList();
             model.MonthEvents = list.Select(e => new { MonthYear = e.DateFrom.ToString("yyyy-MM") })
                 .GroupBy(e => e.MonthYear).Select(g => new ChartItem { Name = g.Key, Count = g.Count() }).ToList();
+            
+            model.Events = list.Select(e => new Event
+            {
+                Id = e.Id,
+                Name = e.Name,
+                Department=new Department { DepartmentNameAr=e.Department.DepartmentNameAr,DepartmentNameEn=e.Department.DepartmentNameEn },
+                DateFrom = e.DateFrom,
+                DateTo = e.DateTo,
+                TimeFrom = e.TimeFrom,
+                TimeTo = e.TimeTo
+            }).ToList();
+            var commingList = EventService.GetAllComming();
+            model.CommingEvents = commingList.Select(e => new Event
+            {
+                Id = e.Id,
+                Name = e.Name,
+                Department = new Department { DepartmentNameAr = e.Department.DepartmentNameAr, DepartmentNameEn = e.Department.DepartmentNameEn },
+                DateFrom = e.DateFrom,
+                DateTo = e.DateTo,
+                TimeFrom = e.TimeFrom,
+                TimeTo = e.TimeTo
+            }).ToList();
+
+
 
 
 

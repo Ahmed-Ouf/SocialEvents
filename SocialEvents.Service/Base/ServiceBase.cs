@@ -23,6 +23,8 @@ namespace SocialEvents.Service
 
         void Deactivate(T model);
 
+        void Activate(T model);
+
         void SaveChanges();
 
     }
@@ -66,11 +68,16 @@ namespace SocialEvents.Service
         }
         public void Deactivate(T model)
         {
-            repo.Deactivate(model.Id);
+            repo.Deactivate(model);
         }
         public virtual void SaveChanges()
         {
             unitOfWork.SaveChanges();
+        }
+
+        public void Activate(T model)
+        {
+            repo.Activate(model);
         }
 
         #endregion ICategoryService Members

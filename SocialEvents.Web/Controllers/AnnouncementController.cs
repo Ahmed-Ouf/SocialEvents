@@ -11,7 +11,7 @@ using System.Web.Mvc;
 
 namespace SocialEvents.Web.Controllers
 {
-    [RoleAuthorize(Roles = "SocialEventsAdmin")]
+    //[RoleAuthorize(Roles = "SocialEventsAdmin")]
     public class AnnouncementController : BaseController
     {
         private readonly IAnnouncementService announcementService;
@@ -95,6 +95,7 @@ namespace SocialEvents.Web.Controllers
         {
             try
             {
+                ModelState.Remove("File");
                 if (ModelState.IsValid)
                 {
                     ConvertFileToBase64(model);

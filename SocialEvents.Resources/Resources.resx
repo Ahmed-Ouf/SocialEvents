@@ -283,4 +283,70 @@
   <data name="DublicatedEventNumber" xml:space="preserve">
     <value>{0} already used</value>
   </data>
+  <data name="To" xml:space="preserve">
+    <value>To</value>
+  </data>
+  <data name="CategoryId" xml:space="preserve">
+    <value>Category</value>
+  </data>
+  <data name="Btn_Create" xml:space="preserve">
+    <value>Create</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="LocationName" xml:space="preserve">
+    <value>Location Name</value>
+  </data>
+  <data name="Btn_Edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="Btn_Details" xml:space="preserve">
+    <value>Details</value>
+  </data>
+  <data name="Btn_Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="Btn_Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="Btn_Back" xml:space="preserve">
+    <value>Back</value>
+  </data>
+  <data name="Notifications" xml:space="preserve">
+    <value>Notifications</value>
+  </data>
+  <data name="TargetGroups" xml:space="preserve">
+    <value>TargetGroups</value>
+  </data>
+  <data name="File" xml:space="preserve">
+    <value>File</value>
+  </data>
+  <data name="Browse" xml:space="preserve">
+    <value>Browse</value>
+  </data>
+  <data name="Clear" xml:space="preserve">
+    <value>Clear</value>
+  </data>
+  <data name="Reports" xml:space="preserve">
+    <value>Reports</value>
+  </data>
+  <data name="ApprovedState" xml:space="preserve">
+    <value>Approved</value>
+  </data>
+  <data name="RejectedState" xml:space="preserve">
+    <value>Rejected</value>
+  </data>
+  <data name="Btn_Change" xml:space="preserve">
+    <value>Change</value>
+  </data>
+  <data name="Announcements" xml:space="preserve">
+    <value>Announcements</value>
+  </data>
+  <data name="Deactivate" xml:space="preserve">
+    <value>Deactivate</value>
+  </data>
+  <data name="Activate" xml:space="preserve">
+    <value>Activate</value>
+  </data>
 </root>

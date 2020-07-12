@@ -23,7 +23,7 @@ namespace SocialEvents.WCFService
 
         public IEnumerable<EventViewModel> GetEvents()
         {
-            var entities = _EventService.GetAllPublished().ToList();
+            var entities = _EventService.GetAllApprovedPublished().ToList();
             var models = _mapper.Map<List<Event>, List<EventViewModel>>(entities);
             return models;
         }

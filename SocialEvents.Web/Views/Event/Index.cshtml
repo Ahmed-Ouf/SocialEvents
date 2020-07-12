@@ -1,140 +1,224 @@
 ﻿@model IEnumerable<SocialEvents.Model.Event>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = Resources.SocialEvents;
     Department department = ViewBag.Department;
 }
 
-<h2>Index</h2>
-<div class="row">
-    <div class="col-md-3">
+
+
+
+
+<!-- MIDDLE-->
+<div class="col-md-12">
+    <!--page title & breadcrumb-->
+    <header id="page-header">
+        <ol class="breadcrumb">
+            <li><a href="index.php">الرئيسة</a></li>
+        </ol>
+        <h1><i class='fa fa-fw fa-calendar'></i> @ViewBag.Title</h1>
+
+    </header><!--./page title & breadcrumb-->
+
+    <div id="content" class="padding-20">
+
+        <div class="row">
+            <div class="col-lg-12">
+                <ul>
+                    <li>يتم من خلالها استعراض جميع الفاعليات المضافة من كل ادارة</li>
+                </ul>
+            </div>
+        </div>
+
+
+
+    </div>
+    <div class="row">
+
+        <!--col: right-->
+        <div class="col-md-12 col-lg-12">
+
+            <div id="" class="panel panel-info">
+
+                <div class="panel-heading">
+
+                    <span class="elipsis">
+                        <!-- panel title -->
+                        <strong class=""><i class="fa fa-fw fa-flip-horizontal fa-list"></i> @ViewBag.Title</strong>
+                    </span>
+
+                    <!-- right options -->
+                    <ul class="options pull-right list-inline">
+                        <li><a href="#" class="opt panel_colapse" data-toggle="tooltip" title="" data-placement="bottom" data-original-title="إغلاق/فتح"></a></li>
+                        <li><a href="#" class="opt panel_fullscreen hidden-xs" data-toggle="tooltip" title="" data-placement="bottom" data-original-title="كامل الشاشة"><i class="fa fa-expand"></i></a></li>
+                    </ul>
+                    <!-- /right options -->
+
+                </div>
+
+                <!-- panel content -->
+                <div class="panel-body">
+
+                    <div class="table-responsive">
+                        <table class="dataTable table table-condensed table-hover table-striped nomargin">
+                            <thead>
+                                <tr>
+                                    <th width="30%">الفعالية</th>
+                                    <th class="Searchable">التصنيف</th>
+                                    <th class="Searchable">الإدارة</th>
+                                    <th class="Searchable">الموقع</th>
+                                    <th class="Searchable">الفئة المستهدفة</th>
+                                    <th class="Searchable">@Resources.State</th>
+                                    <th class="">@Resources.Published</th>
+                                    <th width="15%"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr class="trHover">
+                                        <td>
+                                            <a href="#">
+                                                <strong>@Html.DisplayFor(modelItem => item.Name)</strong>
+                                            </a>
+                                            <br />
+                                            <small class="text-muted">
+                                                <i class="fa fa-fw fa-calendar"></i>
+                                                @Resources.DateFrom  @item.DateFrom.ToShortDateString() @Resources.DateTo @item.DateTo.ToShortDateString()
+                                            </small>
+                                        </td>
+                                        <td>
+                                            @*<a href="@Url.Action("Index","Category")">*@@Html.DisplayFor(modelItem => item.Category.Name)@*</a>*@
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Department.DepartmentNameAr)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Location.Name)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.TargetGroup.Name)
+                                        </td>
+                                        <td>
+                                            @switch (item.State)
+                                            {
+                                                case StateEnum.Pending:
+                                                    @Resources.Pending
+                                                    break;
+                                                case StateEnum.Approved:
+                                                    @Resources.ApprovedState
+                                                    break;
+                                                case StateEnum.Rejected:
+                                                    @Resources.RejectedState
+                                                    break;
+                                                default:
+                                                    break;
+                                            }
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Published)
+                                        </td>
+                                        <td>
+
+                                            @if (department != null)
+                                            {
+                                                <span>
+                                                    @*@if (item.State == StateEnum.Pending)
+                                                        {
+                                                        }*@
+                                                    <a href="@Url.Action("Edit","Event", new { id = item.Id })">
+                                                        <i class="fa fa-fw fa-pencil text-success" data-toggle="tooltip" data-placement="top" title="@Resources.Btn_Edit"></i>
+                                                    </a>
+
+                                                    <a href="@Url.Action("Details","Event", new { id = item.Id })">
+                                                        <i class="fa fa-fw fa-dashboard text-success" data-toggle="tooltip" data-placement="top" title="@Resources.Btn_Details"></i>
+                                                    </a>
+                                                    @if (ViewBag.IsSocialServicesDept)
+                                                    {
+                                                        if (item.State != StateEnum.Approved)
+                                                        {
+                                                            <a href="@Url.Action("Approval", "Event", new { id = item.Id })">
+                                                                <i class="fa fa-fw fa-check text-success" data-toggle="tooltip" data-placement="top" title="@Resources.Approved"></i>
+                                                            </a>
+                                                        }
+                                                        if (!item.Published)
+                                                        {
+                                                            <a href="@Url.Action("Publish", "Event", new { id = item.Id })">
+                                                                <i class="fa fa-fw fa-eye text-success" data-toggle="tooltip" data-placement="top" title="@Resources.Published"></i>
+                                                            </a>
+                                                        }
+                                                        <a href="@Url.Action("Delete","Event", new { id = item.Id })">
+                                                            <i class="fa fa-fw fa-trash text-danger" data-toggle="tooltip" data-placement="top" title="@Resources.Btn_Delete"></i>
+                                                        </a>
+                                                    }
+                                                    else
+                                                    {
+                                                        if (item.State == StateEnum.Approved && !item.Published)
+                                                        {
+                                                            <a href="@Url.Action("Publish","Event", new { id = item.Id })">
+                                                                <i class="fa fa-fw fa-eye text-success" data-toggle="tooltip" data-placement="top" title="@Resources.Published"></i>
+                                                            </a>
+                                                        }
+
+
+                                                        <a href="@Url.Action("Delete","Event", new { id = item.Id })">
+                                                            <i class="fa fa-fw fa-trash text-danger" data-toggle="tooltip" data-placement="top" title="@Resources.Btn_Delete"></i>
+                                                        </a>
+                                                    }
+                                                </span>
+                                            }
+
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                            <tfoot>
+                                <tr>
+
+                                    <th class="Searchable">
+                                        الفعالية
+                                    </th>
+
+                                    <th class="Searchable">
+                                        @Html.DisplayNameFor(model => model.Category.Name)
+                                    </th>
+                                    <th class="Searchable">
+                                        @Html.DisplayNameFor(model => model.Department.DepartmentNameAr)
+                                    </th>
+                                    <th class="Searchable">
+                                        @Html.DisplayNameFor(model => model.Location.Name)
+                                    </th>
+                                    <th class="Searchable">
+                                        @Html.DisplayNameFor(model => model.TargetGroup.Name)
+                                    </th>
+                                    @*<th colspan="5">
+
+                                        </th>*@
+                                    <th class="Searchable">
+
+                                    </th>
+                                    <th>
+
+                                    </th>
+                                    <th>
+
+                                    </th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+
+                </div>
+                <!-- /panel content -->
+
+            </div>
+
+
+        </div>
+        <!--./col: right-->
+
 
     </div>
 
 </div>
-
-<p>
-    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-default" })
-</p>
-<table class="table table-bordered table-hover">
-    <thead>
-        <tr>
-            <th class="Searchable">
-                @Html.DisplayNameFor(model => model.Category.Name)
-            </th>
-            <th class="Searchable">
-                @Html.DisplayNameFor(model => model.Department.DepartmentNameAr)
-            </th>
-            <th class="Searchable">
-                @Html.DisplayNameFor(model => model.Location.Name)
-            </th>
-            <th class="Searchable">
-                @Html.DisplayNameFor(model => model.TargetGroup.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-
-            <th>
-                @Html.DisplayNameFor(model => model.State)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Notifiable)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Published)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Category.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Department.DepartmentNameAr)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Location.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.TargetGroup.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Description)
-                </td>
-
-
-                <td>
-                    @Html.DisplayFor(modelItem => item.State)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Notifiable)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Published)
-                </td>
-                <td>
-                    @if (department != null)
-                    {
-                        <span>
-                            @if (item.State == StateEnum.Pending)
-                            {
-                                <span>@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |</span>
-                            }
-
-                            @Html.ActionLink("Details", "Details", new { id = item.Id })
-                            @if (ViewBag.IsSocialServicesDept)
-                            {
-                                <span>
-                                    |
-                                    @Html.ActionLink("Approval", "Approval", new { id = item.Id }) |
-                                    @Html.ActionLink("Publish", "Publish", new { id = item.Id }) |
-                                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                                </span>
-                            }
-                        </span>
-                    }
-
-
-                </td>
-            </tr>
-        }
-    </tbody>
-
-    <tfoot>
-        <tr>
-
-            <th class="Searchable">
-                @Html.DisplayNameFor(model => model.Category.Name)
-            </th>
-            <th class="Searchable">
-                @Html.DisplayNameFor(model => model.Department.DepartmentNameAr)
-            </th>
-            <th class="Searchable">
-                @Html.DisplayNameFor(model => model.Location.Name)
-            </th>
-            <th class="Searchable">
-                @Html.DisplayNameFor(model => model.TargetGroup.Name)
-            </th>
-            <th colspan="5">
-
-            </th>
-            <th>
-
-            </th>
-        </tr>
-    </tfoot>
-
-
-</table>
+<!-- /MIDDLE -->

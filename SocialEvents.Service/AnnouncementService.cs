@@ -36,8 +36,9 @@ namespace SocialEvents.Service
 
                 //}
 
-              
+
                 base.Add(model);
+
             }
             catch (System.Exception ex)
             {
@@ -49,20 +50,18 @@ namespace SocialEvents.Service
         {
             model.Active = true;
             base.Update(model);
-
         }
 
         public void Publish(Guid id)
         {
-            var entity=this.announcementRepository.GetById(id);
+            var entity = this.announcementRepository.GetById(id);
             entity.Published = true;
             this.announcementRepository.Update(entity);
-
         }
 
         public IEnumerable<Announcement> GetAllPublished()
         {
-            var result = GetAllAtive().Where(e=>e.Published);
+            var result = GetAllAtive().Where(e => e.Published);
             return result;
         }
         #endregion IAnnouncementService Members

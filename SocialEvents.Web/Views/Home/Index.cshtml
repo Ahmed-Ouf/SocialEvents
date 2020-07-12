@@ -5,29 +5,267 @@
     ViewBag.Title = "SocialEvents";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<div class="col-md-6" >
-    <canvas id="YearMonthChart" width="400" height="400"></canvas>
+<!--<div class="col-lg-12">
+    <div class="alert alert-danger margin-bottom-30">-->
+<!-- DANGER -->
+<!--<strong><i class="fa fa-fw fa-exclamation-triangle"></i> تنويه:</strong> سيتم إجراء صيانة دورية للنظام في يوم السبت 07 مارس 2020م من الساعة 9:00 صباحاً وحتى الساعة 3:00 مساء.  وعليه لن يكون النظام متاحاً للاستخدام لحين الانتهاء من عمليات الصيانة.
+    </div>
+</div>-->
+
+<div class="col-lg-12">
+
+    <div class="row">
+
+        <!--الفئات-->
+        <div class="col-md-6 col-lg-3">
+
+            <!-- Chart 2 -->
+            <div id="panel-chartjs-5" class="panel panel-clean">
+
+                <div class="panel-heading">
+
+                    <span class="elipsis">
+                        <!-- panel title -->
+                        <strong class="makeMeTajawal">الفئات</strong>
+                    </span>
+
+                    <!-- right options -->
+                    <ul class="options pull-right list-inline">
+                        <li><a href="#" class="opt panel_colapse" data-toggle="tooltip" title="" data-placement="bottom" data-original-title="Colapse"></a></li>
+                    </ul>
+                    <!-- /right options -->
+
+                </div>
+
+                <!-- panel content -->
+                <div class="panel-body text-center">
+
+                    <canvas class="chartjs fullwidth height-300" id="GroupTargetChart" width="547" height="300" style="width: 547px; height: 300px;"></canvas>
+
+                </div>
+                <!-- /panel content -->
+
+            </div>
+
+        </div>
+
+        <!--المواقع-->
+        <div class="col-md-6 col-lg-3">
+            <div id="panel-misc-portlet-locations" class="panel panel-clean">
+
+                <div class="panel-heading">
+
+                    <span class="elipsis">
+                        <!-- panel title -->
+                        <strong class="makeMeTajawal">المواقع</strong>
+                    </span>
+
+                    <!-- right options -->
+                    <ul class="options pull-right list-inline">
+                        <li><a href="#" class="opt panel_colapse" data-toggle="tooltip" title="" data-placement="bottom" data-original-title="Colapse"></a></li>
+                    </ul>
+                    <!-- /right options -->
+
+                </div>
+
+                <!-- panel content -->
+                <div class="panel-body">
+
+                    <canvas class="chartjs fullwidth height-300" id="LocationChart" width="547" height="300"></canvas>
+
+                </div>
+                <!-- /panel content -->
+
+            </div>
+        </div>
+
+        <!--الأشهر-->
+        <div class="col-md-6 col-lg-3">
+            <div id="panel-misc-portlet-months" class="panel panel-clean">
+
+                <div class="panel-heading">
+
+                    <span class="elipsis">
+                        <!-- panel title -->
+                        <strong class="makeMeTajawal">2020م</strong>
+                    </span>
+
+                    <!-- right options -->
+                    <ul class="options pull-right list-inline">
+                        <li><a href="#" class="opt panel_colapse" data-toggle="tooltip" title="" data-placement="bottom" data-original-title="Colapse"></a></li>
+                    </ul>
+                    <!-- /right options -->
+
+                </div>
+
+                <!-- panel content -->
+                <div class="panel-body">
+
+                    <canvas class="chartjs fullwidth height-300" id="YearMonthChart" width="547" height="300"></canvas>
+
+                </div>
+                <!-- /panel content -->
+
+            </div>
+        </div>
+
+        <!--التصنيف-->
+        <div class="col-md-6 col-lg-3">
+            <div id="panel-misc-portlet-categories" class="panel panel-clean">
+
+                <div class="panel-heading">
+
+                    <span class="elipsis">
+                        <!-- panel title -->
+                        <strong class="makeMeTajawal">التصنيف</strong>
+                    </span>
+
+                    <!-- right options -->
+                    <ul class="options pull-right list-inline">
+                        <li><a href="#" class="opt panel_colapse" data-toggle="tooltip" title="" data-placement="bottom" data-original-title="Colapse"></a></li>
+                    </ul>
+                    <!-- /right options -->
+
+                </div>
+
+                <!-- panel content -->
+                <div class="panel-body">
+
+                    <canvas class="chartjs fullwidth height-300" id="CateogryChart" width="547" height="300"></canvas>
+
+                </div>
+                <!-- /panel content -->
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="col-lg-6">
+
+    <!-- Panel -->
+    <div id="panel-calendar" class="panel panel-primary">
+
+        <div class="panel-heading">
+
+            <span class="title elipsis">
+                <strong class="makeMeTajawal"><i class="fa fa-fw fa-calendar"></i> تقويم الفعاليات</strong> <!-- panel title -->
+            </span>
+
+
+            <div class="panel-options pull-right">
+                <!-- panel options -->
+                <ul class="options list-unstyled">
+                    <li>
+                        <a href="#" class="opt dropdown-toggle" data-toggle="dropdown"><span class="label label-disabled"><span id="agenda_btn">لهذا الشهر</span> <span class="caret"></span></span></a>
+                        <ul class="dropdown-menu pull-right" role="menu">
+                            <li><a data-widget="calendar-view" href="#month"><i class="fa fa-calendar-o color-green"></i> <span>لهذا الشهر</span></a></li>
+                            <li><a data-widget="calendar-view" href="#agendaWeek"><i class="fa fa-calendar-o color-red"></i> <span>جدول</span></a></li>
+                            <li><a data-widget="calendar-view" href="#agendaDay"><i class="fa fa-calendar-o color-yellow"></i> <span>لهذا اليوم</span></a></li>
+                            <li><a data-widget="calendar-view" href="#basicWeek"><i class="fa fa-calendar-o color-gray"></i> <span>لهذا الأسبوع</span></a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" class="opt panel_colapse" data-toggle="tooltip" title="إغلاق/فتح" data-placement="bottom"></a></li>
+                    <li><a href="#" class="opt panel_fullscreen hidden-xs" data-toggle="tooltip" title="" data-placement="bottom" data-original-title="كامل الشاشة"><i class="fa fa-expand"></i></a></li>
+                </ul>
+            </div><!-- /panel options -->
+
+        </div>
+
+        <!-- panel content -->
+        <div class="panel-body">
+
+            <div id="calendar" data-modal-create="false"><!-- CALENDAR CONTAINER --></div>
+
+        </div>
+        <!-- /panel content -->
+
+    </div>
+    <!-- /Panel -->
 
 </div>
 
-<div class="col-md-3">
-    <canvas id="CateogryChart" width="400" height="400"></canvas>
+<div class="col-lg-6">
+    <div id="panel-misc-portlet-color-r2" class="panel panel-primary">
+
+        <div class="panel-heading">
+
+            <span class="elipsis">
+                <!-- panel title -->
+                <strong class="makeMeTajawal"><i class="fa fa-fw fa-list"></i> الفعاليات القادمة</strong>
+            </span>
+
+            <!-- right options -->
+            <ul class="options pull-right list-inline">
+                <li><a href="#" class="opt panel_colapse" data-toggle="tooltip" title="" data-placement="bottom" data-original-title="Colapse"></a></li>
+                <li><a href="#" class="opt panel_fullscreen hidden-xs" data-toggle="tooltip" title="" data-placement="bottom" data-original-title="Fullscreen"><i class="fa fa-expand"></i></a></li>
+            </ul>
+            <!-- /right options -->
+
+        </div>
+
+        <!-- panel content -->
+        <div class="panel-body">
+
+            <div class="table-responsive">
+                <table class="dataTable  table table-condensed nomargin">
+                    <thead>
+                        <tr>
+                            <th>الفعالية</th>
+                            <th>الإدارة</th>
+                            <th>التاريخ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.CommingEvents)
+                        {
+                            <tr>
+                                <td>@item.Name</td>
+                                <td>@(SocialEvents.Web.Helpers.CultureHelper.IsRighToLeft()?item.Department.DepartmentNameAr: item.Department.DepartmentNameEn) </td>
+                                <td>@item.DateFrom.ToShortDateString()</td>
+                            </tr>
+                        }
+
+
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th>الفعالية</th>
+                            <th>الإدارة</th>
+                            <th>التاريخ</th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+
+        </div>
+        <!-- /panel content -->
+
+    </div>
 </div>
 
-<div class="col-md-3">
-    <canvas id="GroupTargetChart" width="400" height="400"></canvas>
-</div>
-
-<div class="col-md-6" >
-    <canvas id="LocationChart" width="400" height="400"></canvas>
-</div>
-
-
-
-
-@section Scripts{
+@section scripts{
     <script>
-// #region
+        // #region
+       var eventList = [];
+       var cssClasses = [["bg-primary"], ["bg-warning"], ["bg-success"], ["bg-info"]];
+        @foreach (var item in Model.Events)
+        {
+            @:var r = Math.floor(Math.random() * 4);
+            @:eventList.push({ id: '@item.Id', title: '@item.Name', start: new Date('@item.DateFrom.Year', '@item.DateFrom.Month', '@item.DateFrom.Day'), end: new Date('@item.DateTo.Year', '@item.DateTo.Month', '@item.DateTo.Day'), allDay: false, className: cssClasses[r], description: '', icon: 'fa-check', url: '@Url.Action("Details","event",new { id=item.Id})'});
+        }
+
+        var yearMonthsNames = [];
+        var yearMonthsCount = [];
+        @foreach (var item in Model.MonthEvents)
+        {
+            @:yearMonthsNames.push("@item.Name");
+            @:yearMonthsCount.push("@item.Count");
+
+        }
+
+
         var targetGrupsNames = [];
         var targetGrupsCount = [];
         @foreach (var item in Model.TargetGroups)
@@ -46,14 +284,7 @@
 
         }
 
-        var yearMonthsNames = [];
-        var yearMonthsCount = [];
-        @foreach (var item in Model.MonthEvents)
-        {
-            @:yearMonthsNames.push("@item.Name");
-            @:yearMonthsCount.push("@item.Count");
 
-        }
 
 
         var locationNames = [];
@@ -76,27 +307,27 @@
             var ctxYearMonthChart = document.getElementById('YearMonthChart').getContext('2d');
             var yearMonthChart = new Chart(ctxYearMonthChart, {
                 type: 'bar',
-                //type: 'pie',
+                //type: 'line',
                 data: {
                     labels: yearMonthsNames,
                     datasets: [{
-                        label: '# of Votes',
+                        label: "@Resources.SocialEvents",
                         data: yearMonthsCount,
                         backgroundColor: [
-                            'rgba(255, 99, 132, 0.2)',
-                            'rgba(54, 162, 235, 0.2)',
-                            'rgba(255, 206, 86, 0.2)',
                             'rgba(75, 192, 192, 0.2)',
                             'rgba(153, 102, 255, 0.2)',
-                            'rgba(255, 159, 64, 0.2)'
+                            'rgba(255, 159, 64, 0.2)',
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(54, 162, 235, 0.2)'
                         ],
                         borderColor: [
-                            'rgba(255, 99, 132, 1)',
-                            'rgba(54, 162, 235, 1)',
-                            'rgba(255, 206, 86, 1)',
                             'rgba(75, 192, 192, 1)',
                             'rgba(153, 102, 255, 1)',
-                            'rgba(255, 159, 64, 1)'
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(255, 159, 64, 1)',
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)'
                         ],
                         borderWidth: 1
                     }]
@@ -121,7 +352,7 @@
                 data: {
                     labels: categoriesNames,
                     datasets: [{
-                        label: '# of Votes',
+                         label: "@Resources.SocialEvents",
                         data: categoriesCount,
                         backgroundColor: [
                             'rgba(255, 99, 132, 0.2)',
@@ -239,5 +470,181 @@
             });
         });
     </script>
+    <script type="text/javascript">
 
+        /* Calendar Data */
+        var date = new Date();
+        var d = date.getDate();
+        var m = date.getMonth();
+        var y = date.getFullYear();
+        var _calendarEvents = eventList;
+            //var _calendarEvents = [
+            //    {
+            //        title: 'All Day Event',
+            //        start: new Date(y, m, 1),
+            //        allDay: false,
+            //        className: ["bg-primary"],
+            //        description: 'some description...',
+            //        icon: 'fa-clock-o'
+            //    },
+            //    {
+            //        title: 'Long Event',
+            //        start: new Date(y, m, d - 5),
+            //        end: new Date(y, m, d - 2),
+            //        allDay: false,
+            //        className: ["bg-primary"],
+            //        description: '',
+            //        icon: 'fa-check'
+            //    },
+            //    {
+            //        id: 999,
+            //        title: 'Repeating Event',
+            //        start: new Date(y, m, d - 3, 16, 0),
+            //        allDay: false,
+            //        className: ["bg-warning"],
+            //        description: '',
+            //        icon: 'fa-clock-o'
+            //    },
+            //    {
+            //        id: 999,
+            //        title: 'Repeating Event',
+            //        start: new Date(y, m, d + 4, 16, 0),
+            //        allDay: false,
+            //        className: ["bg-primary"],
+            //        description: '',
+            //        icon: 'fa-clock-o'
+            //    },
+            //    {
+            //        title: 'Meeting',
+            //        start: new Date(y, m, d, 10, 30),
+            //        allDay: false,
+            //        className: ["bg-primary"],
+            //        description: '',
+            //        icon: 'fa-lock'
+            //    },
+            //    {
+            //        title: 'Lunch',
+            //        start: new Date(y, m, d, 12, 0),
+            //        end: new Date(y, m, d, 14, 0),
+            //        allDay: false,
+            //        className: ["bg-success"],
+            //        description: '',
+            //        icon: 'fa-clock-o'
+            //    },
+            //    {
+            //        title: 'Birthday Party',
+            //        start: new Date(y, m, d + 1, 19, 0),
+            //        end: new Date(y, m, d + 1, 22, 30),
+            //        allDay: false,
+            //        className: ["bg-danger"],
+            //        description: '',
+            //        icon: ''
+            //    },
+            //    {
+            //        title: 'Click for Google',
+            //        start: new Date(y, m, 28),
+            //        end: new Date(y, m, 29),
+            //        url: 'http://google.com/',
+            //        className: ["bg-info"],
+            //        description: '',
+            //        icon: 'fa-clock-o'
+            //    }
+            //];
+
+    </script>
+    <script>
+            //$(function () {
+
+
+            //    var doughnutChartCanvas = [
+            //        {
+            //            value: 30,
+            //            color: "#F7464A"
+            //        },
+            //        {
+            //            value: 50,
+            //            color: "#46BFBD"
+            //        },
+            //        {
+            //            value: 100,
+            //            color: "#FDB45C"
+            //        },
+            //        {
+            //            value: 40,
+            //            color: "#949FB1"
+            //        },
+            //        {
+            //            value: 120,
+            //            color: "#4D5360"
+            //        }
+            //        ,
+            //        {
+            //            value: 30,
+            //            color: "#164fc9"
+            //        }
+            //    ];
+
+            //    var barChartCanvas = {
+            //        labels: ["يناير", "فبراير", "مارس", "أبريل", "مايو", "يونيو", "يوليو", "أغسطس", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"],
+            //        datasets: [
+            //            {
+            //                fillColor: "rgba(220,220,220,0.5)",
+            //                strokeColor: "rgba(220,220,220,0.8)",
+            //                highlightFill: "rgba(220,220,220,0.75)",
+            //                highlightStroke: "rgba(220,220,220,1)",
+            //                data: [15, 25, 70, 55, 90, 38, 50, 15, 25, 70, 44, 84]
+            //            }
+            //        ]
+            //    };
+
+            //    var barChartCanvas2 = {
+            //        labels: ["المهرجانات", "الأمسيات", "البرامج الرياضية", "البرامج المهارية", "الفعاليات", "الملتقيات", "البطولات"],
+            //        datasets: [
+            //            {
+            //                fillColor: "rgba(220,220,220,0.5)",
+            //                strokeColor: "rgba(220,220,220,0.8)",
+            //                highlightFill: "rgba(220,220,220,0.75)",
+            //                highlightStroke: "rgba(220,220,220,1)",
+            //                data: [65, 59, 90, 81, 56, 55, 50]
+            //            }
+            //        ]
+            //    };
+
+            //    var pieChartCanvas = [
+            //        {
+            //            value: 30,
+            //            color: "#F38630"
+            //        },
+            //        {
+            //            value: 50,
+            //            color: "#E0E4CC"
+            //        },
+            //        {
+            //            value: 100,
+            //            color: "#69D2E7"
+            //        },
+            //        {
+            //            value: 45,
+            //            color: "#1E73BE"
+            //        }
+            //    ];
+
+
+
+
+
+            //    var ctx = document.getElementById("doughnutChartCanvas").getContext("2d");
+            //    new Chart(ctx).Doughnut(doughnutChartCanvas);
+
+            //    var ctx = document.getElementById("barChartCanvas").getContext("2d");
+            //    new Chart(ctx).Bar(barChartCanvas);
+
+            //    var ctx = document.getElementById("barChartCanvas2").getContext("2d");
+            //    new Chart(ctx).Bar(barChartCanvas2);
+
+            //    var ctx = document.getElementById("pieChartCanvas").getContext("2d");
+            //    new Chart(ctx).Pie(pieChartCanvas);
+
+            //});
+    </script>
 }

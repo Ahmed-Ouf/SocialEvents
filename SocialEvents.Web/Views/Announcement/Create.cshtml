@@ -2,70 +2,120 @@
 @model AnnouncementViewModel
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = Resources.Btn_Create;
 }
-<h2>Create</h2>
 
-
-@using (Html.BeginForm("Create", "Announcement", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
+@using (Html.BeginForm("Create", "Announcement", FormMethod.Post, new { enctype = "multipart/form-data", @class = " ", role = "form" }))
 {
     @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
-        <h4>Announcement</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.Announcement.Name, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Announcement.Name, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Announcement.Name, "", new { @class = "text-danger" })
-            </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Announcement.Published, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.Announcement.Published)
-                    @Html.ValidationMessageFor(model => model.Announcement.Published, "", new { @class = "text-danger" })
-                </div>
-            </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.File, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-              @*  @Html.EditorFor(model => model.File, new { htmlAttributes = new { @class = "form-control", accept = "image/png,image/jpeg,image/bmp" } })*@
-                <div class="input-group image-preview">
-                    <input type="text" class="form-control image-preview-filename" disabled="disabled"> <!-- don't give a name === doesn't send on POST/GET -->
-                    <div class="input-group-btn">
-                        <!-- image-preview-clear button -->
-                        <button type="button" class="btn btn-default image-preview-clear" style="display:none;">
-                            <span class="glyphicon glyphicon-remove"></span> Clear
-                        </button>
-                        <!-- image-preview-input -->
-                        <div class="btn btn-default image-preview-input">
-                            <span class="glyphicon glyphicon-folder-open"></span>
-                            <span class="image-preview-input-title">Browse</span>
-                            <input type="file" accept="image/png, image/jpeg, image/gif" name="File" /> <!-- rename it -->
+    <!-- MIDDLE-->
+    <div class="col-md-12">
+
+        <!--page title & breadcrumb-->
+        <header id="page-header">
+            <ol class="breadcrumb">
+                <li><a href="@Url.Action("Index","Home")">@Resources.Home</a></li>
+                <li><a href="@Url.Action("Index","Announcement")">@Resources.Announcements</a></li>
+            </ol>
+            <h1><i class='fa fa-fw fa-bullhorn'></i> @ViewBag.Title</h1>
+
+        </header><!--./page title & breadcrumb-->
+
+        <div id="content">
+            <br />
+            <div class="col-lg-12">
+                <ul>
+                    <li>    يتم من خلالها أضافة @Resources.Announcements</li>
+                </ul>
+            </div>
+
+            <div class="row">
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <!--col: left-->
+                <div class="col-md-12 col-lg-12">
+                    <div id="" class="panel panel-default">
+
+                        <div class="panel-heading">
+
+                            <span class="elipsis">
+                                <!-- panel title -->
+                                <strong><i class="fa fa-fw fa-plus"></i> @Resources.Btn_Create  @Resources.Announcements</strong>
+                            </span>
+
+                            <!-- right options -->
+                            <ul class="options pull-right list-inline">
+                                <li><a href="#" class="opt panel_colapse" data-toggle="tooltip" title="" data-placement="bottom" data-original-title="إغلاق/فتح"></a></li>
+                            </ul>
+                            <!-- /right options -->
+
                         </div>
+
+                        <!-- panel content -->
+                        <div class="panel-body">
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Announcement.Name, htmlAttributes: new { @class = "control-label col-md-1" })
+                                    @Html.TextAreaFor(model => model.Announcement.Name, new { @class = "form-control"  })
+                                    @Html.ValidationMessageFor(model => model.Announcement.Name, "", new { @class = "text-danger" })
+                               
+
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Announcement.Published, htmlAttributes: new { @class = "control-label col-md-1" })
+                                <div class="">
+                                    @Html.EditorFor(model => model.Announcement.Published)
+                                    @Html.ValidationMessageFor(model => model.Announcement.Published, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.File, htmlAttributes: new { @class = "control-label col-md-1" })
+                                <div class="col-md-4">
+                                    @*  @Html.EditorFor(model => model.File, new { htmlAttributes = new { @class = "form-control", accept = "image/png,image/jpeg,image/bmp" } })*@
+                                    <div class="input-group image-preview">
+                                        <input type="text" class="form-control image-preview-filename" disabled="disabled"> <!-- don't give a name === doesn't send on POST/GET -->
+                                        <div class="input-group-btn">
+                                            <!-- image-preview-clear button -->
+                                            <button type="button" class="btn btn-default image-preview-clear" style="display:none;">
+                                                <span class="glyphicon glyphicon-remove"></span> @Resources.Clear
+                                            </button>
+                                            <!-- image-preview-input -->
+                                            <div class="btn btn-default image-preview-input">
+                                                <span class="glyphicon glyphicon-folder-open"></span>
+                                                <span class="image-preview-input-title">@Resources.Browse</span>
+                                                <input type="file" accept="image/png, image/jpeg, image/gif" name="File" /> <!-- rename it -->
+                                            </div>
+                                        </div>
+                                    </div><!-- /input-group image-preview [TO HERE]-->
+                                    @Html.ValidationMessageFor(model => model.File, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+
+                            <hr />
+                            <button type="submit" class="btn btn-block btn-primary">@Resources.Btn_Save</button>
+
+                        </div>
+                        <!-- /panel content -->
+
                     </div>
-                </div><!-- /input-group image-preview [TO HERE]-->
-                @Html.ValidationMessageFor(model => model.File, "", new { @class = "text-danger" })
+                </div>
+                <!--./col left-->
+
             </div>
+
         </div>
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default"  />
-            </div>
-        </div>
+
     </div>
+    <!-- /MIDDLE -->
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+
 
 @section Scripts {
 

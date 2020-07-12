@@ -11,7 +11,7 @@ using System.Web.Mvc;
 
 namespace SocialEvents.Web.Controllers
 {
-    [RoleAuthorize(Roles = "SocialEventsAdmin")]
+    //[RoleAuthorize(Roles = "SocialEventsAdmin")]
     public class CategoryController : BaseController
     {
         private readonly ICategoryService CategoryService;
@@ -22,7 +22,7 @@ namespace SocialEvents.Web.Controllers
         // GET: CategoryViewModel
         public ActionResult Index()
         {
-            var list = CategoryService.GetAllAtive();
+            var list = CategoryService.GetAll();
             return View(list);
         }
 
@@ -141,6 +141,21 @@ namespace SocialEvents.Web.Controllers
             {
                 return View();
             }
+        }
+
+        public ActionResult Activate(Guid id)
+        {
+            var model = CategoryService.GetById(id);
+            CategoryService.Activate(model);
+            CategoryService.SaveChanges();
+            return RedirectToAction("Index");
+        }
+        public ActionResult DeActivate(Guid id)
+        {
+            var model = CategoryService.GetById(id);
+            CategoryService.Deactivate(model);
+            CategoryService.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }

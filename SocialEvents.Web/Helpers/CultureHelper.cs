@@ -12,9 +12,9 @@ namespace SocialEvents.Web.Helpers
 
         // Include ONLY cultures you are implementing
         private static readonly List<string> _cultures = new List<string> {
+        "ar-EG" , // Arabic NEUTRAL culture
         "en-US",  // first culture is the DEFAULT
-        "es", // Spanish NEUTRAL culture
-        "ar-EG"  // Arabic NEUTRAL culture
+        "es" // Spanish NEUTRAL culture
     };
 
         /// <summary>

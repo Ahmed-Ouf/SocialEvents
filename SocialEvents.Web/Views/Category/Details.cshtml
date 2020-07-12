@@ -1,42 +1,104 @@
 ﻿@model SocialEvents.Model.Category
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = Resources.Btn_Details;
 }
+<!-- MIDDLE-->
+<div class="col-md-12">
 
-<h2>Details</h2>
+    <!--page title & breadcrumb-->
+    <header id="page-header">
+        <ol class="breadcrumb">
+            <li><a href="@Url.Action("Index","Home")">الرئيسة</a></li>
+            <li><a href="@Url.Action("Index","Category")">@Resources.Category</a></li>
+        </ol>
+        <h1><i class='fa fa-fw fa-sitemap'></i> @ViewBag.Title</h1>
 
-<div>
-    <h4>Category</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+    </header><!--./page title & breadcrumb-->
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+    <div id="content">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Color)
-        </dt>
+        <div class="col-lg-12">
+            <br />
+            <ul>
+                <li>يتيح تفاصيل التصنيف</li>
+            </ul>
+        </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Color)
-        </dd>
+        <div class="row">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.EventImage)
-        </dt>
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <!--col: left-->
+            <div class="col-md-12 col-lg-12">
+                <div id="" class="panel panel-default">
 
-        <dd>
-            @Html.DisplayFor(model => model.EventImage)
-        </dd>
+                    <div class="panel-heading">
 
-    </dl>
+                        <span class="elipsis">
+                            <!-- panel title -->
+                            <strong><i class="fa fa-fw fa-plus"></i> @Resources.Btn_Details  @Resources.Category</strong>
+                        </span>
+
+                        <!-- right options -->
+                        <ul class="options pull-right list-inline">
+                            <li><a href="#" class="opt panel_colapse" data-toggle="tooltip" title="" data-placement="bottom" data-original-title="إغلاق/فتح"></a></li>
+                        </ul>
+                        <!-- /right options -->
+
+                    </div>
+
+                    <!-- panel content -->
+                    <div class="panel-body">
+                        <dl class="">
+                            <dt class="col-md-2">
+                                @Html.DisplayNameFor(model => model.Name)
+                            </dt>
+
+                            <dd class="col-md-4">
+                                @Html.DisplayFor(model => model.Name)
+                            </dd>
+
+                            <dt class="col-md-2">
+                                @Html.DisplayNameFor(model => model.Color)
+                            </dt>
+
+                            <dd class="col-md-4">
+                                <div style="float:right">
+                                    @Html.DisplayFor(model => model.Color)
+                                </div>
+                            </dd>
+
+
+                            <div class="clearfix"></div>
+                            <dt class="col-md-2">
+                                @Resources.EventImage
+                            </dt>
+
+                            <dd class="col-md-">
+                                @Html.DisplayFor(model => model.EventImage)
+                            </dd>
+
+                        </dl>
+                        <div class="clearfix"></div>
+                        <hr />
+                        <div class="col-md-12">
+
+                                <div class="form-actions no-color">
+                                    @Html.ActionLink(Resources.Btn_Back, "Index", null, new { @class = "btn btn-block  btn-info" })
+
+                                </div>
+                        </div>
+
+                    </div>
+                    <!-- /panel content -->
+
+                </div>
+            </div>
+            <!--./col left-->
+
+        </div>
+
+    </div>
+
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+<!-- /MIDDLE -->

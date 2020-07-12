@@ -27,20 +27,26 @@
     width: 25px;
     height: 20px;
     border: solid 1px #222;
-    margin-right: 5px;
-    float: left;
+    margin: auto;
+    
     z-index: 0;
 }
 
-.change_lang {
-    background-color: #1997c6;
-    display: inline-block;
-    padding: 15px;
-    cursor: pointer;
-    transition: all 500ms;
+#header nav ul li a.change_lang {
     color: #ffffff;
+    padding: 6px 12px;
+    padding-top: 6px;
+    padding-right: 12px;
+    padding-bottom: 6px;
+    padding-left: 12px;
+    margin-top:5px;
 }
 
-    .change_lang:hover {
+ .change_lang:hover {
         background-color: #333;
-    }
+}
+
+
+#DataTables_Table_0_info {
+    float: left;
+}
