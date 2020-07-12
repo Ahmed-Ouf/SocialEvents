@@ -20,6 +20,7 @@ namespace SocialEvents.WCFService.Helpers
                 cfg.CreateMap<Category, CategoryViewModel>(MemberList.None).ReverseMap().ForAllMembers(opt => opt.Ignore());
                 cfg.CreateMap<Announcement, AnnouncementViewModel>(MemberList.None).ReverseMap().ForAllMembers(opt => opt.Ignore());
                 cfg.CreateMap<EventImage, EventImageViewModel>(MemberList.None).ReverseMap().ForAllMembers(opt => opt.Ignore());
+                cfg.CreateMap<TargetGroup, TargetGroupViewModel>(MemberList.None).ReverseMap().ForAllMembers(opt => opt.Ignore());
 
             });
 

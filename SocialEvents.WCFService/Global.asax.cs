@@ -46,6 +46,7 @@ namespace SocialEvents.WCFService
             builder.RegisterType<AnnouncementWCFService>();
             builder.RegisterType<CategoryWCFService>();
             builder.RegisterType<EventWCFService>();
+            builder.RegisterType<TargetGroupWCFService>();
             
             // Set the dependency resolver.
             var container = builder.Build();
