@@ -11,7 +11,7 @@ using SocialEvents.ViewModel;
 
 namespace SocialEvents.Web.Controllers
 {
-    //[RoleAuthorize(Roles = "SocialEventsAdmin,SocialEventsSupervisor")]
+    [RoleAuthorize(Roles = "SocialEventsAdmin,SocialEventsSupervisor")]
 
     public class EventController : BaseController
     {
@@ -134,11 +134,13 @@ namespace SocialEvents.Web.Controllers
             var sessionUserInfo = (CurrentUserViewModel)Session["current-user"];
 
             string socialEventsDeptId = "20870";//"20870" => إدارة الخدمات الإجتماعية ;
-            string GeneralEducationDeptId = "20950";//"20870" => إدارة التعليم العام ;
+            //string GeneralEducationDeptId = "20950";//"20870" => إدارة التعليم العام ;
 
 #if DEBUG
-            ViewBag.IsSocialServicesDept = IsSocialServicesDept = socialEventsDeptId == socialEventsDeptId;
-            ViewBag.Department = department = DepartmentService.GetBySafeerDepartmentId(socialEventsDeptId);
+
+            //ViewBag.IsSocialServicesDept = IsSocialServicesDept = socialEventsDeptId == GeneralEducationDeptId;
+            //ViewBag.Department = department = DepartmentService.GetBySafeerDepartmentId(GeneralEducationDeptId);
+
 #else
             //TODO: Remove commented
         ViewBag.IsSocialServicesDept = IsSocialServicesDept = (socialEventsDeptId == sessionUserInfo.SafeerDepartmentId);
@@ -146,6 +148,9 @@ namespace SocialEvents.Web.Controllers
            
 
 #endif
+            //TODO: Remove commented
+            ViewBag.IsSocialServicesDept = IsSocialServicesDept = (socialEventsDeptId == sessionUserInfo.SafeerDepartmentId);
+            ViewBag.Department = department = DepartmentService.GetBySafeerDepartmentId(sessionUserInfo.SafeerDepartmentId);
 
 
 
