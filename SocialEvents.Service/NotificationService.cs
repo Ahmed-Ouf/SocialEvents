@@ -32,7 +32,7 @@ namespace SocialEvents.Service
             base.Add(model);
             if (model.Active)
             {
-                FCMNotificationService.Send("تنبية", model.Name);
+                FCMNotificationService.SendNotification("تنبية", model.Name);
             }
         }
         #endregion INotificationService Members
