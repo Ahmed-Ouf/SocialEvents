@@ -137,8 +137,10 @@ namespace SocialEvents.Web.Controllers
             //string GeneralEducationDeptId = "20950";//"20870" => إدارة التعليم العام ;
 
 #if DEBUG
+
             //ViewBag.IsSocialServicesDept = IsSocialServicesDept = socialEventsDeptId == GeneralEducationDeptId;
             //ViewBag.Department = department = DepartmentService.GetBySafeerDepartmentId(GeneralEducationDeptId);
+
 #else
             //TODO: Remove commented
         ViewBag.IsSocialServicesDept = IsSocialServicesDept = (socialEventsDeptId == sessionUserInfo.SafeerDepartmentId);

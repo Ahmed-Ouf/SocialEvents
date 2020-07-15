@@ -253,9 +253,9 @@
         @foreach (var item in Model.Events)
         {
             @:var r = Math.floor(Math.random() * 4);
-            @:eventList.push({ id: '@item.Id', title: '@item.Name', start: new Date('@item.DateFrom.Year', '@item.DateFrom.Month', '@item.DateFrom.Day'), end: new Date('@item.DateTo.Year', '@item.DateTo.Month', '@item.DateTo.Day'), allDay: false, className: cssClasses[r], description: '', icon: 'fa-check', url: '@Url.Action("Details","event",new { id=item.Id})'});
+            @:eventList.push({ id: '@item.Id', title: '@item.Name', start: new Date('@item.DateFrom.Year', '@(item.DateFrom.Month-1)', '@item.DateFrom.Day'), end: new Date('@item.DateTo.Year', '@item.DateTo.Month', '@item.DateTo.Day'), allDay: false, className: cssClasses[r], description: '', icon: 'fa-check', url: '@Url.Action("Details","event",new { id=item.Id})'});
         }
-
+        debugger;
         var yearMonthsNames = [];
         var yearMonthsCount = [];
         @foreach (var item in Model.MonthEvents)
