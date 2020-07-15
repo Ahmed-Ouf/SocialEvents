@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace SocialEvents.Web.Controllers
 {
-    //[RoleAuthorize(Roles = "SocialEventsAdmin")]
+    [RoleAuthorize(Roles = "SocialEventsAdmin")]
     public class ReportController : BaseController
     {
 

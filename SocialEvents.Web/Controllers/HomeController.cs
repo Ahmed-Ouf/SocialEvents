@@ -9,7 +9,7 @@ using System.Web.Mvc;
 namespace SocialEvents.Web.Controllers
 {
 
-   // [RoleAuthorize(Roles = "SocialEventsUser")]
+    [RoleAuthorize(Roles = "SocialEventsUser")]
     public class HomeController : BaseController
     {
         private readonly IEventService EventService;

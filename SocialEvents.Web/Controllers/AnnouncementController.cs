@@ -11,7 +11,7 @@ using System.Web.Mvc;
 
 namespace SocialEvents.Web.Controllers
 {
-    //[RoleAuthorize(Roles = "SocialEventsAdmin")]
+    [RoleAuthorize(Roles = "SocialEventsAdmin")]
     public class AnnouncementController : BaseController
     {
         private readonly IAnnouncementService announcementService;
